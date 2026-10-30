@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Secrit Script — أفضل سكربتات روبلوكس للجوال والكمبيوتر</title>
-<meta name="description" content="منصة Secrit Script الرسمية — سكربتات روبلوكس المحدثة مع نظام اختيار المابات والمنصة ومجتمع ديسكورد نشط.">
+<meta name="description" content="منصة Secrit Script الرسمية — سكربتات روبلوكس المحدثة ومجتمع ديسكورد نشط.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg-base: #060814;
-  --bg-card: rgba(12, 18, 36, 0.78);
-  --bg-card-hover: rgba(18, 27, 54, 0.92);
+  --bg-card: rgba(13, 19, 38, 0.82);
+  --bg-card-hover: rgba(20, 30, 60, 0.94);
   --frost-border: rgba(125, 211, 252, 0.16);
   --frost-border-hover: rgba(125, 211, 252, 0.45);
   --ice-primary: #38bdf8;
@@ -22,7 +22,7 @@
   --text-secondary: #94a3b8;
   --text-dim: #64748b;
   --discord-purple: #5865F2;
-  --discord-glow: rgba(88, 101, 242, 0.38);
+  --discord-glow: rgba(88, 101, 242, 0.4);
   --radius-xl: 18px;
   --radius-lg: 14px;
   --radius-md: 10px;
@@ -50,7 +50,7 @@ img { max-width: 100%; display: block; }
 /* ===== مؤشر الماوس الجليدي المخصص ===== */
 @media (pointer: fine) {
   body { cursor: none; }
-  a, button, input, [role="button"], .map-select-card, .script-showcase-card, .staff-card, .member-avatar-chip { cursor: none; }
+  a, button, input, [role="button"], .map-select-card, .script-showcase-card, .staff-card, .member-badge-card { cursor: none; }
   
   .custom-cursor-dot {
     position: fixed;
@@ -101,7 +101,7 @@ img { max-width: 100%; display: block; }
   }
 }
 
-/* ===== الخلفية الشتوية الساحرة ===== */
+/* ===== الخلفية الشتوية ===== */
 .bg-deep-space {
   position: fixed;
   inset: 0;
@@ -126,7 +126,7 @@ img { max-width: 100%; display: block; }
   mask-image: radial-gradient(ellipse at 50% 40%, black 40%, transparent 85%);
 }
 
-/* تساقط الثلج الهادئ في الخلفية (لا يغطي النصوص) */
+/* تساقط الثلج الهادئ في الخلفية */
 .snow-layer {
   position: fixed;
   inset: 0;
@@ -217,7 +217,7 @@ img { max-width: 100%; display: block; }
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(6, 8, 20, 0.82);
+  background: rgba(6, 8, 20, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--frost-border);
@@ -283,7 +283,7 @@ img { max-width: 100%; display: block; }
   gap: 12px;
 }
 
-/* زر تشغيل الموسيقى الهادئة الحقيقية */
+/* زر تشغيل الفونك */
 .music-toggle-btn {
   display: inline-flex;
   align-items: center;
@@ -361,10 +361,10 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 8px 24px rgba(88, 101, 242, 0.55);
 }
 
-/* ===== قسم الهيرو ===== */
+/* ===== قسم الهيرو النظيف (تم حذف الجملة المحددة) ===== */
 .hero-clean {
   text-align: center;
-  padding: 48px 20px 24px;
+  padding: 40px 20px 20px;
   position: relative;
   z-index: 10;
 }
@@ -376,21 +376,15 @@ img { max-width: 100%; display: block; }
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
-  margin-bottom: 12px;
-}
-.hero-clean p {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  max-width: 680px;
-  margin: 0 auto;
+  filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.25));
+  margin-bottom: 0;
 }
 
 /* ===== الحاوية الرئيسية ===== */
 .main-wrapper {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 20px 24px 60px;
+  padding: 16px 24px 60px;
   position: relative;
   z-index: 10;
 }
@@ -403,7 +397,7 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--frost-border);
   border-radius: var(--radius-xl);
   padding: 26px;
-  margin-bottom: 36px;
+  margin-bottom: 34px;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.5);
@@ -435,7 +429,7 @@ img { max-width: 100%; display: block; }
   color: #ffffff;
 }
 
-/* كروت المابات الحقيقية بدقة */
+/* شبكة كروت المابات */
 .maps-channel-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -447,7 +441,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  height: 120px;
+  height: 125px;
   background: #0a0e1c;
   border: 2px solid transparent;
   cursor: pointer;
@@ -465,14 +459,23 @@ img { max-width: 100%; display: block; }
 .map-name-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(4, 6, 15, 0.1) 0%, rgba(4, 6, 15, 0.88) 85%);
+  background: linear-gradient(180deg, rgba(4, 6, 15, 0.1) 0%, rgba(4, 6, 15, 0.9) 82%);
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
   padding: 10px 12px;
+  color: #ffffff;
+}
+.map-name-title {
   font-size: 0.88rem;
   font-weight: 800;
-  color: #ffffff;
   text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+.map-platform-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ice-light);
+  margin-top: 2px;
 }
 .map-select-card.active {
   border-color: var(--ice-primary);
@@ -516,7 +519,7 @@ img { max-width: 100%; display: block; }
   font-weight: 800;
   transition: all 0.22s var(--ease);
 }
-.platform-choice-btn:hover {
+.platform-choice-btn:hover:not(:disabled) {
   background: rgba(56, 189, 248, 0.08);
   border-color: var(--ice-primary);
   color: var(--ice-light);
@@ -526,6 +529,17 @@ img { max-width: 100%; display: block; }
   border-color: var(--ice-primary);
   color: #ffffff;
   box-shadow: 0 0 16px var(--ice-glow);
+}
+.platform-choice-btn:disabled, .platform-choice-btn.disabled-btn {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.platform-choice-btn.disabled-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
 }
 
 .sub-role-selector {
@@ -712,16 +726,16 @@ img { max-width: 100%; display: block; }
 }
 
 /* ========================================================
-   طاقم الإدارة ومجتمع السيرفر (Discord Staff & Community)
+   طاقم الإدارة المطور الفخم (Discord Staff Showcase)
    ======================================================== */
 .community-section {
-  margin-top: 50px;
+  margin-top: 55px;
   position: relative;
   z-index: 10;
 }
 .section-title-wrap {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 34px;
 }
 .section-main-title {
   font-size: 1.85rem;
@@ -755,54 +769,72 @@ img { max-width: 100%; display: block; }
 }
 .staff-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
 }
 
-/* كروت طاقم الإدارة الفاخرة بدون صور عشوائية مضللة */
+/* كروت طاقم الإدارة الفاخرة */
 .staff-card {
+  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--frost-border);
   border-radius: var(--radius-lg);
-  padding: 15px 18px;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 16px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: all 0.25s var(--ease);
+  overflow: hidden;
+}
+.staff-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.25s;
 }
 .staff-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--frost-border-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px -10px rgba(0,0,0,0.6);
 }
+
+.staff-card.owner-card::before { background: linear-gradient(90deg, #38bdf8, #818cf8); }
+.staff-card.high-card::before { background: linear-gradient(90deg, #f43f5e, #fb7185); }
+.staff-card.donor-card::before { background: linear-gradient(90deg, #10b981, #34d399); }
+.staff-card.vip-card::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.staff-card.bot-card::before { background: linear-gradient(90deg, #5865F2, #818cf8); }
 
 .staff-avatar-wrap {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
 }
 .staff-avatar-img {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 16px;
   object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   background: #111827;
 }
 
 .discord-pfp-fallback {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: #ffffff;
   border: 2px solid rgba(255, 255, 255, 0.15);
 }
@@ -843,19 +875,22 @@ img { max-width: 100%; display: block; }
 .staff-info { flex: 1; overflow: hidden; }
 .staff-name {
   font-weight: 800;
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 .staff-role-badge {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 6px;
-  margin-top: 4px;
+  margin-top: 5px;
 }
 .staff-card.owner-card .staff-role-badge { background: rgba(56, 189, 248, 0.15); color: var(--ice-light); }
 .staff-card.high-card .staff-role-badge { background: rgba(244, 63, 94, 0.15); color: #fda4af; }
@@ -863,85 +898,147 @@ img { max-width: 100%; display: block; }
 .staff-card.vip-card .staff-role-badge { background: rgba(234, 179, 8, 0.15); color: #fde047; }
 .staff-card.bot-card .staff-role-badge { background: rgba(88, 101, 242, 0.15); color: #c7d2fe; }
 
-/* أعضاء السيرفر */
-.members-container-box {
+/* ========================================================
+   أعضاء المجتمع بتصميم Discord Server Widget الراقي
+   ======================================================== */
+.community-hub-card {
   background: var(--bg-card);
   border: 1px solid var(--frost-border);
   border-radius: var(--radius-xl);
-  padding: 28px;
+  overflow: hidden;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.5);
 }
-.members-box-head {
+
+.community-hub-header {
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.15), rgba(56, 189, 248, 0.08));
+  border-bottom: 1px solid var(--frost-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 20px;
   flex-wrap: wrap;
 }
+.community-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.community-guild-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px var(--discord-glow);
+}
+.community-header-text h3 {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.community-guild-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--ice-light);
+}
+.community-header-text p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-top: 2px;
+}
+
+.members-search-box {
+  position: relative;
+  min-width: 260px;
+}
 .members-search-input {
-  padding: 10px 16px;
+  width: 100%;
+  padding: 10px 18px;
   border-radius: 99px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(4, 6, 15, 0.7);
   border: 1px solid var(--frost-border);
   color: #ffffff;
   font-size: 0.88rem;
   outline: none;
-  min-width: 220px;
   transition: all 0.2s;
 }
 .members-search-input:focus {
   border-color: var(--ice-primary);
-  background: rgba(56, 189, 248, 0.05);
+  box-shadow: 0 0 16px var(--ice-glow);
 }
 
-.members-cards-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  max-height: 280px;
+.community-members-body {
+  padding: 24px 28px;
+}
+.members-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  max-height: 320px;
   overflow-y: auto;
-  padding-right: 4px;
+  padding-right: 6px;
 }
-[dir="rtl"] .members-cards-grid { padding-right: 0; padding-left: 4px; }
-.member-avatar-chip {
-  display: inline-flex;
+[dir="rtl"] .members-flow-grid { padding-right: 0; padding-left: 6px; }
+
+.member-badge-card {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 6px 12px;
-  border-radius: 99px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  transition: all 0.2s;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s var(--ease);
 }
-.member-avatar-chip:hover {
+.member-badge-card:hover {
   background: rgba(56, 189, 248, 0.1);
   border-color: var(--ice-primary);
-  color: #ffffff;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 .member-avatar-circle {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   font-weight: 800;
   color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.member-name-wrap {
+  overflow: hidden;
+}
+.member-username-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.member-status-sub {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  display: block;
 }
 
 /* بانر الترحيب بديسكورد */
 .welcome-banner-join {
   margin-top: 36px;
   border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, rgba(88, 101, 242, 0.22), rgba(56, 189, 248, 0.12));
-  border: 1px solid rgba(88, 101, 242, 0.4);
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.24), rgba(56, 189, 248, 0.14));
+  border: 1px solid rgba(88, 101, 242, 0.45);
   padding: 32px;
   display: flex;
   align-items: center;
@@ -1025,6 +1122,8 @@ footer {
   .sub-role-btn { flex: 1; text-align: center; }
   .showcase-actions { flex-direction: column; }
   .showcase-discord-btn { width: 100%; justify-content: center; }
+  .community-hub-header { flex-direction: column; align-items: stretch; }
+  .members-search-box { width: 100%; }
 }
 </style>
 </head>
@@ -1098,14 +1197,14 @@ footer {
     </div>
 
     <div class="nav-actions">
-      <!-- زر تشغيل الصوت الهادئ المريح -->
-      <button class="music-toggle-btn" id="musicToggleBtn" title="تشغيل / إيقاف الموسيقى الشتوية الهادئة">
+      <!-- زر تشغيل موسيقى الفونك المطلوبة -->
+      <button class="music-toggle-btn" id="musicToggleBtn" title="تشغيل / إيقاف موسيقى Phonk Aura">
         <div class="sound-waves" id="soundWaves">
           <div class="sound-bar"></div>
           <div class="sound-bar"></div>
           <div class="sound-bar"></div>
         </div>
-        <span class="label" id="musicBtnLabel">الموسيقى: هادئة 🎵</span>
+        <span class="label" id="musicBtnLabel">Phonk Aura ⚡</span>
       </button>
 
       <div class="lang-switch">
@@ -1123,10 +1222,9 @@ footer {
   </div>
 </header>
 
-<!-- ===== قسم الهيرو المنظم والنظيف ===== -->
+<!-- ===== قسم الهيرو المنظم والنظيف (بدون الجملة الطويلة المحذوفة) ===== -->
 <section class="hero-clean">
   <h1 data-i18n="heroTitle">Secrit Script</h1>
-  <p data-i18n="heroSubtitle">مركز السكربتات الاحترافية — اختر الماب ونوع جهازك واحصل على السكربت المحدث فوراً بضغطة زر واحدة.</p>
 </section>
 
 <!-- ===== المحتوى الرئيسي ===== -->
@@ -1145,37 +1243,55 @@ footer {
       <!-- ماب سان دييغو -->
       <div class="map-select-card active" data-map="sandiego">
         <img src="images/pc_7.png" alt="San Diego Roleplay">
-        <div class="map-name-overlay">San Diego Roleplay</div>
+        <div class="map-name-overlay">
+          <span class="map-name-title">San Diego Roleplay</span>
+          <span class="map-platform-tag">💻 PC & 📱 Mobile</span>
+        </div>
         <div class="active-tick">✓</div>
       </div>
-      <!-- ماب القناص Sniper Arena -->
+      <!-- ماب القناص Sniper Arena (الصورة الحقيقية المعتمدة) -->
       <div class="map-select-card" data-map="sniper">
-        <img src="images/pc_1.png" alt="Sniper Arena">
-        <div class="map-name-overlay">Sniper Arena</div>
+        <img src="images/sniper_arena.jpg" alt="Sniper Arena">
+        <div class="map-name-overlay">
+          <span class="map-name-title">Sniper Arena</span>
+          <span class="map-platform-tag">💻 PC & 📱 Mobile</span>
+        </div>
         <div class="active-tick">✓</div>
       </div>
       <!-- ماب قاعدة الصواريخ Missile Base -->
       <div class="map-select-card" data-map="missile">
         <img src="images/pc_5.png" alt="Missile Base">
-        <div class="map-name-overlay">Missile Base</div>
+        <div class="map-name-overlay">
+          <span class="map-name-title">Missile Base</span>
+          <span class="map-platform-tag">💻 PC & 📱 Mobile</span>
+        </div>
+        <div class="active-tick">✓</div>
+      </div>
+      <!-- ماب Blox Strike (صورة CS السكين المخصصة له) -->
+      <div class="map-select-card" data-map="bloxstrike">
+        <img src="images/pc_1.png" alt="Blox Strike">
+        <div class="map-name-overlay">
+          <span class="map-name-title">Blox Strike</span>
+          <span class="map-platform-tag">💻 حصري PC</span>
+        </div>
         <div class="active-tick">✓</div>
       </div>
       <!-- ماب Murder Mystery 2 -->
       <div class="map-select-card" data-map="mm2">
         <img src="images/mm2.png" alt="Murder Mystery 2">
-        <div class="map-name-overlay">Murder Mystery 2 (MM2)</div>
-        <div class="active-tick">✓</div>
-      </div>
-      <!-- ماب Blox Strike -->
-      <div class="map-select-card" data-map="bloxstrike">
-        <img src="images/mobile_1.png" alt="Blox Strike">
-        <div class="map-name-overlay">Blox Strike</div>
+        <div class="map-name-overlay">
+          <span class="map-name-title">Murder Mystery 2 (MM2)</span>
+          <span class="map-platform-tag">💻 حصري PC</span>
+        </div>
         <div class="active-tick">✓</div>
       </div>
       <!-- ماب البيوت Brookhaven -->
       <div class="map-select-card" data-map="brookhaven">
         <img src="images/pc_4.png" alt="Brookhaven RP">
-        <div class="map-name-overlay">Brookhaven RP</div>
+        <div class="map-name-overlay">
+          <span class="map-name-title">Brookhaven RP</span>
+          <span class="map-platform-tag">💻 حصري PC</span>
+        </div>
         <div class="active-tick">✓</div>
       </div>
     </div>
@@ -1193,7 +1309,7 @@ footer {
       </button>
       <button class="platform-choice-btn" data-platform="mobile" id="btnChoiceMobile">
         <span>📱</span>
-        <span data-i18n="choiceMobile">جوال (Mobile)</span>
+        <span id="mobileBtnLabel" data-i18n="choiceMobile">جوال (Mobile)</span>
       </button>
 
       <!-- اختيار الرول الإضافي (لماب سان دييغو: شرطة أو مجرمين) -->
@@ -1213,7 +1329,7 @@ footer {
       <div class="showcase-banner-side">
         <img id="showcaseImg" class="showcase-banner-img" src="images/pc_7.png" alt="Map Banner">
         <div class="showcase-banner-overlay"></div>
-        <span class="showcase-status-badge">● شغال ومحدث 2026</span>
+        <span class="showcase-status-badge" id="showcaseStatusBadge">● شغال ومحدث 2026</span>
       </div>
 
       <!-- تفاصيل السكربت والكود والزر المخصص -->
@@ -1250,17 +1366,17 @@ footer {
     </div>
   </div>
 
-  <!-- ===== قسم الإدارة ومجتمع السيرفر ===== -->
+  <!-- ===== قسم الإدارة ومجتمع السيرفر المطور كلياً ===== -->
   <section class="community-section">
     <div class="section-title-wrap">
       <div class="section-main-title">
-        <span>❄</span>
-        <span data-i18n="teamHeading">إدارة ومجتمع سيرفر Secrit Script</span>
+        <span>👑</span>
+        <span data-i18n="teamHeading">إدارة سيرفر Secrit Script</span>
       </div>
-      <p class="section-sub-title" data-i18n="teamSub">الهيكل الإداري الرسمي والأعضاء المميزون بسيرفر الديسكورد</p>
+      <p class="section-sub-title" data-i18n="teamSub">الهيكل الإداري الرسمي والرتب المعتمدة في سيرفر الديسكورد</p>
     </div>
 
-    <!-- كروت طاقم الإدارة المصممة بأصالة ديسكورد وبدون صور غريبة مضللة -->
+    <!-- كروت طاقم الإدارة الفاخرة -->
     <div class="team-roles-flow">
       
       <!-- الملاك (Owners) -->
@@ -1275,7 +1391,7 @@ footer {
               <span class="status-online-dot"></span>
             </div>
             <div class="staff-info">
-              <div class="staff-name">Snow</div>
+              <div class="staff-name">Snow <span style="font-size: 0.75rem; color: var(--ice-primary);">[SCR]</span></div>
               <span class="staff-role-badge">Founder & Owner</span>
             </div>
           </div>
@@ -1287,7 +1403,7 @@ footer {
               <span class="status-online-dot"></span>
             </div>
             <div class="staff-info">
-              <div class="staff-name">Youssef</div>
+              <div class="staff-name">Youssef <span style="font-size: 0.75rem; color: var(--ice-primary);">[SCR]</span></div>
               <span class="staff-role-badge">Co-Owner</span>
             </div>
           </div>
@@ -1361,7 +1477,7 @@ footer {
       <div class="role-tier-group">
         <h3><span class="role-icon">🤖</span> <span data-i18n="roleBots">البوتات الرسمية (Bots)</span></h3>
         <div class="staff-cards-grid">
-          <!-- Xeno بشعاره الحقيقي من المجلد -->
+          <!-- Xeno بشعاره الحقيقي -->
           <div class="staff-card bot-card">
             <div class="staff-avatar-wrap">
               <img class="staff-avatar-img" src="images/xeno.png" alt="Xeno">
@@ -1410,18 +1526,25 @@ footer {
 
     </div>
 
-    <!-- أعضاء السيرفر المنظم والمصمم بدقة مع البحث -->
-    <div class="members-container-box">
-      <div class="members-box-head">
-        <div>
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #ffffff;"><span class="role-icon">👥</span> <span data-i18n="roleMembers">أعضاء المجتمع (Community Members)</span></h3>
-          <p style="color: var(--text-secondary); font-size: 0.85rem;" data-i18n="membersBoxDesc">أعضاء السيرفر المتفاعلون معنا في مجتمع Secrit Script:</p>
+    <!-- أعضاء المجتمع بتصميم Discord Server Widget المطور والشامل -->
+    <div class="community-hub-card">
+      <div class="community-hub-header">
+        <div class="community-header-left">
+          <img class="community-guild-icon" src="https://cdn.discordapp.com/icons/1511777552614559764/77c5674d838a69a91f6a49ca0f7419bc.png?size=128" alt="SECRET SCRIPT">
+          <div class="community-header-text">
+            <h3>SECRET SCRIPT <span class="community-guild-tag">SCR</span></h3>
+            <p><span id="discordWidgetTotal">109 عضو</span> • <span style="color: #22c55e;">● <span id="discordWidgetOnline">13 متصل</span></span></p>
+          </div>
         </div>
-        <input type="text" class="members-search-input" id="memberSearchInput" placeholder="ابحث عن عضو..." data-i18n-placeholder="searchMember">
+        <div class="members-search-box">
+          <input type="text" class="members-search-input" id="memberSearchInput" placeholder="🔍 ابحث عن عضو في السيرفر..." data-i18n-placeholder="searchMember">
+        </div>
       </div>
 
-      <div class="members-cards-grid" id="membersCardGrid">
-        <!-- يتم ملء الأسماء عبر الجافاسكريبت تلقائياً -->
+      <div class="community-members-body">
+        <div class="members-flow-grid" id="membersCardGrid">
+          <!-- يتم ملء الأعضاء تفاعلياً عبر الجافاسكريبت -->
+        </div>
       </div>
     </div>
 
@@ -1457,7 +1580,6 @@ var I18N = {
   ar: {
     joinBtn: "انضم للديسكورد",
     heroTitle: "Secrit Script",
-    heroSubtitle: "مركز السكربتات الاحترافية — اختر الماب ونوع جهازك واحصل على السكربت المحدث فوراً بضغطة زر واحدة.",
     step1: "1. اختر الماب المطلوب:",
     step2: "2. اختر المنصة ونوع السكربت:",
     choicePc: "كمبيوتر (PC)",
@@ -1467,28 +1589,27 @@ var I18N = {
     copyCode: "نسخ كود السكربت",
     copiedBtn: "تم النسخ بنجاح ✓",
     openDiscordChannel: "روم الديسكورد",
-    teamHeading: "إدارة ومجتمع سيرفر Secrit Script",
-    teamSub: "الهيكل الإداري الرسمي والأعضاء المميزون بسيرفر الديسكورد",
+    teamHeading: "إدارة سيرفر Secrit Script",
+    teamSub: "الهيكل الإداري الرسمي والرتب المعتمدة في سيرفر الديسكورد",
     roleOwner: "المالك (Owner)",
     roleHigh: "الإدارة العليا (High Management)",
     roleDonor: "الداعمون (Donators)",
     roleVip: "الأعضاء المميزون (VIP)",
     roleBots: "البوتات الرسمية (Bots)",
     roleMembers: "أعضاء المجتمع (Community Members)",
-    membersBoxDesc: "أعضاء السيرفر المتفاعلون معنا في مجتمع Secrit Script:",
-    searchMember: "ابحث عن عضو...",
+    searchMember: "🔍 ابحث عن عضو في السيرفر...",
     commBannerTitle: "انضم إلى مجتمع Secrit Script الرسمي",
     commBannerSub: "رابط الترحيب الرسمي: احصل على الرتب وشارك في الفعاليات والسكربتات الحصرية فور انضمامك.",
     joinWelcome: "انضم عبر رابط الترحيب 👋",
     toastCopied: "تم نسخ كود السكربت بنجاح!",
     rights: "جميع الحقوق محفوظة لمجتمع Secrit Script.",
-    ambientPlaying: "الموسيقى: تعمل 🎵",
-    ambientMuted: "الموسيقى: متوقفة"
+    musicPlaying: "Phonk Aura ⚡",
+    musicPaused: "الموسيقى: متوقفة",
+    pcOnlyNotice: "⚠️ هذا السكربت متوفر حالياً بنسخة الكمبيوتر (PC) فقط داخل قنوات السيرفر الرسمية."
   },
   en: {
     joinBtn: "Join Discord",
     heroTitle: "Secrit Script",
-    heroSubtitle: "Professional scripts hub — pick your map and platform to instantly get the updated loadstring.",
     step1: "1. Select Game / Map:",
     step2: "2. Select Platform & Version:",
     choicePc: "PC Version",
@@ -1498,42 +1619,43 @@ var I18N = {
     copyCode: "Copy Script Code",
     copiedBtn: "Copied! ✓",
     openDiscordChannel: "Discord Channel",
-    teamHeading: "Secrit Script Staff & Community",
-    teamSub: "Official server administration and active Discord members",
+    teamHeading: "Secrit Script Server Staff",
+    teamSub: "Official management hierarchy and roles in Discord server",
     roleOwner: "Owner",
     roleHigh: "High Management",
     roleDonor: "Donators",
     roleVip: "VIP Members",
     roleBots: "Official Bots",
     roleMembers: "Community Members",
-    membersBoxDesc: "Active members of the Secrit Script Discord community:",
-    searchMember: "Search member...",
+    searchMember: "🔍 Search member...",
     commBannerTitle: "Join Secrit Script Official Community",
     commBannerSub: "Official welcome invite: get your roles and access exclusive scripts directly.",
     joinWelcome: "Join via Welcome Link 👋",
     toastCopied: "Script loadstring copied!",
     rights: "All rights reserved.",
-    ambientPlaying: "Music: Playing 🎵",
-    ambientMuted: "Music: Muted"
+    musicPlaying: "Phonk Aura ⚡",
+    musicPaused: "Music: Muted",
+    pcOnlyNotice: "⚠️ This script is currently available for PC executors only in the official server."
   }
 };
 
 // ========================================================
-// قاعدة بيانات السكربتات المنقحة والمرتبطة بصور المابات الحقيقية
+// قاعدة بيانات السكربتات المنقحة والمطابقة تماماً لقنوات السيرفر
 // ========================================================
 var SCRIPTS_DB = {
-  // سان دييغو
+  // 1. سان دييغو (متوفر للكمبيوتر والموبايل)
   sandiego: {
     name: "San Diego Roleplay",
     image: "images/pc_7.png",
     mobileImage: "images/mobile_4.png",
     hasRoles: true,
+    hasMobile: true,
     pc: {
       criminal: {
         title: "San Diego V7 — Criminal Hub (PC)",
         tag: "San Diego Roleplay • PC",
         desc: {
-          ar: "سكربت المجرمين الرسمي لماب San Diego V7: يشمل سرقات أوتوماتيكية، أسلحة، طيران، وسرعة فائقة بدون كراش.",
+          ar: "سكربت المجرمين الرسمي لماب San Diego V7: سرقات أوتوماتيكية، أسلحة، طيران، وسرعة فائقة بدون كراش.",
           en: "Official San Diego V7 Criminal Hub: auto-heist, weapons, fly, and super speed."
         },
         code: 'loadstring(game:HttpGet("https://pastefy.app/qEVjHWmM/raw"))()',
@@ -1543,7 +1665,7 @@ var SCRIPTS_DB = {
         title: "San Diego V7 — Police Hub (PC)",
         tag: "San Diego Roleplay • PC",
         desc: {
-          ar: "سكربت الشرطة الرسمي لماب San Diego V7: يشمل رادار مجرمين، تجميع نقاط XP، وسرعة القبض والملاحقة.",
+          ar: "سكربت الشرطة الرسمي لماب San Diego V7: رادار مجرمين، تجميع نقاط XP، وسرعة القبض والملاحقة.",
           en: "Official San Diego V7 Police Hub: criminal radar, XP farm, and instant arrest."
         },
         code: 'loadstring(game:HttpGet("https://pastefy.app/eZbkuKjo/raw"))()',
@@ -1555,7 +1677,7 @@ var SCRIPTS_DB = {
         title: "San Diego V7 — Criminal Hub (Mobile)",
         tag: "San Diego Roleplay • Mobile",
         desc: {
-          ar: "نسخة الجوال (Delta/Fluxus) لسكربت المجرمين لماب San Diego V7 خفيفة وسلسة.",
+          ar: "نسخة الجوال المخصصة لمشغلات Delta و Fluxus لسكربت المجرمين لماب San Diego V7.",
           en: "Delta & Fluxus mobile version for San Diego V7 Criminal Hub."
         },
         code: 'loadstring(game:HttpGet("https://pastefy.app/cw19zbZq/raw", true))()',
@@ -1565,7 +1687,7 @@ var SCRIPTS_DB = {
         title: "San Diego V7 — Police Hub (Mobile)",
         tag: "San Diego Roleplay • Mobile",
         desc: {
-          ar: "نسخة الجوال (Delta/Fluxus) لسكربت الشرطة لماب San Diego V7 مع رادار وتجميع سريع.",
+          ar: "نسخة الجوال المخصصة لمشغلات Delta و Fluxus لسكربت الشرطة لماب San Diego V7 مع رادار وتجميع سريع.",
           en: "Delta & Fluxus mobile version for San Diego V7 Police Hub."
         },
         code: 'loadstring(game:HttpGet("https://pastefy.app/XNSuB1D2/raw", true))()',
@@ -1574,12 +1696,13 @@ var SCRIPTS_DB = {
     }
   },
 
-  // ساحة القناصة
+  // 2. ساحة القناصة (الصورة الحقيقية المعتمدة - متوفر للكمبيوتر والموبايل)
   sniper: {
     name: "Sniper Arena",
-    image: "images/pc_1.png",
-    mobileImage: "images/mobile_3.png",
+    image: "images/sniper_arena.jpg",
+    mobileImage: "images/sniper_arena.jpg",
     hasRoles: false,
+    hasMobile: true,
     pc: {
       default: {
         title: "Sniper Arena (PC / Xeno)",
@@ -1606,12 +1729,13 @@ var SCRIPTS_DB = {
     }
   },
 
-  // قاعدة الصواريخ
+  // 3. قاعدة الصواريخ (متوفر للكمبيوتر والموبايل)
   missile: {
     name: "Missile Base",
     image: "images/pc_5.png",
     mobileImage: "images/mobile_2.png",
     hasRoles: false,
+    hasMobile: true,
     pc: {
       default: {
         title: "Missile Base (PC Version)",
@@ -1638,48 +1762,17 @@ var SCRIPTS_DB = {
     }
   },
 
-  // ماب Murder Mystery 2
-  mm2: {
-    name: "Murder Mystery 2 (MM2)",
-    image: "images/mm2.png",
-    mobileImage: "images/mm2.png",
-    hasRoles: false,
-    pc: {
-      default: {
-        title: "Murder Mystery 2 (MM2)",
-        tag: "MM2 • PC & Mobile",
-        desc: {
-          ar: "سكربت MM2 الشامل: كشف القاتل والشرطي (ESP)، أخذ المسدس تلقائياً، والجمع السريع للعملات.",
-          en: "Complete MM2 script: role ESP, auto-grab gun, and fast coin collection."
-        },
-        code: 'loadstring(game:HttpGet("https://pastefy.app/Omtmo6rD/raw"))()',
-        channel: "https://discord.com/channels/1511777552614559764/1544726157843497022"
-      }
-    },
-    mobile: {
-      default: {
-        title: "Murder Mystery 2 (Mobile)",
-        tag: "MM2 • Mobile",
-        desc: {
-          ar: "سكربت MM2 مخصص للهواتف المحمولة يدعم مشغلات Delta و Fluxus بكفاءة عالية.",
-          en: "Mobile MM2 script supporting Delta and Fluxus executors seamlessly."
-        },
-        code: 'loadstring(game:HttpGet("https://pastefy.app/Omtmo6rD/raw"))()',
-        channel: "https://discord.com/channels/1511777552614559764/1557856245518565436"
-      }
-    }
-  },
-
-  // ماب Blox Strike
+  // 4. ماب Blox Strike (صورة السكين Counter-Strike - حصري PC فقط في القنوات)
   bloxstrike: {
     name: "Blox Strike",
-    image: "images/mobile_1.png",
-    mobileImage: "images/mobile_1.png",
+    image: "images/pc_1.png",
+    mobileImage: null,
     hasRoles: false,
+    hasMobile: false,
     pc: {
       default: {
         title: "Blox Strike (Neverlose Alpha)",
-        tag: "Blox Strike • PC",
+        tag: "Blox Strike • PC Only",
         desc: {
           ar: "سكربت Neverlose Alpha المطور لماب Blox Strike: يحتوي على Aimbot، Silent Aim، وكشف أماكن الأعداء.",
           en: "Neverlose Alpha script for Blox Strike with Aimbot, Silent Aim, and Player ESP."
@@ -1687,55 +1780,53 @@ var SCRIPTS_DB = {
         code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/muradholmatov307-dev/Neverlose/refs/heads/main/NeverloseAlpha"))()',
         channel: "https://discord.com/channels/1511777552614559764/1544726157843497022"
       }
-    },
-    mobile: {
+    }
+  },
+
+  // 5. ماب Murder Mystery 2 (حصري PC فقط في القنوات)
+  mm2: {
+    name: "Murder Mystery 2 (MM2)",
+    image: "images/mm2.png",
+    mobileImage: null,
+    hasRoles: false,
+    hasMobile: false,
+    pc: {
       default: {
-        title: "Blox Strike (Mobile Hub)",
-        tag: "Blox Strike • Mobile",
+        title: "Murder Mystery 2 (MM2)",
+        tag: "MM2 • PC Only",
         desc: {
-          ar: "نسخة خفيفة من سكربت Blox Strike متوافقة مع مشغلات الجوال.",
-          en: "Optimized Blox Strike mobile script compatible with mobile executors."
+          ar: "سكربت MM2 الشامل للكمبيوتر: كشف القاتل والشرطي (ESP)، أخذ المسدس تلقائياً، والجمع السريع للعملات.",
+          en: "Complete MM2 script for PC: role ESP, auto-grab gun, and fast coin collection."
         },
-        code: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/muradholmatov307-dev/Neverlose/refs/heads/main/NeverloseAlpha"))()',
-        channel: "https://discord.com/channels/1511777552614559764/1557856245518565436"
+        code: 'loadstring(game:HttpGet("https://pastefy.app/Omtmo6rD/raw"))()',
+        channel: "https://discord.com/channels/1511777552614559764/1544726157843497022"
       }
     }
   },
 
-  // ماب البيوت Brookhaven
+  // 6. ماب البيوت Brookhaven (حصري PC فقط في القنوات)
   brookhaven: {
     name: "Brookhaven RP",
     image: "images/pc_4.png",
-    mobileImage: "images/pc_4.png",
+    mobileImage: null,
     hasRoles: false,
+    hasMobile: false,
     pc: {
       default: {
         title: "Brookhaven RP (Update)",
-        tag: "Brookhaven RP • All Platforms",
+        tag: "Brookhaven RP • PC Only",
         desc: {
-          ar: "سكربت ماب البيوت التحديث الجديد: فتح جميع المنازل والسيارات المقفولة والتحكم الكامل في الخواص.",
-          en: "Brookhaven RP updated script: unlock all houses, cars, and premium abilities."
+          ar: "سكربت ماب البيوت التحديث الجديد للكمبيوتر: فتح جميع المنازل والسيارات المقفولة والتحكم الكامل في الخواص.",
+          en: "Brookhaven RP updated PC script: unlock all houses, cars, and premium abilities."
         },
         code: 'loadstring(game:HttpGet("https://pastefy.app/9bBAc3Y4/raw"))()',
         channel: "https://discord.com/channels/1511777552614559764/1544726157843497022"
-      }
-    },
-    mobile: {
-      default: {
-        title: "Brookhaven RP (Mobile)",
-        tag: "Brookhaven RP • Mobile",
-        desc: {
-          ar: "سكربت ماب البيوت مخصص للجوال بدون كراش أو ثقل في الأداء.",
-          en: "Smooth mobile Brookhaven RP script for Delta and Fluxus."
-        },
-        code: 'loadstring(game:HttpGet("https://pastefy.app/9bBAc3Y4/raw"))()',
-        channel: "https://discord.com/channels/1511777552614559764/1557856245518565436"
       }
     }
   }
 };
 
-// أعضاء السيرفر
+// أعضاء السيرفر الحقيقيون
 var MEMBERS_LIST = [
   "! Abo dman", "HOOK | F16", "0mlp4", "515", "557714", "620618", "бу", "klamci", "LIT", "RTI", "Abdulaziz A PMC", "abod998", "adam", "Ahegsneh 62", "ak.",
   "بو صالح", "بو عبد الله", "يطالي", "بوناصر", "تركي", "تسيل", "عامريB912", "يعرب", "عامرA", "عرور", "1502", "لكس الدوسري", "الم tako", "تنصد", "يامعالي المستشار نبغي كامري اصلية", "تبى يحيى", "SVY 10", "Sariadio",
@@ -1771,23 +1862,51 @@ function showToast(msg) {
   if (!toast || !text) return;
   text.textContent = msg;
   toast.classList.add('show');
-  setTimeout(function() { toast.classList.remove('show'); }, 2000);
+  setTimeout(function() { toast.classList.remove('show'); }, 2200);
 }
 
-// تحديث عرض السكربت حسب الاختيارات
+// تحديث عرض السكربت حسب الاختيارات مع مراعاة الحصرية
 function updateScriptShowcase() {
   var mapData = SCRIPTS_DB[selectedMap];
   if (!mapData) return;
 
+  var btnMobile = document.getElementById('btnChoiceMobile');
+  var subRoleWrap = document.getElementById('subRoleWrap');
+  var btnPC = document.getElementById('btnChoicePC');
+
+  // معالجة إذا كان الماب لا يملك نسخة جوال
+  if (!mapData.hasMobile) {
+    if (btnMobile) {
+      btnMobile.classList.add('disabled-btn');
+      btnMobile.setAttribute('title', lang === 'ar' ? 'غير متاح للجوال في القنوات' : 'PC Only in server channels');
+      document.getElementById('mobileBtnLabel').textContent = (lang === 'ar' ? 'جوال (غير متوفر)' : 'Mobile (N/A)');
+    }
+    if (selectedPlatform === 'mobile') {
+      selectedPlatform = 'pc';
+      if (btnPC) btnPC.classList.add('active');
+      if (btnMobile) btnMobile.classList.remove('active');
+    }
+  } else {
+    if (btnMobile) {
+      btnMobile.classList.remove('disabled-btn');
+      btnMobile.removeAttribute('title');
+      document.getElementById('mobileBtnLabel').textContent = I18N[lang].choiceMobile;
+    }
+  }
+
+  // رول المجرمين والشرطة
+  if (mapData.hasRoles) {
+    if (subRoleWrap) subRoleWrap.style.display = 'flex';
+  } else {
+    if (subRoleWrap) subRoleWrap.style.display = 'none';
+  }
+
   var platformData = mapData[selectedPlatform] || mapData.pc;
   var scriptItem = null;
 
-  var subRoleWrap = document.getElementById('subRoleWrap');
   if (mapData.hasRoles) {
-    if (subRoleWrap) subRoleWrap.style.display = 'flex';
     scriptItem = platformData[selectedSubRole] || platformData.criminal || platformData.default;
   } else {
-    if (subRoleWrap) subRoleWrap.style.display = 'none';
     scriptItem = platformData.default || platformData[Object.keys(platformData)[0]];
   }
 
@@ -1804,12 +1923,25 @@ function updateScriptShowcase() {
   var descEl = document.getElementById('showcaseDesc');
   var codeEl = document.getElementById('showcaseCode');
   var linkEl = document.getElementById('showcaseDiscordLink');
+  var statusBadge = document.getElementById('showcaseStatusBadge');
 
   if (titleEl) titleEl.textContent = scriptItem.title;
   if (tagEl) tagEl.textContent = scriptItem.tag;
   if (descEl) descEl.textContent = scriptItem.desc[lang] || scriptItem.desc.en;
   if (codeEl) codeEl.textContent = scriptItem.code;
   if (linkEl && scriptItem.channel) linkEl.href = scriptItem.channel;
+
+  if (statusBadge) {
+    if (!mapData.hasMobile) {
+      statusBadge.textContent = (lang === 'ar' ? '● متاح للكمبيوتر فقط' : '● PC Exclusive');
+      statusBadge.style.borderColor = '#38bdf8';
+      statusBadge.style.color = '#bae6fd';
+    } else {
+      statusBadge.textContent = (lang === 'ar' ? '● شغال ومحدث 2026' : '● Working & Updated');
+      statusBadge.style.borderColor = '#22c55e';
+      statusBadge.style.color = '#86efac';
+    }
+  }
 
   // إعداد زر النسخ
   var copyBtn = document.getElementById('showcaseCopyBtn');
@@ -1862,13 +1994,23 @@ document.querySelectorAll('.map-select-card').forEach(function(card) {
 });
 
 // أحداث اختيار المنصة (بيسي أو موبايل)
-document.querySelectorAll('.platform-choice-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.platform-choice-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    selectedPlatform = btn.getAttribute('data-platform');
-    updateScriptShowcase();
-  });
+document.getElementById('btnChoicePC').addEventListener('click', function() {
+  document.getElementById('btnChoicePC').classList.add('active');
+  document.getElementById('btnChoiceMobile').classList.remove('active');
+  selectedPlatform = 'pc';
+  updateScriptShowcase();
+});
+
+document.getElementById('btnChoiceMobile').addEventListener('click', function() {
+  var mapData = SCRIPTS_DB[selectedMap];
+  if (!mapData.hasMobile) {
+    showToast(I18N[lang].pcOnlyNotice);
+    return;
+  }
+  document.getElementById('btnChoiceMobile').classList.add('active');
+  document.getElementById('btnChoicePC').classList.remove('active');
+  selectedPlatform = 'mobile';
+  updateScriptShowcase();
 });
 
 // أحداث اختيار رول السكربت (مجرمين / شرطة)
@@ -1881,7 +2023,7 @@ document.querySelectorAll('.sub-role-btn').forEach(function(btn) {
   });
 });
 
-// رسم أعضاء السيرفر المنظم
+// رسم أعضاء السيرفر بتصميم Discord المطور
 function renderMembersCloud(filterText) {
   var grid = document.getElementById('membersCardGrid');
   if (!grid) return;
@@ -1896,9 +2038,12 @@ function renderMembersCloud(filterText) {
     var initial = name.replace(/[^a-zA-Z؀-ۿ0-9]/g, '').charAt(0) || '★';
     var bg = AVATAR_COLORS[idx % AVATAR_COLORS.length];
     
-    return '<div class="member-avatar-chip">' +
+    return '<div class="member-badge-card">' +
       '<div class="member-avatar-circle" style="background:' + bg + ';">' + escapeHtml(initial) + '</div>' +
-      '<span class="member-name-text">' + escapeHtml(name) + '</span>' +
+      '<div class="member-name-wrap">' +
+        '<span class="member-username-text">' + escapeHtml(name) + '</span>' +
+        '<span class="member-status-sub">' + (idx % 4 === 0 ? '🟢 Online' : 'Member') + '</span>' +
+      '</div>' +
     '</div>';
   }).join('');
 }
@@ -1946,16 +2091,20 @@ function fetchDiscordStats() {
         
         var elTotal = document.getElementById('discordTotalMembers');
         var elOnline = document.getElementById('discordOnlineCount');
+        var wTotal = document.getElementById('discordWidgetTotal');
+        var wOnline = document.getElementById('discordWidgetOnline');
         
         if (elTotal) elTotal.textContent = total + (lang === 'ar' ? ' عضو' : ' members');
         if (elOnline) elOnline.textContent = online + (lang === 'ar' ? ' متصل الآن' : ' online now');
+        if (wTotal) wTotal.textContent = total + (lang === 'ar' ? ' عضو' : ' members');
+        if (wOnline) wOnline.textContent = online + (lang === 'ar' ? ' متصل' : ' online');
       }
     })
     .catch(function(err){});
 }
 
 // ========================================================
-// موسيقى هادئة وراقية حقيقية (Calm Ambient Soundtrack)
+// مشغل الفونك الرسمي (Phonk Aura Track Player)
 // ========================================================
 var bgAudio = null;
 var isAmbientPlaying = false;
@@ -1965,15 +2114,16 @@ function initAmbientMusic() {
   var waves = document.getElementById('soundWaves');
   var label = document.getElementById('musicBtnLabel');
   
+  // تشغيل ملف الفونك المرفوع
   bgAudio = new Audio('audio/ambient.mp3');
   bgAudio.loop = true;
-  bgAudio.volume = 0.22; // مستوى صوت هادئ ومريح جداً في الخلفية
+  bgAudio.volume = 0.35; // مستوى مناسب للفونك
   
   function playMusic() {
     bgAudio.play().then(function() {
       isAmbientPlaying = true;
       waves.classList.add('playing');
-      label.textContent = I18N[lang].ambientPlaying;
+      label.textContent = I18N[lang].musicPlaying;
     }).catch(function(e) {
       console.log('Audio autoplay blocked by browser until user click');
     });
@@ -1983,7 +2133,7 @@ function initAmbientMusic() {
     bgAudio.pause();
     isAmbientPlaying = false;
     waves.classList.remove('playing');
-    label.textContent = I18N[lang].ambientMuted;
+    label.textContent = I18N[lang].musicPaused;
   }
   
   btn.addEventListener('click', function(e) {
@@ -1995,7 +2145,7 @@ function initAmbientMusic() {
     }
   });
 
-  // تشغيل الموسيقى الهادئة تلقائياً عند أول ضغطة من المستخدم في أي مكان
+  // تشغيل الأغنية تلقائياً عند أول لمسة أو نقرة
   var userInteracted = false;
   function onFirstTouch() {
     if (userInteracted) return;
@@ -2053,12 +2203,12 @@ function initAmbientMusic() {
   requestAnimationFrame(animateRing);
   
   document.addEventListener('mouseover', function(e) {
-    if (e.target.closest('a, button, .map-select-card, .staff-card, .member-avatar-chip')) {
+    if (e.target.closest('a, button, .map-select-card, .staff-card, .member-badge-card')) {
       ring.classList.add('hovering');
     }
   });
   document.addEventListener('mouseout', function(e) {
-    if (e.target.closest('a, button, .map-select-card, .staff-card, .member-avatar-chip')) {
+    if (e.target.closest('a, button, .map-select-card, .staff-card, .member-badge-card')) {
       ring.classList.remove('hovering');
     }
   });
