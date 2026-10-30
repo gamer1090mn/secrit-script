@@ -1496,6 +1496,31 @@ footer {
   background: linear-gradient(180deg, #7dd3fc, #818cf8);
 }
 
+
+/* إصلاح اتجاه المعرفات لتظهر بالإنجليزية الصحيحة @username في العربية */
+.tier-handle, .owner-hud-handle {
+  direction: ltr !important;
+  display: inline-block !important;
+  unicode-bidi: isolate !important;
+  text-align: left !important;
+}
+.tier-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tier-check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: var(--tier-accent, #38bdf8);
+}
+.team-roles-flow {
+  gap: 32px;
+  margin-bottom: 20px;
+}
+
 </style>
 </head>
 <body>
@@ -1569,15 +1594,6 @@ footer {
 
     <div class="nav-actions">
       <!-- زر تشغيل موسيقى الفونك المطلوبة -->
-      <button class="music-toggle-btn" id="musicToggleBtn" title="تشغيل / إيقاف موسيقى Phonk Aura">
-        <div class="sound-waves" id="soundWaves">
-          <div class="sound-bar"></div>
-          <div class="sound-bar"></div>
-          <div class="sound-bar"></div>
-        </div>
-        <span class="label" id="musicBtnLabel">Phonk Aura ⚡</span>
-      </button>
-
       <div class="lang-switch">
         <button data-lang="ar" class="active">عربي</button>
         <button data-lang="en">EN</button>
@@ -1940,113 +1956,7 @@ footer {
         </div>
       </div>
 
-      <!-- TIER —— 05 : البوتات الرسمية -->
-      <div class="role-tier-group">
-        <div class="tier-header-wrap">
-          <div class="tier-title-group">
-            <span class="tier-badge-label">TIER —— 05</span>
-            <h3 class="tier-main-title">
-              <span class="role-icon">🤖</span> 
-              <span data-i18n="roleBots">البوتات الرسمية (Bots)</span>
-            </h3>
-          </div>
-          <div class="tier-count-display">
-            <span class="tier-count-num">04</span>
-            <span class="tier-count-text">بوتات</span>
-          </div>
-        </div>
-
-        <div class="tier-cards-grid">
-          <!-- Xeno -->
-          <div class="tier-member-card" style="--tier-accent: #5865F2; --tier-glow: rgba(88, 101, 242, 0.4);">
-            <div class="tier-avatar-wrap">
-              <img class="tier-avatar-img" src="images/xeno.png" alt="Xeno">
-              <span class="tier-avatar-dot" title="Online"></span>
-            </div>
-            <div class="tier-info-wrap">
-              <div class="tier-name-row">
-                <span class="tier-check-icon">✔</span>
-                <span class="tier-member-name">Xeno</span>
-              </div>
-              <span class="tier-sub-role">⦀ Execution System | نظام التشغيل</span>
-              <span class="tier-handle">@xeno_bot</span>
-            </div>
-          </div>
-
-          <!-- Welcomer -->
-          <div class="tier-member-card" style="--tier-accent: #5865F2; --tier-glow: rgba(88, 101, 242, 0.4);">
-            <div class="tier-avatar-wrap">
-              <div class="tier-avatar-img discord-fallback-avatar" style="background: linear-gradient(135deg, #4f46e5, #3730a3);">W</div>
-              <span class="tier-avatar-dot" title="Online"></span>
-            </div>
-            <div class="tier-info-wrap">
-              <div class="tier-name-row">
-                <span class="tier-check-icon">✔</span>
-                <span class="tier-member-name">Welcomer</span>
-              </div>
-              <span class="tier-sub-role">⦀ Welcome & Roles | ترحيب ورتب</span>
-              <span class="tier-handle">@welcomer_bot</span>
-            </div>
-          </div>
-
-          <!-- Sapphire -->
-          <div class="tier-member-card" style="--tier-accent: #5865F2; --tier-glow: rgba(88, 101, 242, 0.4);">
-            <div class="tier-avatar-wrap">
-              <div class="tier-avatar-img discord-fallback-avatar" style="background: linear-gradient(135deg, #0284c7, #0369a1);">S</div>
-              <span class="tier-avatar-dot" title="Online"></span>
-            </div>
-            <div class="tier-info-wrap">
-              <div class="tier-name-row">
-                <span class="tier-check-icon">✔</span>
-                <span class="tier-member-name">Sapphire</span>
-              </div>
-              <span class="tier-sub-role">⦀ Moderation System | حماية وإشراف</span>
-              <span class="tier-handle">@sapphire_bot</span>
-            </div>
-          </div>
-
-          <!-- Boogie -->
-          <div class="tier-member-card" style="--tier-accent: #5865F2; --tier-glow: rgba(88, 101, 242, 0.4);">
-            <div class="tier-avatar-wrap">
-              <div class="tier-avatar-img discord-fallback-avatar" style="background: linear-gradient(135deg, #16a34a, #15803d);">B</div>
-              <span class="tier-avatar-dot" title="Online"></span>
-            </div>
-            <div class="tier-info-wrap">
-              <div class="tier-name-row">
-                <span class="tier-check-icon">✔</span>
-                <span class="tier-member-name">Boogie</span>
-              </div>
-              <span class="tier-sub-role">⦀ Music & Audio | صوتيات وترفيه</span>
-              <span class="tier-handle">@boogie_bot</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
-
-    <!-- أعضاء المجتمع بتصميم Discord Server Widget المطور والشامل -->
-    <div class="community-hub-card">
-      <div class="community-hub-header">
-        <div class="community-header-left">
-          <img class="community-guild-icon" src="https://cdn.discordapp.com/icons/1511777552614559764/77c5674d838a69a91f6a49ca0f7419bc.png?size=128" alt="SECRET SCRIPT">
-          <div class="community-header-text">
-            <h3>SECRET SCRIPT <span class="community-guild-tag">SCR</span></h3>
-            <p><span id="discordWidgetTotal">109 عضو</span> • <span style="color: #22c55e;">● <span id="discordWidgetOnline">13 متصل</span></span></p>
-          </div>
-        </div>
-        <div class="members-search-box">
-          <input type="text" class="members-search-input" id="memberSearchInput" placeholder="🔍 ابحث عن عضو في السيرفر..." data-i18n-placeholder="searchMember">
-        </div>
-      </div>
-
-      <div class="community-members-body">
-        <div class="members-flow-grid" id="membersCardGrid">
-          <!-- يتم ملء الأعضاء تفاعلياً عبر الجافاسكريبت -->
-        </div>
-      </div>
-    </div>
-
 </section>
 
 </main>
@@ -2083,9 +1993,9 @@ var I18N = {
     roleHigh: "الإدارة العليا (High Management)",
     roleDonor: "الداعمون (Donators)",
     roleVip: "الأعضاء المميزون (VIP)",
-    roleBots: "البوتات الرسمية (Bots)",
+    
     roleMembers: "أعضاء المجتمع (Community Members)",
-    searchMember: "🔍 ابحث عن عضو في السيرفر...",
+    
     commBannerTitle: "انضم إلى مجتمع Secrit Script الرسمي",
     commBannerSub: "رابط الترحيب الرسمي: احصل على الرتب وشارك في الفعاليات والسكربتات الحصرية فور انضمامك.",
     joinWelcome: "انضم عبر رابط الترحيب 👋",
@@ -2113,7 +2023,7 @@ var I18N = {
     roleHigh: "High Management",
     roleDonor: "Donators",
     roleVip: "VIP Members",
-    roleBots: "Official Bots",
+    
     roleMembers: "Community Members",
     searchMember: "🔍 Search member...",
     commBannerTitle: "Join Secrit Script Official Community",
@@ -2314,235 +2224,6 @@ var SCRIPTS_DB = {
   }
 };
 
-// أعضاء السيرفر الحقيقيون
-var MEMBERS_LIST = [
-  "! Abo dman", "HOOK | F16", "0mlp4", "515", "557714", "620618", "бу", "klamci", "LIT", "RTI", "Abdulaziz A PMC", "abod998", "adam", "Ahegsneh 62", "ak.",
-  "بو صالح", "بو عبد الله", "يطالي", "بوناصر", "تركي", "تسيل", "عامريB912", "يعرب", "عامرA", "عرور", "1502", "لكس الدوسري", "الم tako", "تنصد", "يامعالي المستشار نبغي كامري اصلية", "تبى يحيى", "SVY 10", "Sariadio",
-  "Habashy", "appleyard67671", "AZIZ", "CFR", "Com", "EMD 502", "ERX", "FRSET Dr7", "Ghassan", "glorious_starfish_29850", "Hayder", "immaculate armadillo", "kira", "O Xeno", "Kraroo", "LEDAR", "M", "Maass",
-  "333647", "4rd", "Aosed 1", "& DT", "A Rocket League", "Azzouz", "dark515d", "Lara +1", "/play", "v APP", "Malik", "A ROBLOX O", "Sultan 1010", "unknown", "xx817", "12936", "قحلك ن",
-  "mahmoud 1199", "miyirbek", "Moad", "MOLPZ", "Nwafking 1", "Dr7", "naw", "出668", "0/dy 506", "OMAR", "OMAR IS MEDAIK", "Oska", "PCmini", "PLAYER ESLAM", "R_xL", "rayddd 11332", "S3 → i9x", "samurai 22 * IVRP", "C++",
-  "SAIKOU Y", "Tala", "TERPOO", "liziang", "IWIX", "X kFo", "Void", "Wemmbulovee", "whimsical_wolf_70716", "XT_461", "yazed", "Yosei", "YYYYY", "Z", "ابو لجين", "ابو ذاحم"
-];
-
-var AVATAR_COLORS = [
-  "linear-gradient(135deg, #38bdf8, #0284c7)",
-  "linear-gradient(135deg, #818cf8, #4f46e5)",
-  "linear-gradient(135deg, #f43f5e, #be123c)",
-  "linear-gradient(135deg, #10b981, #047857)",
-  "linear-gradient(135deg, #f59e0b, #d97706)",
-  "linear-gradient(135deg, #ec4899, #be185d)"
-];
-
-var lang = 'ar';
-var selectedMap = 'sandiego';
-var selectedPlatform = 'pc';
-var selectedSubRole = 'criminal';
-
-function escapeHtml(str) {
-  var d = document.createElement('div');
-  d.textContent = str;
-  return d.innerHTML;
-}
-
-function showToast(msg) {
-  var toast = document.getElementById('toastBox');
-  var text = document.getElementById('toastMessage');
-  if (!toast || !text) return;
-  text.textContent = msg;
-  toast.classList.add('show');
-  setTimeout(function() { toast.classList.remove('show'); }, 2200);
-}
-
-// تحديث عرض السكربت حسب الاختيارات مع مراعاة الحصرية
-function updateScriptShowcase() {
-  var mapData = SCRIPTS_DB[selectedMap];
-  if (!mapData) return;
-
-  var btnMobile = document.getElementById('btnChoiceMobile');
-  var subRoleWrap = document.getElementById('subRoleWrap');
-  var btnPC = document.getElementById('btnChoicePC');
-
-  // معالجة إذا كان الماب لا يملك نسخة جوال
-  if (!mapData.hasMobile) {
-    if (btnMobile) {
-      btnMobile.classList.add('disabled-btn');
-      btnMobile.setAttribute('title', lang === 'ar' ? 'غير متاح للجوال في القنوات' : 'PC Only in server channels');
-      document.getElementById('mobileBtnLabel').textContent = (lang === 'ar' ? 'جوال (غير متوفر)' : 'Mobile (N/A)');
-    }
-    if (selectedPlatform === 'mobile') {
-      selectedPlatform = 'pc';
-      if (btnPC) btnPC.classList.add('active');
-      if (btnMobile) btnMobile.classList.remove('active');
-    }
-  } else {
-    if (btnMobile) {
-      btnMobile.classList.remove('disabled-btn');
-      btnMobile.removeAttribute('title');
-      document.getElementById('mobileBtnLabel').textContent = I18N[lang].choiceMobile;
-    }
-  }
-
-  // رول المجرمين والشرطة
-  if (mapData.hasRoles) {
-    if (subRoleWrap) subRoleWrap.style.display = 'flex';
-  } else {
-    if (subRoleWrap) subRoleWrap.style.display = 'none';
-  }
-
-  var platformData = mapData[selectedPlatform] || mapData.pc;
-  var scriptItem = null;
-
-  if (mapData.hasRoles) {
-    scriptItem = platformData[selectedSubRole] || platformData.criminal || platformData.default;
-  } else {
-    scriptItem = platformData.default || platformData[Object.keys(platformData)[0]];
-  }
-
-  if (!scriptItem) return;
-
-  // تحديث الصورة المناسبة للماب
-  var showcaseImg = document.getElementById('showcaseImg');
-  var bannerSrc = (selectedPlatform === 'mobile' && mapData.mobileImage) ? mapData.mobileImage : mapData.image;
-  if (showcaseImg) showcaseImg.src = bannerSrc;
-
-  // تحديث النصوص
-  var titleEl = document.getElementById('showcaseTitle');
-  var tagEl = document.getElementById('showcaseTag');
-  var descEl = document.getElementById('showcaseDesc');
-  var codeEl = document.getElementById('showcaseCode');
-  var linkEl = document.getElementById('showcaseDiscordLink');
-  var statusBadge = document.getElementById('showcaseStatusBadge');
-
-  if (titleEl) titleEl.textContent = scriptItem.title;
-  if (tagEl) tagEl.textContent = scriptItem.tag;
-  if (descEl) descEl.textContent = scriptItem.desc[lang] || scriptItem.desc.en;
-  if (codeEl) codeEl.textContent = scriptItem.code;
-  if (linkEl && scriptItem.channel) linkEl.href = scriptItem.channel;
-
-  if (statusBadge) {
-    if (!mapData.hasMobile) {
-      statusBadge.textContent = (lang === 'ar' ? '● متاح للكمبيوتر فقط' : '● PC Exclusive');
-      statusBadge.style.borderColor = '#38bdf8';
-      statusBadge.style.color = '#bae6fd';
-    } else {
-      statusBadge.textContent = (lang === 'ar' ? '● شغال ومحدث 2026' : '● Working & Updated');
-      statusBadge.style.borderColor = '#22c55e';
-      statusBadge.style.color = '#86efac';
-    }
-  }
-
-  // إعداد زر النسخ
-  var copyBtn = document.getElementById('showcaseCopyBtn');
-  if (copyBtn) {
-    copyBtn.onclick = function() {
-      copyCodeString(scriptItem.code, copyBtn);
-    };
-  }
-}
-
-function copyCodeString(code, btn) {
-  var success = function() {
-    showToast(I18N[lang].toastCopied);
-    var textEl = document.getElementById('showcaseCopyText');
-    if (textEl) {
-      var oldText = textEl.textContent;
-      textEl.textContent = I18N[lang].copiedBtn;
-      setTimeout(function() { textEl.textContent = oldText; }, 1600);
-    }
-  };
-
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(code).then(success).catch(function() {
-      fallbackCopy(code, success);
-    });
-  } else {
-    fallbackCopy(code, success);
-  }
-}
-
-function fallbackCopy(text, cb) {
-  var ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.left = '-9999px';
-  document.body.appendChild(ta);
-  ta.select();
-  try { document.execCommand('copy'); if(cb) cb(); } catch(e){}
-  document.body.removeChild(ta);
-}
-
-// أحداث تفاعل اختيار الماب
-document.querySelectorAll('.map-select-card').forEach(function(card) {
-  card.addEventListener('click', function() {
-    document.querySelectorAll('.map-select-card').forEach(function(c) { c.classList.remove('active'); });
-    card.classList.add('active');
-    selectedMap = card.getAttribute('data-map');
-    updateScriptShowcase();
-  });
-});
-
-// أحداث اختيار المنصة (بيسي أو موبايل)
-document.getElementById('btnChoicePC').addEventListener('click', function() {
-  document.getElementById('btnChoicePC').classList.add('active');
-  document.getElementById('btnChoiceMobile').classList.remove('active');
-  selectedPlatform = 'pc';
-  updateScriptShowcase();
-});
-
-document.getElementById('btnChoiceMobile').addEventListener('click', function() {
-  var mapData = SCRIPTS_DB[selectedMap];
-  if (!mapData.hasMobile) {
-    showToast(I18N[lang].pcOnlyNotice);
-    return;
-  }
-  document.getElementById('btnChoiceMobile').classList.add('active');
-  document.getElementById('btnChoicePC').classList.remove('active');
-  selectedPlatform = 'mobile';
-  updateScriptShowcase();
-});
-
-// أحداث اختيار رول السكربت (مجرمين / شرطة)
-document.querySelectorAll('.sub-role-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.sub-role-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    selectedSubRole = btn.getAttribute('data-subrole');
-    updateScriptShowcase();
-  });
-});
-
-// رسم أعضاء السيرفر بتصميم Discord المطور
-function renderMembersCloud(filterText) {
-  var grid = document.getElementById('membersCardGrid');
-  if (!grid) return;
-  
-  var query = (filterText || '').toLowerCase().trim();
-  var filtered = MEMBERS_LIST.filter(function(m) {
-    if (!query) return true;
-    return m.toLowerCase().indexOf(query) !== -1;
-  });
-  
-  grid.innerHTML = filtered.map(function(name, idx) {
-    var initial = name.replace(/[^a-zA-Z؀-ۿ0-9]/g, '').charAt(0) || '★';
-    var bg = AVATAR_COLORS[idx % AVATAR_COLORS.length];
-    
-    return '<div class="member-badge-card">' +
-      '<div class="member-avatar-circle" style="background:' + bg + ';">' + escapeHtml(initial) + '</div>' +
-      '<div class="member-name-wrap">' +
-        '<span class="member-username-text">' + escapeHtml(name) + '</span>' +
-        '<span class="member-status-sub">' + (idx % 4 === 0 ? '🟢 Online' : 'Member') + '</span>' +
-      '</div>' +
-    '</div>';
-  }).join('');
-}
-
-var memberSearch = document.getElementById('memberSearchInput');
-if (memberSearch) {
-  memberSearch.addEventListener('input', function(e) {
-    renderMembersCloud(e.target.value);
-  });
-}
-
 // تبديل اللغة
 function setLang(newLang) {
   lang = newLang;
@@ -2591,132 +2272,7 @@ function fetchDiscordStats() {
     .catch(function(err){});
 }
 
-// ========================================================
-// مشغل الفونك الرسمي (Phonk Aura Track Player)
-// ========================================================
-var bgAudio = null;
-var isAmbientPlaying = false;
 
-function initAmbientMusic() {
-  var btn = document.getElementById('musicToggleBtn');
-  var waves = document.getElementById('soundWaves');
-  var label = document.getElementById('musicBtnLabel');
-  
-  // تشغيل ملف الفونك المرفوع
-  bgAudio = new Audio('audio/ambient.mp3');
-  bgAudio.loop = true;
-  bgAudio.volume = 0.35; // مستوى مناسب للفونك
-  
-  function playMusic() {
-    bgAudio.play().then(function() {
-      isAmbientPlaying = true;
-      waves.classList.add('playing');
-      label.textContent = I18N[lang].musicPlaying;
-    }).catch(function(e) {
-      console.log('Audio autoplay blocked by browser until user click');
-    });
-  }
-  
-  function pauseMusic() {
-    bgAudio.pause();
-    isAmbientPlaying = false;
-    waves.classList.remove('playing');
-    label.textContent = I18N[lang].musicPaused;
-  }
-  
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (isAmbientPlaying) {
-      pauseMusic();
-    } else {
-      playMusic();
-    }
-  });
-
-  // تشغيل الأغنية تلقائياً عند أول لمسة أو نقرة
-  var userInteracted = false;
-  function onFirstTouch() {
-    if (userInteracted) return;
-    userInteracted = true;
-    playMusic();
-    window.removeEventListener('click', onFirstTouch);
-    window.removeEventListener('keydown', onFirstTouch);
-    window.removeEventListener('touchstart', onFirstTouch);
-  }
-  window.addEventListener('click', onFirstTouch);
-  window.addEventListener('keydown', onFirstTouch);
-  window.addEventListener('touchstart', onFirstTouch);
-}
-
-// مؤشر الماوس الجليدي
-(function initCustomCursor() {
-  var dot = document.getElementById('cursorDot');
-  var ring = document.getElementById('cursorRing');
-  if (!dot || !ring || window.matchMedia('(pointer: coarse)').matches) return;
-  
-  var mouseX = -100, mouseY = -100;
-  var ringX = -100, ringY = -100;
-  var lastSparkle = 0;
-  
-  window.addEventListener('mousemove', function(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.transform = 'translate(' + mouseX + 'px, ' + mouseY + 'px) translate(-50%, -50%)';
-    
-    var now = Date.now();
-    if (now - lastSparkle > 45) {
-      lastSparkle = now;
-      createSparkle(mouseX, mouseY);
-    }
-  });
-  
-  function createSparkle(x, y) {
-    var p = document.createElement('div');
-    p.className = 'cursor-sparkle';
-    var size = Math.random() * 4 + 2;
-    p.style.width = size + 'px';
-    p.style.height = size + 'px';
-    p.style.left = x + 'px';
-    p.style.top = y + 'px';
-    document.body.appendChild(p);
-    setTimeout(function() { if(p.parentNode) p.parentNode.removeChild(p); }, 650);
-  }
-  
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = 'translate(' + ringX + 'px, ' + ringY + 'px) translate(-50%, -50%)';
-    requestAnimationFrame(animateRing);
-  }
-  requestAnimationFrame(animateRing);
-  
-  document.addEventListener('mouseover', function(e) {
-    if (e.target.closest('a, button, input, .map-select-card, .owner-hud-card, .tier-member-card, .member-badge-card')) {
-      ring.classList.add('hovering');
-    }
-  });
-  document.addEventListener('mouseout', function(e) {
-    if (e.target.closest('a, button, input, .map-select-card, .owner-hud-card, .tier-member-card, .member-badge-card')) {
-      ring.classList.remove('hovering');
-    }
-  });
-})();
-
-// أزرار اللغة
-document.querySelectorAll('.lang-switch button').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    setLang(btn.getAttribute('data-lang'));
-  });
-});
-
-document.getElementById('yearVal').textContent = new Date().getFullYear();
-
-// تشغيل الموقع الأولي
-setLang('ar');
-updateScriptShowcase();
-renderMembersCloud();
-fetchDiscordStats();
-initAmbientMusic();
 setInterval(fetchDiscordStats, 40000);
 </script>
 </body>
