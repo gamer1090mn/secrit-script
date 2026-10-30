@@ -586,7 +586,7 @@ img { max-width: 100%; display: block; }
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.12);
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 260px 1fr;
   transition: all 0.3s var(--ease);
 }
 @media (max-width: 900px) {
@@ -1125,6 +1125,416 @@ footer {
   .community-hub-header { flex-direction: column; align-items: stretch; }
   .members-search-box { width: 100%; }
 }
+
+/* ===== تأثير الخلل للعنوان الرئيسي (Glitch Title in Place) ===== */
+.hero-clean h1 {
+  display: none !important;
+}
+.glitch-title {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 40%, var(--ice-light) 75%, var(--ice-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.35));
+  margin-bottom: 0;
+  user-select: none;
+}
+.glitch-title::before,
+.glitch-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-text-fill-color: initial;
+}
+.glitch-title::before {
+  color: #38bdf8;
+  text-shadow: -1.5px 0 #38bdf8;
+  animation: glitch-anim-1 3.2s infinite linear alternate-reverse;
+}
+.glitch-title::after {
+  color: #818cf8;
+  text-shadow: 1.5px 0 #c084fc;
+  animation: glitch-anim-2 2.7s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim-1 {
+  0%, 84% { clip-path: inset(0 0 0 0); opacity: 0; transform: none; }
+  85% { clip-path: inset(18% 0 52% 0); opacity: 0.85; transform: translate(-1.5px, 0.5px); }
+  87% { clip-path: inset(62% 0 12% 0); opacity: 0.9; transform: translate(1px, -0.5px); }
+  89% { clip-path: inset(35% 0 35% 0); opacity: 0.7; transform: translate(-1px, 0); }
+  91%, 100% { clip-path: inset(0 0 0 0); opacity: 0; transform: none; }
+}
+@keyframes glitch-anim-2 {
+  0%, 80% { clip-path: inset(0 0 0 0); opacity: 0; transform: none; }
+  81% { clip-path: inset(12% 0 68% 0); opacity: 0.85; transform: translate(1.5px, 0.5px); }
+  83% { clip-path: inset(52% 0 18% 0); opacity: 0.95; transform: translate(-1px, -0.5px); }
+  85% { clip-path: inset(28% 0 42% 0); opacity: 0.8; transform: translate(1px, 0); }
+  87%, 100% { clip-path: inset(0 0 0 0); opacity: 0; transform: none; }
+}
+
+/* ========================================================
+   طاقم الإدارة وملاك السيرفر بتصميم HUD و Tier الحديث
+   ======================================================== */
+.team-roles-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-bottom: 45px;
+}
+
+/* ===== COMMAND —— 01 : بطاقات الملاك التكتيكية بنظام الزوايا (HUD Corners) ===== */
+.command-header-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #38bdf8;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.command-header-tag::before, .command-header-tag::after {
+  content: "——";
+  opacity: 0.6;
+}
+.tier-center-title {
+  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.owners-hud-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  justify-content: center;
+  gap: 24px;
+}
+.owner-hud-card {
+  position: relative;
+  background: rgba(10, 16, 32, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 18px;
+  padding: 34px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(56, 189, 248, 0.04);
+}
+.owner-hud-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 22px 50px -10px rgba(56, 189, 248, 0.2), inset 0 0 35px rgba(56, 189, 248, 0.08);
+}
+.hud-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  transition: all 0.3s var(--ease);
+}
+.hud-corner-tl {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid var(--ice-primary);
+  border-left: 2px solid var(--ice-primary);
+}
+.hud-corner-tr {
+  top: 10px;
+  right: 10px;
+  border-top: 2px solid var(--ice-primary);
+  border-right: 2px solid var(--ice-primary);
+}
+.hud-corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 2px solid var(--ice-primary);
+  border-left: 2px solid var(--ice-primary);
+}
+.hud-corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid var(--ice-primary);
+  border-right: 2px solid var(--ice-primary);
+}
+.owner-hud-card:hover .hud-corner {
+  width: 18px;
+  height: 18px;
+  border-color: #ffffff;
+}
+.owner-hud-avatar-wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 18px;
+}
+.owner-hud-avatar-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(56, 189, 248, 0.45);
+  animation: ringRotate 20s linear infinite;
+}
+@keyframes ringRotate {
+  100% { transform: rotate(360deg); }
+}
+.owner-hud-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #38bdf8;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+}
+.owner-hud-status-dot {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  width: 16px;
+  height: 16px;
+  background: #22c55e;
+  border: 3px solid #070d1e;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #22c55e;
+}
+[dir="rtl"] .owner-hud-status-dot { right: auto; left: 6px; }
+
+.owner-hud-name {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.owner-hud-check {
+  color: #38bdf8;
+  font-size: 1.05rem;
+}
+.owner-hud-role {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ice-light);
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+.owner-hud-handle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: #64748b;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ===== TIER CARDS (الإدارة العليا، الداعمون، VIP، البوتات) ===== */
+.tier-header-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+.tier-title-group {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tier-badge-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #38bdf8;
+  text-transform: uppercase;
+}
+.tier-main-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tier-count-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.tier-count-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.85);
+}
+.tier-count-text {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.tier-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+.tier-member-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(12, 18, 35, 0.85);
+  border: 1px solid rgba(125, 211, 252, 0.14);
+  border-radius: 14px;
+  padding: 12px 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.tier-member-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--tier-accent, var(--ice-primary));
+  opacity: 0.75;
+}
+[dir="rtl"] .tier-member-card::before { right: 0; }
+[dir="ltr"] .tier-member-card::before { left: 0; }
+
+.tier-member-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(18, 26, 50, 0.95);
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.5), 0 0 18px rgba(56, 189, 248, 0.12);
+}
+.tier-avatar-wrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+.tier-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--tier-accent, var(--ice-primary));
+  box-shadow: 0 0 14px var(--tier-glow, var(--ice-glow));
+}
+.discord-fallback-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+.tier-avatar-dot {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 13px;
+  height: 13px;
+  background: #22c55e;
+  border: 2.5px solid #090e1f;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+}
+[dir="rtl"] .tier-avatar-dot { right: auto; left: 0px; }
+
+.tier-info-wrap {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.tier-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tier-check-icon {
+  color: var(--tier-accent, #38bdf8);
+  font-size: 0.9rem;
+}
+.tier-member-name {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tier-sub-role {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tier-handle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+/* شريط التمرير الفاخر لأعضاء السيرفر */
+.members-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.6) rgba(13, 19, 38, 0.5);
+}
+.members-flow-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.members-flow-grid::-webkit-scrollbar-track {
+  background: rgba(13, 19, 38, 0.6);
+  border-radius: 99px;
+}
+.members-flow-grid::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--ice-primary), #5865F2);
+  border-radius: 99px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+}
+.members-flow-grid::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7dd3fc, #818cf8);
+}
+
 </style>
 </head>
 <body>
@@ -1224,7 +1634,7 @@ footer {
 
 <!-- ===== قسم الهيرو المنظم والنظيف (بدون الجملة الطويلة المحذوفة) ===== -->
 <section class="hero-clean">
-  <h1 data-i18n="heroTitle">Secrit Script</h1>
+  <h1 class="glitch-title" data-text="Secrit Script" data-i18n="heroTitle">Secrit Script</h1>
 </section>
 
 <!-- ===== المحتوى الرئيسي ===== -->
@@ -1378,147 +1788,275 @@ footer {
 
     <!-- كروت طاقم الإدارة الفاخرة -->
     <div class="team-roles-flow">
-      
-      <!-- الملاك (Owners) -->
+
+      <!-- COMMAND —— 01 : الملاك الرسميون بنظام الكروت التكتيكية الفخمة -->
       <div class="role-tier-group">
-        <h3><span class="role-icon">👑</span> <span data-i18n="roleOwner">المالك (Owner)</span></h3>
-        <div class="staff-cards-grid">
+        <div class="command-header-tag">COMMAND 01</div>
+        <h3 class="tier-center-title">
+          <span class="role-icon">👑</span> 
+          <span data-i18n="roleOwner">المالك (Owners)</span>
+        </h3>
+        
+        <div class="owners-hud-grid">
           
-          <!-- Snow بصورته الحقيقية المعتمدة من الديسكورد -->
-          <div class="staff-card owner-card">
-            <div class="staff-avatar-wrap">
-              <img class="staff-avatar-img" src="https://cdn.discordapp.com/avatars/1490673056128041142/cb2b232e20f9017d1988ffa15f58b791.png?size=128" alt="Snow">
-              <span class="status-online-dot"></span>
+          <!-- المالك 1: Snow -->
+          <div class="owner-hud-card">
+            <span class="hud-corner hud-corner-tl"></span>
+            <span class="hud-corner hud-corner-tr"></span>
+            <span class="hud-corner hud-corner-bl"></span>
+            <span class="hud-corner hud-corner-br"></span>
+            
+            <div class="owner-hud-avatar-wrap">
+              <div class="owner-hud-avatar-ring"></div>
+              <img class="owner-hud-avatar-img" src="https://cdn.discordapp.com/avatars/1490673056128041142/cb2b232e20f9017d1988ffa15f58b791.png?size=128" alt="Snow">
+              <span class="owner-hud-status-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">Snow <span style="font-size: 0.75rem; color: var(--ice-primary);">[SCR]</span></div>
-              <span class="staff-role-badge">Founder & Owner</span>
+            
+            <div class="owner-hud-name">
+              <span class="owner-hud-check">✔</span>
+              <span>Snow</span>
             </div>
+            <div class="owner-hud-role">⦀ IV 𝕱 Founder & Owner</div>
+            <div class="owner-hud-handle">@ahmed771100</div>
           </div>
 
-          <!-- Youssef بتصميم ديسكورد الملكي الراقي -->
-          <div class="staff-card owner-card">
-            <div class="staff-avatar-wrap">
-              <div class="discord-pfp-fallback" style="background: linear-gradient(135deg, #0284c7, #38bdf8);">Y</div>
-              <span class="status-online-dot"></span>
+          <!-- المالك 2: Youssef -->
+          <div class="owner-hud-card">
+            <span class="hud-corner hud-corner-tl"></span>
+            <span class="hud-corner hud-corner-tr"></span>
+            <span class="hud-corner hud-corner-bl"></span>
+            <span class="hud-corner hud-corner-br"></span>
+            
+            <div class="owner-hud-avatar-wrap">
+              <div class="owner-hud-avatar-ring"></div>
+              <img class="owner-hud-avatar-img" src="images/youssef.jpg" alt="Youssef">
+              <span class="owner-hud-status-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">Youssef <span style="font-size: 0.75rem; color: var(--ice-primary);">[SCR]</span></div>
-              <span class="staff-role-badge">Co-Owner</span>
+            
+            <div class="owner-hud-name">
+              <span class="owner-hud-check">✔</span>
+              <span>Youssef</span>
             </div>
+            <div class="owner-hud-role">⦀ IV 𝕱 Co-Founder & Owner</div>
+            <div class="owner-hud-handle">@youssef_official</div>
           </div>
 
         </div>
       </div>
 
-      <!-- الإدارة العليا (High Management) -->
+      <!-- TIER —— 02 : الإدارة العليا -->
       <div class="role-tier-group">
-        <h3><span class="role-icon">🛡️</span> <span data-i18n="roleHigh">الإدارة العليا (High Management)</span></h3>
-        <div class="staff-cards-grid">
-          <div class="staff-card high-card">
-            <div class="staff-avatar-wrap">
-              <div class="discord-pfp-fallback" style="background: linear-gradient(135deg, #e11d48, #9f1239);">T</div>
-              <span class="status-online-dot"></span>
+        <div class="tier-header-wrap">
+          <div class="tier-title-group">
+            <span class="tier-badge-label">TIER —— 02</span>
+            <h3 class="tier-main-title">
+              <span class="role-icon">🛡️</span> 
+              <span data-i18n="roleHigh">الإدارة العليا (High Management)</span>
+            </h3>
+          </div>
+          <div class="tier-count-display">
+            <span class="tier-count-num">01</span>
+            <span class="tier-count-text">عضو</span>
+          </div>
+        </div>
+
+        <div class="tier-cards-grid">
+          <div class="tier-member-card" style="--tier-accent: #f43f5e; --tier-glow: rgba(244, 63, 94, 0.4);">
+            <div class="tier-avatar-wrap">
+              <img class="tier-avatar-img" src="images/tarek.jpg" alt="TAREK TM">
+              <span class="tier-avatar-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">TAREK TM</div>
-              <span class="staff-role-badge">High Management</span>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">TAREK TM</span>
+              </div>
+              <span class="tier-sub-role">⦀ Server Management | High Staff</span>
+              <span class="tier-handle">@tarekdiab_tm</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- الداعمون (Donators) -->
+      <!-- TIER —— 03 : الداعمون -->
       <div class="role-tier-group">
-        <h3><span class="role-icon">💎</span> <span data-i18n="roleDonor">الداعمون (Donators)</span></h3>
-        <div class="staff-cards-grid">
-          <div class="staff-card donor-card">
-            <div class="staff-avatar-wrap">
-              <div class="discord-pfp-fallback" style="background: linear-gradient(135deg, #059669, #065f46);">D</div>
-              <span class="status-online-dot"></span>
+        <div class="tier-header-wrap">
+          <div class="tier-title-group">
+            <span class="tier-badge-label">TIER —— 03</span>
+            <h3 class="tier-main-title">
+              <span class="role-icon">💎</span> 
+              <span data-i18n="roleDonator">الداعمون (Donators)</span>
+            </h3>
+          </div>
+          <div class="tier-count-display">
+            <span class="tier-count-num">01</span>
+            <span class="tier-count-text">داعم</span>
+          </div>
+        </div>
+
+        <div class="tier-cards-grid">
+          <div class="tier-member-card" style="--tier-accent: #10b981; --tier-glow: rgba(16, 185, 129, 0.4);">
+            <div class="tier-avatar-wrap">
+              <img class="tier-avatar-img" src="images/dev.jpg" alt="dev">
+              <span class="tier-avatar-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">dev</div>
-              <span class="staff-role-badge">Top Donator</span>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">dev</span>
+              </div>
+              <span class="tier-sub-role">⦀ Top Donator | الداعم الأول</span>
+              <span class="tier-handle">@dev_supporter</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- الأعضاء المميزون (VIP) -->
+      <!-- TIER —— 04 : الأعضاء المميزون VIP -->
       <div class="role-tier-group">
-        <h3><span class="role-icon">⭐</span> <span data-i18n="roleVip">الأعضاء المميزون (VIP)</span></h3>
-        <div class="staff-cards-grid">
-          <div class="staff-card vip-card">
-            <div class="staff-avatar-wrap">
-              <div class="discord-pfp-fallback" style="background: linear-gradient(135deg, #d97706, #78350f);">O</div>
-              <span class="status-online-dot"></span>
+        <div class="tier-header-wrap">
+          <div class="tier-title-group">
+            <span class="tier-badge-label">TIER —— 04</span>
+            <h3 class="tier-main-title">
+              <span class="role-icon">⭐</span> 
+              <span data-i18n="roleVip">الأعضاء المميزون (VIP)</span>
+            </h3>
+          </div>
+          <div class="tier-count-display">
+            <span class="tier-count-num">03</span>
+            <span class="tier-count-text">أعضاء</span>
+          </div>
+        </div>
+
+        <div class="tier-cards-grid">
+          <!-- OMAR -->
+          <div class="tier-member-card" style="--tier-accent: #f59e0b; --tier-glow: rgba(245, 158, 11, 0.4);">
+            <div class="tier-avatar-wrap">
+              <img class="tier-avatar-img" src="images/omar.jpg" alt="OMAR">
+              <span class="tier-avatar-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">OMAR</div>
-              <span class="staff-role-badge">VIP Member</span>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">OMAR</span>
+              </div>
+              <span class="tier-sub-role">⦀ VIP Member | عضو مميز</span>
+              <span class="tier-handle">@omar_vip</span>
             </div>
           </div>
 
-          <div class="staff-card vip-card">
-            <div class="staff-avatar-wrap">
-              <div class="discord-pfp-fallback" style="background: linear-gradient(135deg, #0284c7, #1e40af);">P</div>
-              <span class="status-online-dot"></span>
+          <!-- PLAYER ESLAM -->
+          <div class="tier-member-card" style="--tier-accent: #f59e0b; --tier-glow: rgba(245, 158, 11, 0.4);">
+            <div class="tier-avatar-wrap">
+              <img class="tier-avatar-img" src="images/eslam.jpg" alt="PLAYER ESLAM">
+              <span class="tier-avatar-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">PLAYER_ESLAM</div>
-              <span class="staff-role-badge">VIP Member</span>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">PLAYER ESLAM</span>
+              </div>
+              <span class="tier-sub-role">⦀ VIP Member | عضو مميز</span>
+              <span class="tier-handle">@player_eslam</span>
+            </div>
+          </div>
+
+          <!-- Saikou -->
+          <div class="tier-member-card" style="--tier-accent: #f59e0b; --tier-glow: rgba(245, 158, 11, 0.4);">
+            <div class="tier-avatar-wrap">
+              <img class="tier-avatar-img" src="images/saikou.jpg" alt="Saikou">
+              <span class="tier-avatar-dot" title="Online"></span>
+            </div>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">Saikou</span>
+              </div>
+              <span class="tier-sub-role">⦀ VIP Member | عضو مميز</span>
+              <span class="tier-handle">@saikou_vip</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- البوتات الرسمية (Bots) -->
+      <!-- TIER —— 05 : البوتات الرسمية -->
       <div class="role-tier-group">
-        <h3><span class="role-icon">🤖</span> <span data-i18n="roleBots">البوتات الرسمية (Bots)</span></h3>
-        <div class="staff-cards-grid">
-          <!-- Xeno بشعاره الحقيقي -->
-          <div class="staff-card bot-card">
-            <div class="staff-avatar-wrap">
-              <img class="staff-avatar-img" src="images/xeno.png" alt="Xeno">
-              <span class="status-online-dot"></span>
+        <div class="tier-header-wrap">
+          <div class="tier-title-group">
+            <span class="tier-badge-label">TIER —— 05</span>
+            <h3 class="tier-main-title">
+              <span class="role-icon">🤖</span> 
+              <span data-i18n="roleBots">البوتات الرسمية (Bots)</span>
+            </h3>
+          </div>
+          <div class="tier-count-display">
+            <span class="tier-count-num">04</span>
+            <span class="tier-count-text">بوتات</span>
+          </div>
+        </div>
+
+        <div class="tier-cards-grid">
+          <!-- Xeno -->
+          <div class="tier-member-card" style="--tier-accent: #5865F2; --tier-glow: rgba(88, 101, 242, 0.4);">
+            <div class="tier-avatar-wrap">
+              <img class="tier-avatar-img" src="images/xeno.png" alt="Xeno">
+              <span class="tier-avatar-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">Xeno</div>
-              <span class="staff-role-badge">✓ BOT</span>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">Xeno</span>
+              </div>
+              <span class="tier-sub-role">⦀ Execution System | نظام التشغيل</span>
+              <span class="tier-handle">@xeno_bot</span>
             </div>
           </div>
 
-          <div class="staff-card bot-card">
-            <div class="staff-avatar-wrap">
-              <div class="discord-pfp-fallback" style="background: linear-gradient(135deg, #4f46e5, #3730a3);">W</div>
-              <span class="status-online-dot"></span>
+          <!-- Welcomer -->
+          <div class="tier-member-card" style="--tier-accent: #5865F2; --tier-glow: rgba(88, 101, 242, 0.4);">
+            <div class="tier-avatar-wrap">
+              <div class="tier-avatar-img discord-fallback-avatar" style="background: linear-gradient(135deg, #4f46e5, #3730a3);">W</div>
+              <span class="tier-avatar-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">Welcomer</div>
-              <span class="staff-role-badge">✓ BOT</span>
-            </div>
-          </div>
-
-          <div class="staff-card bot-card">
-            <div class="staff-avatar-wrap">
-              <div class="discord-pfp-fallback" style="background: linear-gradient(135deg, #0891b2, #155e75);">S</div>
-              <span class="status-online-dot"></span>
-            </div>
-            <div class="staff-info">
-              <div class="staff-name">Sapphire</div>
-              <span class="staff-role-badge">✓ BOT</span>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">Welcomer</span>
+              </div>
+              <span class="tier-sub-role">⦀ Welcome & Roles | ترحيب ورتب</span>
+              <span class="tier-handle">@welcomer_bot</span>
             </div>
           </div>
 
-          <div class="staff-card bot-card">
-            <div class="staff-avatar-wrap">
-              <div class="discord-pfp-fallback" style="background: linear-gradient(135deg, #16a34a, #14532d);">B</div>
-              <span class="status-online-dot"></span>
+          <!-- Sapphire -->
+          <div class="tier-member-card" style="--tier-accent: #5865F2; --tier-glow: rgba(88, 101, 242, 0.4);">
+            <div class="tier-avatar-wrap">
+              <div class="tier-avatar-img discord-fallback-avatar" style="background: linear-gradient(135deg, #0284c7, #0369a1);">S</div>
+              <span class="tier-avatar-dot" title="Online"></span>
             </div>
-            <div class="staff-info">
-              <div class="staff-name">Boogie</div>
-              <span class="staff-role-badge">✓ BOT</span>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">Sapphire</span>
+              </div>
+              <span class="tier-sub-role">⦀ Moderation System | حماية وإشراف</span>
+              <span class="tier-handle">@sapphire_bot</span>
+            </div>
+          </div>
+
+          <!-- Boogie -->
+          <div class="tier-member-card" style="--tier-accent: #5865F2; --tier-glow: rgba(88, 101, 242, 0.4);">
+            <div class="tier-avatar-wrap">
+              <div class="tier-avatar-img discord-fallback-avatar" style="background: linear-gradient(135deg, #16a34a, #15803d);">B</div>
+              <span class="tier-avatar-dot" title="Online"></span>
+            </div>
+            <div class="tier-info-wrap">
+              <div class="tier-name-row">
+                <span class="tier-check-icon">✔</span>
+                <span class="tier-member-name">Boogie</span>
+              </div>
+              <span class="tier-sub-role">⦀ Music & Audio | صوتيات وترفيه</span>
+              <span class="tier-handle">@boogie_bot</span>
             </div>
           </div>
         </div>
