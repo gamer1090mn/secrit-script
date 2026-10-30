@@ -50,7 +50,7 @@ img { max-width: 100%; display: block; }
 /* ===== مؤشر الماوس الجليدي المخصص ===== */
 @media (pointer: fine) {
   body { cursor: none; }
-  a, button, input, [role="button"], .map-select-card, .script-showcase-card, .staff-card, .member-badge-card { cursor: none; }
+  a, button, input, [role="button"], .map-select-card, .script-showcase-card, .owner-hud-card, .tier-member-card, .member-badge-card { cursor: none; }
   
   .custom-cursor-dot {
     position: fixed;
@@ -2086,18 +2086,7 @@ footer {
       </div>
     </div>
 
-    <!-- بانر الانضمام الترحيبي بديسكورد -->
-    <div class="welcome-banner-join">
-      <div class="welcome-banner-info">
-        <h4 data-i18n="commBannerTitle">انضم إلى مجتمع Secrit Script الرسمي</h4>
-        <p data-i18n="commBannerSub">رابط الترحيب الرسمي: احصل على الرتب وشارك في الفعاليات والسكربتات الحصرية فور انضمامك.</p>
-      </div>
-      <a href="https://discord.gg/DjfTPJfxE" target="_blank" rel="noopener" class="welcome-action-btn">
-        <span data-i18n="joinWelcome">انضم عبر رابط الترحيب 👋</span>
-      </a>
-    </div>
-
-  </section>
+</section>
 
 </main>
 
@@ -2741,12 +2730,12 @@ function initAmbientMusic() {
   requestAnimationFrame(animateRing);
   
   document.addEventListener('mouseover', function(e) {
-    if (e.target.closest('a, button, .map-select-card, .staff-card, .member-badge-card')) {
+    if (e.target.closest('a, button, input, .map-select-card, .owner-hud-card, .tier-member-card, .member-badge-card')) {
       ring.classList.add('hovering');
     }
   });
   document.addEventListener('mouseout', function(e) {
-    if (e.target.closest('a, button, .map-select-card, .staff-card, .member-badge-card')) {
+    if (e.target.closest('a, button, input, .map-select-card, .owner-hud-card, .tier-member-card, .member-badge-card')) {
       ring.classList.remove('hovering');
     }
   });
