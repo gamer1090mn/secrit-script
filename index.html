@@ -2127,6 +2127,231 @@ var SCRIPTS_DB = {
   }
 };
 
+// ========================================================
+// حالة التطبيق والمتغيرات العامة
+// ========================================================
+var lang = 'ar';
+var selectedMap = 'sandiego';
+var selectedPlatform = 'pc';
+var selectedSubRole = 'criminal';
+
+function escapeHtml(str) {
+  var d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function showToast(msg) {
+  var toast = document.getElementById('toastBox');
+  var text = document.getElementById('toastMessage');
+  if (!toast || !text) return;
+  text.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(function() { toast.classList.remove('show'); }, 2200);
+}
+
+// دالة النزول التلقائي السلس إلى صندوق نسخ السكربت مع أنيميشن وتأثير وصول فخم
+function scrollToScriptShowcase() {
+  var showcase = document.querySelector('.script-showcase-wrapper') || document.querySelector('.script-showcase-card');
+  if (!showcase) return;
+  
+  // حساب الموضع بدقة مع مراعاة الهيدر الثابت
+  var headerOffset = 85;
+  var elementPosition = showcase.getBoundingClientRect().top;
+  var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  });
+  
+  // تشغيل أنيميشن التوهج النبضي لكرت السكربت عند الوصول
+  var card = document.querySelector('.script-showcase-card');
+  if (card) {
+    card.classList.remove('highlight-pulse');
+    void card.offsetWidth; // إعادة تهيئة الأنيميشن (DOM reflow)
+    card.classList.add('highlight-pulse');
+  }
+  
+  // تشغيل نبض الإضاءة لزر النسخ لجذب انتباه اللاعب للنسخ فوراً
+  var copyBtn = document.getElementById('showcaseCopyBtn');
+  if (copyBtn) {
+    copyBtn.classList.remove('btn-glow-pulse');
+    void copyBtn.offsetWidth;
+    copyBtn.classList.add('btn-glow-pulse');
+  }
+}
+
+// تحديث عرض السكربت حسب الماب والمنصة والرول المختار
+function updateScriptShowcase() {
+  var mapData = SCRIPTS_DB[selectedMap];
+  if (!mapData) return;
+
+  var btnMobile = document.getElementById('btnChoiceMobile');
+  var subRoleWrap = document.getElementById('subRoleWrap');
+  var btnPC = document.getElementById('btnChoicePC');
+
+  // معالجة إذا كان الماب لا يملك نسخة جوال
+  if (!mapData.hasMobile) {
+    if (btnMobile) {
+      btnMobile.classList.add('disabled-btn');
+      btnMobile.setAttribute('title', lang === 'ar' ? 'غير متاح للجوال في القنوات' : 'PC Only in server channels');
+      var mobLabel = document.getElementById('mobileBtnLabel');
+      if (mobLabel) mobLabel.textContent = (lang === 'ar' ? 'جوال (غير متوفر)' : 'Mobile (N/A)');
+    }
+    if (selectedPlatform === 'mobile') {
+      selectedPlatform = 'pc';
+      if (btnPC) btnPC.classList.add('active');
+      if (btnMobile) btnMobile.classList.remove('active');
+    }
+  } else {
+    if (btnMobile) {
+      btnMobile.classList.remove('disabled-btn');
+      btnMobile.removeAttribute('title');
+      var mobLabel = document.getElementById('mobileBtnLabel');
+      if (mobLabel && I18N[lang]) mobLabel.textContent = I18N[lang].choiceMobile;
+    }
+  }
+
+  // رول المجرمين والشرطة
+  if (mapData.hasRoles) {
+    if (subRoleWrap) subRoleWrap.style.display = 'flex';
+  } else {
+    if (subRoleWrap) subRoleWrap.style.display = 'none';
+  }
+
+  var platformData = mapData[selectedPlatform] || mapData.pc;
+  var scriptItem = null;
+
+  if (mapData.hasRoles) {
+    scriptItem = platformData[selectedSubRole] || platformData.criminal || platformData.default;
+  } else {
+    scriptItem = platformData.default || platformData[Object.keys(platformData)[0]];
+  }
+
+  if (!scriptItem) return;
+
+  // تحديث الصورة المناسبة للماب
+  var showcaseImg = document.getElementById('showcaseImg');
+  var bannerSrc = (selectedPlatform === 'mobile' && mapData.mobileImage) ? mapData.mobileImage : mapData.image;
+  if (showcaseImg) showcaseImg.src = bannerSrc;
+
+  // تحديث النصوص
+  var titleEl = document.getElementById('showcaseTitle');
+  var tagEl = document.getElementById('showcaseTag');
+  var descEl = document.getElementById('showcaseDesc');
+  var codeEl = document.getElementById('showcaseCode');
+  var linkEl = document.getElementById('showcaseDiscordLink');
+  var statusBadge = document.getElementById('showcaseStatusBadge');
+
+  if (titleEl) titleEl.textContent = scriptItem.title;
+  if (tagEl) tagEl.textContent = scriptItem.tag;
+  if (descEl) descEl.textContent = scriptItem.desc[lang] || scriptItem.desc.en;
+  if (codeEl) codeEl.textContent = scriptItem.code;
+  if (linkEl && scriptItem.channel) linkEl.href = scriptItem.channel;
+
+  if (statusBadge) {
+    if (!mapData.hasMobile) {
+      statusBadge.textContent = (lang === 'ar' ? '● متاح للكمبيوتر فقط' : '● PC Exclusive');
+      statusBadge.style.borderColor = '#38bdf8';
+      statusBadge.style.color = '#bae6fd';
+    } else {
+      statusBadge.textContent = (lang === 'ar' ? '● شغال ومحدث 2026' : '● Working & Updated');
+      statusBadge.style.borderColor = '#22c55e';
+      statusBadge.style.color = '#86efac';
+    }
+  }
+
+  // إعداد زر النسخ
+  var copyBtn = document.getElementById('showcaseCopyBtn');
+  if (copyBtn) {
+    copyBtn.onclick = function() {
+      copyCodeString(scriptItem.code, copyBtn);
+    };
+  }
+}
+
+function copyCodeString(code, btn) {
+  var success = function() {
+    showToast(I18N[lang].toastCopied);
+    var textEl = document.getElementById('showcaseCopyText');
+    if (textEl) {
+      var oldText = textEl.textContent;
+      textEl.textContent = I18N[lang].copiedBtn;
+      setTimeout(function() { textEl.textContent = oldText; }, 1600);
+    }
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code).then(success).catch(function() {
+      fallbackCopy(code, success);
+    });
+  } else {
+    fallbackCopy(code, success);
+  }
+}
+
+function fallbackCopy(text, cb) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); if(cb) cb(); } catch(e){}
+  document.body.removeChild(ta);
+}
+
+// أحداث تفاعل اختيار الماب مع النزول التلقائي والتأثير المرئي
+document.querySelectorAll('.map-select-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('.map-select-card').forEach(function(c) { c.classList.remove('active'); });
+    card.classList.add('active');
+    selectedMap = card.getAttribute('data-map');
+    updateScriptShowcase();
+    scrollToScriptShowcase();
+  });
+});
+
+// أحداث اختيار المنصة (بيسي أو موبايل) مع النزول والتأثير
+var btnPC = document.getElementById('btnChoicePC');
+if (btnPC) {
+  btnPC.addEventListener('click', function() {
+    document.getElementById('btnChoicePC').classList.add('active');
+    document.getElementById('btnChoiceMobile').classList.remove('active');
+    selectedPlatform = 'pc';
+    updateScriptShowcase();
+    scrollToScriptShowcase();
+  });
+}
+
+var btnMob = document.getElementById('btnChoiceMobile');
+if (btnMob) {
+  btnMob.addEventListener('click', function() {
+    var mapData = SCRIPTS_DB[selectedMap];
+    if (!mapData.hasMobile) {
+      showToast(I18N[lang].pcOnlyNotice);
+      return;
+    }
+    document.getElementById('btnChoiceMobile').classList.add('active');
+    document.getElementById('btnChoicePC').classList.remove('active');
+    selectedPlatform = 'mobile';
+    updateScriptShowcase();
+    scrollToScriptShowcase();
+  });
+}
+
+// أحداث اختيار رول السكربت (مجرمين / شرطة) مع النزول والتأثير
+document.querySelectorAll('.sub-role-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.sub-role-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    selectedSubRole = btn.getAttribute('data-subrole');
+    updateScriptShowcase();
+    scrollToScriptShowcase();
+  });
+});
+
 // تبديل اللغة
 function setLang(newLang) {
   lang = newLang;
@@ -2154,7 +2379,7 @@ function setLang(newLang) {
 // إحصائيات ديسكورد المباشرة
 function fetchDiscordStats() {
   var inviteCode = "DjfTPJfxE";
-  fetch("https://discord.com/api/v10/invites/" + inviteCode + "?with_counts=true")
+  fetch("https://discord.com/api/v10/invites/" + inviteCode + "?with_counts=true&_nocache=" + Date.now())
     .then(function(res){ return res.json(); })
     .then(function(data){
       if (data && data.approximate_member_count) {
@@ -2163,20 +2388,87 @@ function fetchDiscordStats() {
         
         var elTotal = document.getElementById('discordTotalMembers');
         var elOnline = document.getElementById('discordOnlineCount');
-        var wTotal = document.getElementById('discordWidgetTotal');
-        var wOnline = document.getElementById('discordWidgetOnline');
         
         if (elTotal) elTotal.textContent = total + (lang === 'ar' ? ' عضو' : ' members');
         if (elOnline) elOnline.textContent = online + (lang === 'ar' ? ' متصل الآن' : ' online now');
-        if (wTotal) wTotal.textContent = total + (lang === 'ar' ? ' عضو' : ' members');
-        if (wOnline) wOnline.textContent = online + (lang === 'ar' ? ' متصل' : ' online');
       }
     })
     .catch(function(err){});
 }
 
+// مؤشر الماوس الجليدي المخصص مع الجزيئات المتلألئة
+(function initCustomCursor() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  var dot = document.createElement('div');
+  dot.className = 'custom-cursor-dot';
+  var ring = document.createElement('div');
+  ring.className = 'custom-cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  
+  var mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+  var ringX = mouseX, ringY = mouseY;
+  var lastSparkle = 0;
+  
+  document.addEventListener('mousemove', function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = 'translate(' + mouseX + 'px, ' + mouseY + 'px) translate(-50%, -50%)';
+    
+    var now = Date.now();
+    if (now - lastSparkle > 50) {
+      lastSparkle = now;
+      createSparkle(mouseX, mouseY);
+    }
+  });
+  
+  function createSparkle(x, y) {
+    var p = document.createElement('div');
+    p.className = 'cursor-sparkle';
+    var size = Math.random() * 4 + 2;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+    document.body.appendChild(p);
+    setTimeout(function() { if(p.parentNode) p.parentNode.removeChild(p); }, 650);
+  }
+  
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.transform = 'translate(' + ringX + 'px, ' + ringY + 'px) translate(-50%, -50%)';
+    requestAnimationFrame(animateRing);
+  }
+  requestAnimationFrame(animateRing);
+  
+  document.addEventListener('mouseover', function(e) {
+    if (e.target.closest('a, button, input, .map-select-card, .owner-hud-card, .tier-member-card')) {
+      ring.classList.add('hovering');
+    }
+  });
+  document.addEventListener('mouseout', function(e) {
+    if (e.target.closest('a, button, input, .map-select-card, .owner-hud-card, .tier-member-card')) {
+      ring.classList.remove('hovering');
+    }
+  });
+})();
 
-setInterval(fetchDiscordStats, 40000);
+// أزرار اللغة
+document.querySelectorAll('.lang-switch button').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    setLang(btn.getAttribute('data-lang'));
+  });
+});
+
+var yearEl = document.getElementById('yearVal');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// تشغيل الصفحة عند التحميل
+setLang('ar');
+updateScriptShowcase();
+fetchDiscordStats();
+setInterval(fetchDiscordStats, 12000);
 </script>
 </body>
 </html>
