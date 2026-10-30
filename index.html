@@ -743,6 +743,195 @@ img { max-width: 100%; display: block; }
   gap: 16px;
 }
 
+/* ========================================================
+   أعضاء المجتمع بتصميم Discord Server Widget الراقي
+   ======================================================== */
+.community-hub-card {
+  background: var(--bg-card);
+  border: 1px solid var(--frost-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.community-hub-header {
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.15), rgba(56, 189, 248, 0.08));
+  border-bottom: 1px solid var(--frost-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.community-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.community-guild-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px var(--discord-glow);
+}
+.community-header-text h3 {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.community-guild-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--ice-light);
+}
+.community-header-text p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-top: 2px;
+}
+
+.members-search-box {
+  position: relative;
+  min-width: 260px;
+}
+.members-search-input {
+  width: 100%;
+  padding: 10px 18px;
+  border-radius: 99px;
+  background: rgba(4, 6, 15, 0.7);
+  border: 1px solid var(--frost-border);
+  color: #ffffff;
+  font-size: 0.88rem;
+  outline: none;
+  transition: all 0.2s;
+}
+.members-search-input:focus {
+  border-color: var(--ice-primary);
+  box-shadow: 0 0 16px var(--ice-glow);
+}
+
+.community-members-body {
+  padding: 24px 28px;
+}
+.members-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+[dir="rtl"] .members-flow-grid { padding-right: 0; padding-left: 6px; }
+
+.member-badge-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s var(--ease);
+}
+.member-badge-card:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--ice-primary);
+  transform: translateY(-2px);
+}
+.member-avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.member-name-wrap {
+  overflow: hidden;
+}
+.member-username-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.member-status-sub {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  display: block;
+}
+
+
+
+/* الفوتر */
+footer {
+  border-top: 1px solid var(--frost-border);
+  padding: 30px 24px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* التوست */
+.toast-notice {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(14, 23, 42, 0.94);
+  border: 1px solid var(--ice-primary);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6), 0 0 20px var(--ice-glow);
+  backdrop-filter: blur(12px);
+  z-index: 9999999;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.toast-notice.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .nav-inner { padding: 10px 16px; }
+  .discord-live-pill { display: none; }
+  .music-toggle-btn span.label { display: none; }
+  .platform-selector-bar { flex-direction: column; align-items: stretch; }
+  .sub-role-selector { margin: 10px 0 0 0; width: 100%; justify-content: stretch; }
+  .sub-role-btn { flex: 1; text-align: center; }
+  .showcase-actions { flex-direction: column; }
+  .showcase-discord-btn { width: 100%; justify-content: center; }
+  .community-hub-header { flex-direction: column; align-items: stretch; }
+  .members-search-box { width: 100%; }
+}
+
 /* ===== تأثير الخلل للعنوان الرئيسي (Glitch Title in Place) ===== */
 .hero-clean h1 {
   display: none !important;
@@ -1153,6 +1342,57 @@ img { max-width: 100%; display: block; }
 }
 
 
+/* ===== تأثير النزول والتوهج عند اختيار السكربت (Scroll & Arrival Animation) ===== */
+@keyframes showcaseArrivalPulse {
+  0% {
+    box-shadow: 0 0 0 rgba(56, 189, 248, 0), 0 20px 50px -15px rgba(0, 0, 0, 0.6);
+    border-color: var(--frost-border);
+    transform: scale(0.985);
+  }
+  35% {
+    box-shadow: 0 0 45px rgba(56, 189, 248, 0.65), 0 0 90px rgba(56, 189, 248, 0.25), 0 25px 60px -10px rgba(0, 0, 0, 0.8);
+    border-color: #38bdf8;
+    transform: scale(1.012);
+  }
+  70% {
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4), 0 20px 50px -15px rgba(0, 0, 0, 0.6);
+    border-color: rgba(56, 189, 248, 0.6);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.12);
+    border-color: var(--frost-border);
+    transform: scale(1);
+  }
+}
+
+.script-showcase-card.highlight-pulse {
+  animation: showcaseArrivalPulse 1.35s var(--ease) forwards;
+}
+
+/* توهج زر النسخ البارز عند الوصول لجذب انتباه اللاعب */
+@keyframes copyBtnGlowPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(56, 189, 248, 0);
+  }
+  40% {
+    transform: scale(1.06);
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.85), 0 0 70px rgba(56, 189, 248, 0.4);
+  }
+  75% {
+    transform: scale(0.99);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 18px rgba(2, 132, 199, 0.35);
+  }
+}
+
+.showcase-copy-btn.btn-glow-pulse {
+  animation: copyBtnGlowPulse 1.2s var(--ease) 0.2s forwards;
+}
+
 /* إصلاح اتجاه المعرفات لتظهر بالإنجليزية الصحيحة @username في العربية */
 .tier-handle, .owner-hud-handle {
   direction: ltr !important;
@@ -1160,37 +1400,21 @@ img { max-width: 100%; display: block; }
   unicode-bidi: isolate !important;
   text-align: left !important;
 }
-.tier-name-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.tier-check-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  color: var(--tier-accent, #38bdf8);
-}
-.team-roles-flow {
-  gap: 32px;
-  margin-bottom: 20px;
-}
 
-
+/* شارة الهيرو الانيقة */
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
+  padding: 6px 18px;
   border-radius: 99px;
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid rgba(56, 189, 248, 0.3);
   color: var(--ice-light);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 .hero-subtitle-clean {
   font-size: 1.05rem;
@@ -1273,7 +1497,7 @@ img { max-width: 100%; display: block; }
     </div>
 
     <div class="nav-actions">
-      <!-- زر تشغيل موسيقى الفونك المطلوبة -->
+
       <div class="lang-switch">
         <button data-lang="ar" class="active">عربي</button>
         <button data-lang="en">EN</button>
@@ -1636,10 +1860,7 @@ img { max-width: 100%; display: block; }
             </div>
           </div>
         </div>
-      </div>
-
-    </div>
-</section>
+      </div></div></section>
 
 </main>
 
@@ -1675,9 +1896,9 @@ var I18N = {
     roleHigh: "الإدارة العليا (High Management)",
     roleDonor: "الداعمون (Donators)",
     roleVip: "الأعضاء المميزون (VIP)",
-    
+    roleBots: "البوتات الرسمية (Bots)",
     roleMembers: "أعضاء المجتمع (Community Members)",
-    
+    searchMember: "🔍 ابحث عن عضو في السيرفر...",
     commBannerTitle: "انضم إلى مجتمع Secrit Script الرسمي",
     commBannerSub: "رابط الترحيب الرسمي: احصل على الرتب وشارك في الفعاليات والسكربتات الحصرية فور انضمامك.",
     joinWelcome: "انضم عبر رابط الترحيب 👋",
@@ -1705,7 +1926,7 @@ var I18N = {
     roleHigh: "High Management",
     roleDonor: "Donators",
     roleVip: "VIP Members",
-    
+    roleBots: "Official Bots",
     roleMembers: "Community Members",
     searchMember: "🔍 Search member...",
     commBannerTitle: "Join Secrit Script Official Community",
