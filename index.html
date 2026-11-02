@@ -328,26 +328,7 @@ img { max-width: 100%; display: block; }
   border-radius: 8px;
   white-space: nowrap;
 }
-.live-strip-label {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 600;
-  flex: 1;
-  min-width: 220px;
-}
-.discord-live-strip .lv-guild {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #ffffff;
-  font-weight: 800;
-}
-.discord-live-strip .lv-guild img {
-  width: 22px;
-  height: 22px;
-  border-radius: 7px;
-  box-shadow: 0 0 8px var(--ice-glow);
-}
+.live-strip-label { display: none; }
 .live-strip-counts {
   display: flex;
   align-items: center;
@@ -1642,11 +1623,6 @@ footer {
   <div class="discord-live-strip" id="liveStrip">
     <span class="live-strip-dot" id="liveStripDot"></span>
     <span class="live-strip-badge">LIVE 24/7</span>
-    <span class="live-strip-label">
-      <span data-i18n="liveSyncTitle">متصل بسيرفر ديسكورد</span>
-      <span class="lv-guild"><img src="images/guild_icon.png" alt="SCR"> SECRET SCRIPT</span>
-      <span data-i18n="liveSyncSub">— مزامنة حية لحظة بلحظة</span>
-    </span>
     <div class="live-strip-counts">
       <div class="lv-item">
         <span class="lv-num" id="liveStripTotal">122</span>
@@ -1722,6 +1698,15 @@ footer {
         <div class="map-name-overlay">
           <span class="map-name-title">Brookhaven RP</span>
           <span class="map-platform-tag">💻 حصري PC</span>
+        </div>
+        <div class="active-tick">✓</div>
+      </div>
+      <!-- ماب Respect Arena PvP (الأيقونة الرسمية المعتمدة) -->
+      <div class="map-select-card" data-map="respect">
+        <img src="images/respect_arena.png" alt="Respect Arena PvP">
+        <div class="map-name-overlay">
+          <span class="map-name-title">Respect Arena PvP</span>
+          <span class="map-platform-tag">💻 PC & 📱 Mobile</span>
         </div>
         <div class="active-tick">✓</div>
       </div>
@@ -1862,82 +1847,35 @@ footer {
             <div class="owner-hud-handle">@youssef_official</div>
           </div>
 
+          <!-- المالك 3: TAREK TM -->
+          <div class="owner-hud-card">
+            <span class="hud-corner hud-corner-tl"></span>
+            <span class="hud-corner hud-corner-tr"></span>
+            <span class="hud-corner hud-corner-bl"></span>
+            <span class="hud-corner hud-corner-br"></span>
+            
+            <div class="owner-hud-avatar-wrap">
+              <div class="owner-hud-avatar-ring"></div>
+              <img class="owner-hud-avatar-img" src="images/tarek.jpg" alt="TAREK TM">
+              <span class="owner-hud-status-dot" title="Online"></span>
+            </div>
+            
+            <div class="owner-hud-name">
+              <span class="owner-hud-check">✔</span>
+              <span>TAREK TM</span>
+            </div>
+            <div class="owner-hud-role">⦀ IV 𝕱 Owner</div>
+            <div class="owner-hud-handle">@tarekdiab_tm</div>
+          </div>
+
         </div>
       </div>
 
-      <!-- TIER —— 02 : الإدارة العليا -->
+      <!-- TIER —— 02 : الأعضاء المميزون VIP -->
       <div class="role-tier-group">
         <div class="tier-header-wrap">
           <div class="tier-title-group">
             <span class="tier-badge-label">TIER —— 02</span>
-            <h3 class="tier-main-title">
-              <span class="role-icon">🛡️</span> 
-              <span data-i18n="roleHigh">الإدارة العليا (High Management)</span>
-            </h3>
-          </div>
-          <div class="tier-count-display">
-            <span class="tier-count-num">01</span>
-            <span class="tier-count-text">عضو</span>
-          </div>
-        </div>
-
-        <div class="tier-cards-grid">
-          <div class="tier-member-card" style="--tier-accent: #f43f5e; --tier-glow: rgba(244, 63, 94, 0.4);">
-            <div class="tier-avatar-wrap">
-              <img class="tier-avatar-img" src="images/tarek.jpg" alt="TAREK TM">
-              <span class="tier-avatar-dot" title="Online"></span>
-            </div>
-            <div class="tier-info-wrap">
-              <div class="tier-name-row">
-                <span class="tier-check-icon">✔</span>
-                <span class="tier-member-name">TAREK TM</span>
-              </div>
-              <span class="tier-sub-role">⦀ Server Management | High Staff</span>
-              <span class="tier-handle">@tarekdiab_tm</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TIER —— 03 : الداعمون -->
-      <div class="role-tier-group">
-        <div class="tier-header-wrap">
-          <div class="tier-title-group">
-            <span class="tier-badge-label">TIER —— 03</span>
-            <h3 class="tier-main-title">
-              <span class="role-icon">💎</span> 
-              <span data-i18n="roleDonor">الداعمون (Donators)</span>
-            </h3>
-          </div>
-          <div class="tier-count-display">
-            <span class="tier-count-num">01</span>
-            <span class="tier-count-text">داعم</span>
-          </div>
-        </div>
-
-        <div class="tier-cards-grid">
-          <div class="tier-member-card" style="--tier-accent: #10b981; --tier-glow: rgba(16, 185, 129, 0.4);">
-            <div class="tier-avatar-wrap">
-              <img class="tier-avatar-img" src="images/dev.jpg" alt="dev">
-              <span class="tier-avatar-dot" title="Online"></span>
-            </div>
-            <div class="tier-info-wrap">
-              <div class="tier-name-row">
-                <span class="tier-check-icon">✔</span>
-                <span class="tier-member-name">dev</span>
-              </div>
-              <span class="tier-sub-role">⦀ Top Donator | الداعم الأول</span>
-              <span class="tier-handle">@dev_supporter</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TIER —— 04 : الأعضاء المميزون VIP -->
-      <div class="role-tier-group">
-        <div class="tier-header-wrap">
-          <div class="tier-title-group">
-            <span class="tier-badge-label">TIER —— 04</span>
             <h3 class="tier-main-title">
               <span class="role-icon">⭐</span> 
               <span data-i18n="roleVip">الأعضاء المميزون (VIP)</span>
@@ -2045,8 +1983,6 @@ var I18N = {
     musicPlaying: "Phonk Aura ⚡",
     musicPaused: "الموسيقى: متوقفة",
     pcOnlyNotice: "⚠️ هذا السكربت متوفر حالياً بنسخة الكمبيوتر (PC) فقط داخل قنوات السيرفر الرسمية.",
-    liveSyncTitle: "متصل بسيرفر ديسكورد",
-    liveSyncSub: "— مزامنة حية لحظة بلحظة",
     membersCount: "أعضاء",
     onlineCount: "متصل الآن"
   },
@@ -2079,8 +2015,6 @@ var I18N = {
     musicPlaying: "Phonk Aura ⚡",
     musicPaused: "Music: Muted",
     pcOnlyNotice: "⚠️ This script is currently available for PC executors only in the official server.",
-    liveSyncTitle: "Connected to Discord server",
-    liveSyncSub: "— live sync every few seconds",
     membersCount: "members",
     onlineCount: "online now"
   }
@@ -2268,6 +2202,39 @@ var SCRIPTS_DB = {
         },
         code: 'loadstring(game:HttpGet("https://pastefy.app/9bBAc3Y4/raw"))()',
         channel: "https://discord.com/channels/1511777552614559764/1544726157843497022"
+      }
+    }
+  },
+
+  // 7. ماب Respect Arena PvP (متوفر للكمبيوتر والموبايل)
+  respect: {
+    name: "Respect Arena PvP",
+    image: "images/respect_arena.png",
+    mobileImage: "images/respect_arena.png",
+    hasRoles: false,
+    hasMobile: true,
+    pc: {
+      default: {
+        title: "Respect Arena PvP (PC)",
+        tag: "Respect Arena • PC",
+        desc: {
+          ar: "سكربت Respect Arena PvP الرسمي للكمبيوتر: أداء سلس وميزات كاملة محدثة داخل الساحة.",
+          en: "Official Respect Arena PvP script for PC: smooth performance with full updated features."
+        },
+        code: 'loadstring(game:HttpGet("https://pastefy.app/vKb4Fcse/raw"))()',
+        channel: "https://discord.com/channels/1511777552614559764/1544726157843497022"
+      }
+    },
+    mobile: {
+      default: {
+        title: "Respect Arena PvP (Mobile / Delta)",
+        tag: "Respect Arena • Mobile",
+        desc: {
+          ar: "نسخة الجوال المخصصة لمشغلات Delta و Fluxus لسكربت Respect Arena PvP بأداء مستقر بدون لاق.",
+          en: "Mobile version for Delta & Fluxus executors of Respect Arena PvP with stable performance."
+        },
+        code: 'loadstring(game:HttpGet("https://pastefy.app/H0z4yc3P/raw"))()',
+        channel: "https://discord.com/channels/1511777552614559764/1557856245518565436"
       }
     }
   }
