@@ -277,6 +277,121 @@ img { max-width: 100%; display: block; }
   50% { opacity: 0.4; transform: scale(0.9); }
 }
 
+/* ===== شريط حالة ديسكورد المباشر (LIVE 24/7) ===== */
+.discord-live-strip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  margin-bottom: 30px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.16), rgba(56, 189, 248, 0.07));
+  border: 1px solid rgba(88, 101, 242, 0.38);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px -14px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+.discord-live-strip::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #22c55e, var(--ice-primary));
+  box-shadow: 0 0 14px rgba(34, 197, 94, 0.55);
+}
+[dir="rtl"] .discord-live-strip::before { right: 0; }
+[dir="ltr"] .discord-live-strip::before { left: 0; }
+
+.live-strip-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 12px #22c55e;
+  animation: blinkDot 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+.live-strip-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.42);
+  padding: 4px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.live-strip-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  flex: 1;
+  min-width: 220px;
+}
+.discord-live-strip .lv-guild {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: 800;
+}
+.discord-live-strip .lv-guild img {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  box-shadow: 0 0 8px var(--ice-glow);
+}
+.live-strip-counts {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.lv-item {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.lv-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+  transition: text-shadow 0.35s ease;
+}
+.lv-num.flash {
+  text-shadow: 0 0 14px rgba(56, 189, 248, 0.95), 0 0 32px rgba(56, 189, 248, 0.45);
+}
+.lv-lbl {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.lv-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.lv-sync {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: rgba(134, 239, 172, 0.9);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .discord-live-strip { gap: 10px; padding: 14px 16px; margin-bottom: 20px; border-radius: var(--radius-lg); }
+  .live-strip-label { display: none; }
+  .live-strip-counts { gap: 12px; }
+  .lv-num { font-size: 1.15rem; }
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
@@ -1453,7 +1568,7 @@ footer {
 
 <!-- شاشة التحميل السريعة والمضمونة -->
 <div id="introScreen" class="intro-screen">
-  <img class="intro-avatar" src="https://cdn.discordapp.com/icons/1511777552614559764/77c5674d838a69a91f6a49ca0f7419bc.png?size=128" alt="Secrit Script">
+  <img class="intro-avatar" src="images/guild_icon.png" alt="Secrit Script" width="128" height="128">
   <div class="intro-title">Secrit Script</div>
   <div class="intro-line"><div class="intro-line-inner"></div></div>
 </div>
@@ -1484,16 +1599,16 @@ footer {
 <header class="header-nav">
   <div class="nav-inner">
     <div class="brand-box">
-      <img class="brand-img" src="https://cdn.discordapp.com/icons/1511777552614559764/77c5674d838a69a91f6a49ca0f7419bc.png?size=64" alt="Secrit Script">
+      <img class="brand-img" src="images/guild_icon.png" alt="Secrit Script">
       <span class="brand-text">Secrit Script</span>
     </div>
 
     <!-- مؤشر ديسكورد المباشر -->
-    <div class="discord-live-pill" title="حالة سيرفر ديسكورد الرسمية">
+    <div class="discord-live-pill" title="حالة سيرفر ديسكورد الرسمية — مزامنة كل 12 ثانية">
       <span class="dot-online"></span>
-      <span id="discordTotalMembers">109 عضو</span>
+      <span id="discordTotalMembers">122 عضو</span>
       <span>•</span>
-      <span id="discordOnlineCount">13 متصل الآن</span>
+      <span id="discordOnlineCount">17 متصل الآن</span>
     </div>
 
     <div class="nav-actions">
@@ -1522,6 +1637,29 @@ footer {
 
 <!-- ===== المحتوى الرئيسي ===== -->
 <main class="main-wrapper">
+
+  <!-- شريط حالة ديسكورد المباشر 24/7 — مزامنة حية مع سيرفر SECRET SCRIPT -->
+  <div class="discord-live-strip" id="liveStrip">
+    <span class="live-strip-dot" id="liveStripDot"></span>
+    <span class="live-strip-badge">LIVE 24/7</span>
+    <span class="live-strip-label">
+      <span data-i18n="liveSyncTitle">متصل بسيرفر ديسكورد</span>
+      <span class="lv-guild"><img src="images/guild_icon.png" alt="SCR"> SECRET SCRIPT</span>
+      <span data-i18n="liveSyncSub">— مزامنة حية لحظة بلحظة</span>
+    </span>
+    <div class="live-strip-counts">
+      <div class="lv-item">
+        <span class="lv-num" id="liveStripTotal">122</span>
+        <span class="lv-lbl" data-i18n="membersCount">أعضاء</span>
+      </div>
+      <div class="lv-divider"></div>
+      <div class="lv-item">
+        <span class="lv-num" id="liveStripOnline">17</span>
+        <span class="lv-lbl" data-i18n="onlineCount">متصل الآن</span>
+      </div>
+    </div>
+    <span class="lv-sync" id="liveSyncTime">● SYNC 00:00</span>
+  </div>
 
   <!-- نظام القنوات لاختيار الماب والمنصة -->
   <div class="nav-steps-container">
@@ -1691,7 +1829,7 @@ footer {
             
             <div class="owner-hud-avatar-wrap">
               <div class="owner-hud-avatar-ring"></div>
-              <img class="owner-hud-avatar-img" src="https://cdn.discordapp.com/avatars/1490673056128041142/cb2b232e20f9017d1988ffa15f58b791.png?size=128" alt="Snow">
+              <img class="owner-hud-avatar-img" src="images/snow.png" alt="Snow">
               <span class="owner-hud-status-dot" title="Online"></span>
             </div>
             
@@ -1768,7 +1906,7 @@ footer {
             <span class="tier-badge-label">TIER —— 03</span>
             <h3 class="tier-main-title">
               <span class="role-icon">💎</span> 
-              <span data-i18n="roleDonator">الداعمون (Donators)</span>
+              <span data-i18n="roleDonor">الداعمون (Donators)</span>
             </h3>
           </div>
           <div class="tier-count-display">
@@ -1906,7 +2044,11 @@ var I18N = {
     rights: "جميع الحقوق محفوظة لمجتمع Secrit Script.",
     musicPlaying: "Phonk Aura ⚡",
     musicPaused: "الموسيقى: متوقفة",
-    pcOnlyNotice: "⚠️ هذا السكربت متوفر حالياً بنسخة الكمبيوتر (PC) فقط داخل قنوات السيرفر الرسمية."
+    pcOnlyNotice: "⚠️ هذا السكربت متوفر حالياً بنسخة الكمبيوتر (PC) فقط داخل قنوات السيرفر الرسمية.",
+    liveSyncTitle: "متصل بسيرفر ديسكورد",
+    liveSyncSub: "— مزامنة حية لحظة بلحظة",
+    membersCount: "أعضاء",
+    onlineCount: "متصل الآن"
   },
   en: {
     joinBtn: "Join Discord",
@@ -1936,7 +2078,11 @@ var I18N = {
     rights: "All rights reserved.",
     musicPlaying: "Phonk Aura ⚡",
     musicPaused: "Music: Muted",
-    pcOnlyNotice: "⚠️ This script is currently available for PC executors only in the official server."
+    pcOnlyNotice: "⚠️ This script is currently available for PC executors only in the official server.",
+    liveSyncTitle: "Connected to Discord server",
+    liveSyncSub: "— live sync every few seconds",
+    membersCount: "members",
+    onlineCount: "online now"
   }
 };
 
@@ -2376,25 +2522,76 @@ function setLang(newLang) {
   updateScriptShowcase();
 }
 
-// إحصائيات ديسكورد المباشرة
+// إحصائيات ديسكورد المباشرة (LIVE 24/7 — مزامنة تلقائية كل 12 ثانية)
+var lastStats = { total: null, online: null };
+
+function applyDiscordStats(total, online) {
+  if (!total) return;
+
+  // مؤشر الهيدر
+  var elTotal = document.getElementById('discordTotalMembers');
+  var elOnline = document.getElementById('discordOnlineCount');
+  if (elTotal) elTotal.textContent = total + (lang === 'ar' ? ' عضو' : ' members');
+  if (elOnline) elOnline.textContent = online + (lang === 'ar' ? ' متصل الآن' : ' online now');
+
+  // شريط LIVE 24/7
+  var sTotal = document.getElementById('liveStripTotal');
+  var sOnline = document.getElementById('liveStripOnline');
+  if (sTotal) {
+    sTotal.textContent = total;
+    sTotal.classList.add('flash');
+    setTimeout(function() { sTotal.classList.remove('flash'); }, 700);
+  }
+  if (sOnline) {
+    sOnline.textContent = online;
+    sOnline.classList.add('flash');
+    setTimeout(function() { sOnline.classList.remove('flash'); }, 700);
+  }
+
+  // وقت آخر مزامنة
+  var timeEl = document.getElementById('liveSyncTime');
+  if (timeEl) {
+    var d = new Date();
+    var hh = String(d.getHours()).padStart(2, '0');
+    var mm = String(d.getMinutes()).padStart(2, '0');
+    var ss = String(d.getSeconds()).padStart(2, '0');
+    timeEl.textContent = '● SYNC ' + hh + ':' + mm + ':' + ss;
+  }
+}
+
 function fetchDiscordStats() {
   var inviteCode = "DjfTPJfxE";
   fetch("https://discord.com/api/v10/invites/" + inviteCode + "?with_counts=true&_nocache=" + Date.now())
     .then(function(res){ return res.json(); })
     .then(function(data){
-      if (data && data.approximate_member_count) {
-        var total = data.approximate_member_count;
-        var online = data.approximate_presence_count || 14;
-        
-        var elTotal = document.getElementById('discordTotalMembers');
-        var elOnline = document.getElementById('discordOnlineCount');
-        
-        if (elTotal) elTotal.textContent = total + (lang === 'ar' ? ' عضو' : ' members');
-        if (elOnline) elOnline.textContent = online + (lang === 'ar' ? ' متصل الآن' : ' online now');
+      if (!data || !data.approximate_member_count) {
+        if (data && data.guild && data.guild.id) {
+          // Invite expired or invalid — try once more next cycle
+          return;
+        }
+        return;
       }
+
+      var total = data.approximate_member_count;
+      var online = data.approximate_presence_count;
+
+      // مصدر احتياطي موثوق إن غابت عدد الحضور
+      if (!online && data.profile && data.profile.online_count) {
+        online = data.profile.online_count;
+      }
+      // لا نعرض أرقام وهمية — نثبّت آخر قيمة معروفة فقط
+      if (!online) online = lastStats.online || 0;
+
+      lastStats = { total: total, online: online };
+      applyDiscordStats(total, online);
     })
     .catch(function(err){});
 }
+
+// إعادة المزامنة فوراً عند الرجوع لتبويب الموقع (يعطي إحساس الاتصال الدائم 24/7)
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) fetchDiscordStats();
+});
 
 // مؤشر الماوس الجليدي المخصص مع الجزيئات المتلألئة
 (function initCustomCursor() {
