@@ -7,12 +7,12 @@
 <meta name="description" content="منصة Secrit Script الرسمية — سكربتات روبلوكس المحدثة ومجتمع ديسكورد نشط.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg-base: #060814;
-  --bg-card: rgba(13, 19, 38, 0.82);
-  --bg-card-hover: rgba(20, 30, 60, 0.94);
+  --bg-card: rgba(13, 19, 38, 0.93);
+  --bg-card-hover: rgba(20, 30, 60, 0.97);
   --frost-border: rgba(125, 211, 252, 0.16);
   --frost-border-hover: rgba(125, 211, 252, 0.45);
   --ice-primary: #38bdf8;
@@ -139,7 +139,7 @@ img { max-width: 100%; display: block; }
   top: -20px;
   color: #bae6fd;
   opacity: 0.28;
-  filter: drop-shadow(0 0 2px rgba(186, 230, 253, 0.4));
+  will-change: transform;
   animation: fallAnimation linear infinite;
   pointer-events: none;
   user-select: none;
@@ -173,19 +173,19 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   gap: 16px;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition: opacity 0.38s ease, transform 0.38s ease, visibility 0.38s ease;
 }
-.intro-screen.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+.intro-screen.hide { opacity: 0; transform: scale(1.05); visibility: hidden; pointer-events: none; }
 .intro-avatar {
   width: 72px;
   height: 72px;
   border-radius: 20px;
   box-shadow: 0 0 35px var(--ice-glow);
-  animation: pulseLogo 1.4s ease-in-out infinite alternate;
+  animation: pulseLogo 1.2s ease-in-out 3 alternate;
 }
 @keyframes pulseLogo {
-  from { transform: scale(0.96); filter: drop-shadow(0 0 10px var(--ice-primary)); }
-  to { transform: scale(1.04); filter: drop-shadow(0 0 25px var(--ice-primary)); }
+  from { transform: scale(0.95); opacity: 0.85; }
+  to { transform: scale(1.05); opacity: 1; }
 }
 .intro-title {
   font-size: 1.5rem;
@@ -194,22 +194,23 @@ img { max-width: 100%; display: block; }
   letter-spacing: -0.02em;
 }
 .intro-line {
-  width: 140px;
+  width: 160px;
   height: 3px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 99px;
   overflow: hidden;
 }
 .intro-line-inner {
-  width: 40%;
+  width: 100%;
   height: 100%;
-  background: var(--ice-primary);
+  background: linear-gradient(90deg, #0284c7, var(--ice-primary), #7dd3fc);
   border-radius: 99px;
-  animation: barMove 1s infinite ease-in-out;
+  transform-origin: center;
+  animation: introFill 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-@keyframes barMove {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(250%); }
+@keyframes introFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 /* ===== الهيدر العلوي ===== */
@@ -288,8 +289,6 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-xl);
   background: linear-gradient(135deg, rgba(88, 101, 242, 0.16), rgba(56, 189, 248, 0.07));
   border: 1px solid rgba(88, 101, 242, 0.38);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 12px 32px -14px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 10;
@@ -402,7 +401,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--text-secondary);
-  transition: all 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 .lang-switch button.active {
   background: linear-gradient(135deg, var(--ice-primary), #0284c7);
@@ -420,7 +419,7 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   font-size: 0.88rem;
   box-shadow: 0 4px 18px var(--discord-glow);
-  transition: all 0.2s var(--ease);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 .discord-join-nav-btn:hover {
   transform: translateY(-2px);
@@ -464,8 +463,6 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-xl);
   padding: 26px;
   margin-bottom: 34px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 10;
@@ -511,7 +508,7 @@ img { max-width: 100%; display: block; }
   background: #0a0e1c;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: all 0.25s var(--ease);
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
 }
 .map-select-card img {
   width: 100%;
@@ -583,7 +580,7 @@ img { max-width: 100%; display: block; }
   color: var(--text-secondary);
   font-size: 0.95rem;
   font-weight: 800;
-  transition: all 0.22s var(--ease);
+  transition: background 0.22s var(--ease), border-color 0.22s var(--ease), color 0.22s var(--ease);
 }
 .platform-choice-btn:hover:not(:disabled) {
   background: rgba(56, 189, 248, 0.08);
@@ -623,7 +620,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-secondary);
-  transition: all 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 .sub-role-btn:hover {
   color: #fff;
@@ -648,12 +645,10 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--frost-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.12);
   display: grid;
   grid-template-columns: 260px 1fr;
-  transition: all 0.3s var(--ease);
+  transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 @media (max-width: 900px) {
   .script-showcase-card { grid-template-columns: 1fr; }
@@ -686,7 +681,6 @@ img { max-width: 100%; display: block; }
   color: #86efac;
   font-size: 0.8rem;
   font-weight: 800;
-  backdrop-filter: blur(8px);
 }
 [dir="rtl"] .showcase-status-badge { right: auto; left: 16px; }
 
@@ -759,7 +753,7 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-md);
   font-size: 1rem;
   font-weight: 900;
-  transition: all 0.22s var(--ease);
+  transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), background 0.22s var(--ease);
   box-shadow: 0 4px 20px var(--ice-glow);
 }
 .showcase-copy-btn:hover {
@@ -782,7 +776,7 @@ img { max-width: 100%; display: block; }
   color: #c7d2fe;
   font-weight: 800;
   font-size: 0.92rem;
-  transition: all 0.22s var(--ease);
+  transition: background 0.22s var(--ease), color 0.22s var(--ease), transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
 }
 .showcase-discord-btn:hover {
   background: var(--discord-purple);
@@ -847,8 +841,6 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--frost-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.5);
 }
 
@@ -908,7 +900,7 @@ img { max-width: 100%; display: block; }
   color: #ffffff;
   font-size: 0.88rem;
   outline: none;
-  transition: all 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .members-search-input:focus {
   border-color: var(--ice-primary);
@@ -936,7 +928,7 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all 0.2s var(--ease);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 .member-badge-card:hover {
   background: rgba(56, 189, 248, 0.1);
@@ -1004,10 +996,9 @@ footer {
   align-items: center;
   gap: 10px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.6), 0 0 20px var(--ice-glow);
-  backdrop-filter: blur(12px);
   z-index: 9999999;
   opacity: 0;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
   pointer-events: none;
 }
 .toast-notice.show {
@@ -1061,12 +1052,12 @@ footer {
 .glitch-title::before {
   color: #38bdf8;
   text-shadow: -1.5px 0 #38bdf8;
-  animation: glitch-anim-1 3.2s infinite linear alternate-reverse;
+  animation: glitch-anim-1 1.6s ease-out 1 both;
 }
 .glitch-title::after {
   color: #818cf8;
   text-shadow: 1.5px 0 #c084fc;
-  animation: glitch-anim-2 2.7s infinite linear alternate-reverse;
+  animation: glitch-anim-2 1.6s ease-out 1.2s 1 both;
 }
 @keyframes glitch-anim-1 {
   0%, 84% { clip-path: inset(0 0 0 0); opacity: 0; transform: none; }
@@ -1131,7 +1122,7 @@ footer {
 }
 .owner-hud-card {
   position: relative;
-  background: rgba(10, 16, 32, 0.88);
+  background: rgba(10, 16, 32, 0.94);
   border: 1px solid rgba(56, 189, 248, 0.22);
   border-radius: 18px;
   padding: 34px 24px 28px;
@@ -1139,9 +1130,7 @@ footer {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 0.3s var(--ease);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
   box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(56, 189, 248, 0.04);
 }
 .owner-hud-card:hover {
@@ -1154,7 +1143,7 @@ footer {
   width: 14px;
   height: 14px;
   pointer-events: none;
-  transition: all 0.3s var(--ease);
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .hud-corner-tl {
   top: 10px;
@@ -1309,13 +1298,11 @@ footer {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: rgba(12, 18, 35, 0.85);
+  background: rgba(12, 18, 35, 0.93);
   border: 1px solid rgba(125, 211, 252, 0.14);
   border-radius: 14px;
   padding: 12px 16px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.25s var(--ease);
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), background 0.25s var(--ease), box-shadow 0.25s var(--ease);
   position: relative;
   overflow: hidden;
 }
@@ -1521,6 +1508,126 @@ footer {
   margin-right: auto;
 }
 
+/* ========================================================
+   دخول سلس للهيرو + ظهور ناعم عند التمرير (مرة واحدة - خفيف)
+   ======================================================== */
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-clean .hero-badge { animation: heroEnter 0.55s var(--ease) 0.05s backwards; }
+.glitch-title { animation: heroEnter 0.65s var(--ease) 0.16s backwards; }
+.hero-subtitle-clean { animation: heroEnter 0.65s var(--ease) 0.3s backwards; }
+.discord-live-strip { animation: heroEnter 0.65s var(--ease) 0.42s backwards; }
+
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.rv-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+/* لمسة رفع خفيف لكروت المابات عند المرور */
+.map-select-card:hover { transform: translateY(-3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-title::before, .glitch-title::after { animation: none !important; }
+  .flake { visibility: hidden; }  .hero-clean .hero-badge,
+  .glitch-title,
+  .hero-subtitle-clean { animation-duration: 0.01s; }
+  .rv { transform: none; }
+  .rv-in { transition: opacity 0.4s ease; }
+}
+
+/* ========================================================
+   الموبايل - ترتيب مثالي من 360px حتى 640px
+   ======================================================== */
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+
+  /* الهيدر */
+  .nav-inner { padding: 9px 12px; gap: 8px; }
+  .brand-text { font-size: 1.02rem; }
+  .brand-img { width: 32px; height: 32px; border-radius: 10px; }
+  .nav-actions { gap: 7px; }
+  .lang-switch { padding: 2px; }
+  .lang-switch button { padding: 5px 9px; font-size: 0.74rem; }
+  .discord-join-nav-btn { padding: 7px 11px; font-size: 0.76rem; gap: 6px; }
+  .discord-join-nav-btn svg { width: 14px; height: 11px; }
+
+  /* الهيرو والشريط الحي */
+  .hero-clean { padding: 24px 14px 10px; }
+  .hero-badge { font-size: 0.68rem; padding: 5px 13px; letter-spacing: 0.1em; }
+  .hero-subtitle-clean { font-size: 0.93rem; padding: 0 6px; }
+  .main-wrapper { padding: 12px 12px 44px; }
+
+  .discord-live-strip { gap: 9px; padding: 12px 14px; margin-bottom: 20px; border-radius: var(--radius-lg); }
+  .live-strip-counts { gap: 10px; }
+  .lv-num { font-size: 1.12rem; }
+
+  /* الخطوات والمابات */
+  .nav-steps-container { padding: 16px 13px; margin-bottom: 24px; border-radius: var(--radius-lg); }
+  .step-header { margin-bottom: 14px; }
+  .step-number { width: 26px; height: 26px; font-size: 0.85rem; }
+  .step-title { font-size: 1.06rem; }
+  .maps-channel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; margin-bottom: 20px; }
+  .map-select-card { height: 104px; border-radius: var(--radius-md); }
+  .map-name-overlay { padding: 8px 10px; }
+  .map-name-title { font-size: 0.82rem; }
+  .map-platform-tag { font-size: 0.62rem; }
+  .active-tick { width: 19px; height: 19px; font-size: 0.66rem; }
+
+  /* أزرار المنصة وعرض السكربت */
+  .platform-choice-btn { width: 100%; justify-content: center; padding: 12px 14px; }
+  .showcase-copy-btn { padding: 13px 18px; font-size: 0.94rem; }
+
+  .script-showcase-wrapper { margin-bottom: 34px; }
+  .script-showcase-card { box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.55); }
+  .showcase-status-badge { font-size: 0.72rem; padding: 5px 11px; top: 12px; }
+  .showcase-details-side { padding: 18px 15px; }
+  .showcase-title { font-size: 1.26rem; }
+  .showcase-meta-tag { font-size: 0.75rem; }
+  .showcase-desc { font-size: 0.9rem; line-height: 1.55; }
+  .showcase-code-box { font-size: 0.76rem; max-height: 150px; padding: 12px 13px; }
+
+  /* الطاقم */
+  .team-roles-flow { gap: 22px; margin-bottom: 30px; }
+  .owners-hud-grid { grid-template-columns: 1fr; gap: 14px; }
+  .owner-hud-card { padding: 22px 15px 19px; }
+  .owner-hud-avatar-wrap { width: 86px; height: 86px; margin-bottom: 13px; }
+  .owner-hud-name { font-size: 1.08rem; }
+  .owner-hud-role { font-size: 0.8rem; margin-bottom: 9px; }
+  .tier-header-wrap { margin-bottom: 12px; }
+  .tier-main-title { font-size: 1.03rem; }
+  .tier-count-num { font-size: 1.15rem; }
+  .tier-cards-grid { gap: 10px; }
+  .tier-member-card { padding: 10px 12px; gap: 10px; }
+  .tier-avatar-wrap { width: 46px; height: 46px; }
+  .tier-member-name { font-size: 0.92rem; }
+
+  .section-title-wrap { margin-bottom: 22px; }
+  .section-main-title { font-size: 1.3rem; }
+  .community-hub-header { padding: 14px 13px; gap: 10px; }
+  .community-guild-icon { width: 42px; height: 42px; border-radius: 12px; }
+  .community-header-text h3 { font-size: 1.12rem; }
+  .community-members-body { padding: 14px 10px; }
+
+  footer { padding: 20px 14px; font-size: 0.78rem; }
+  .toast-notice { bottom: 14px; font-size: 0.82rem; padding: 10px 16px; }
+}
+
+@media (max-width: 400px) {
+  .lv-sync { display: none; }
+  .live-strip-badge { font-size: 0.7rem; padding: 4px 10px; }
+  .maps-channel-grid { gap: 8px; }
+  .map-select-card { height: 94px; }
+  .brand-text { font-size: 0.95rem; }
+  .discord-join-nav-btn span { font-size: 0.72rem; }
+}
+
 </style>
 </head>
 <body>
@@ -1649,7 +1756,7 @@ footer {
     <div class="maps-channel-grid" id="mapsGrid">
       <!-- ماب سان دييغو -->
       <div class="map-select-card active" data-map="sandiego">
-        <img src="images/pc_7.png" alt="San Diego Roleplay">
+        <img src="images/pc_7.png" alt="San Diego Roleplay" loading="lazy" decoding="async">
         <div class="map-name-overlay">
           <span class="map-name-title">San Diego Roleplay</span>
           <span class="map-platform-tag">💻 PC & 📱 Mobile</span>
@@ -1658,7 +1765,7 @@ footer {
       </div>
       <!-- ماب القناص Sniper Arena (الصورة الحقيقية المعتمدة) -->
       <div class="map-select-card" data-map="sniper">
-        <img src="images/sniper_arena.jpg" alt="Sniper Arena">
+        <img src="images/sniper_arena.jpg" alt="Sniper Arena" loading="lazy" decoding="async">
         <div class="map-name-overlay">
           <span class="map-name-title">Sniper Arena</span>
           <span class="map-platform-tag">💻 PC & 📱 Mobile</span>
@@ -1667,7 +1774,7 @@ footer {
       </div>
       <!-- ماب قاعدة الصواريخ Missile Base -->
       <div class="map-select-card" data-map="missile">
-        <img src="images/pc_5.png" alt="Missile Base">
+        <img src="images/pc_5.png" alt="Missile Base" loading="lazy" decoding="async">
         <div class="map-name-overlay">
           <span class="map-name-title">Missile Base</span>
           <span class="map-platform-tag">💻 PC & 📱 Mobile</span>
@@ -1676,7 +1783,7 @@ footer {
       </div>
       <!-- ماب Blox Strike (صورة CS السكين المخصصة له) -->
       <div class="map-select-card" data-map="bloxstrike">
-        <img src="images/pc_1.png" alt="Blox Strike">
+        <img src="images/pc_1.jpg" alt="Blox Strike" loading="lazy" decoding="async">
         <div class="map-name-overlay">
           <span class="map-name-title">Blox Strike</span>
           <span class="map-platform-tag">💻 حصري PC</span>
@@ -1685,7 +1792,7 @@ footer {
       </div>
       <!-- ماب Murder Mystery 2 -->
       <div class="map-select-card" data-map="mm2">
-        <img src="images/mm2.png" alt="Murder Mystery 2">
+        <img src="images/mm2.png" alt="Murder Mystery 2" loading="lazy" decoding="async">
         <div class="map-name-overlay">
           <span class="map-name-title">Murder Mystery 2 (MM2)</span>
           <span class="map-platform-tag">💻 حصري PC</span>
@@ -1694,7 +1801,7 @@ footer {
       </div>
       <!-- ماب البيوت Brookhaven -->
       <div class="map-select-card" data-map="brookhaven">
-        <img src="images/pc_4.png" alt="Brookhaven RP">
+        <img src="images/pc_4.jpg" alt="Brookhaven RP" loading="lazy" decoding="async">
         <div class="map-name-overlay">
           <span class="map-name-title">Brookhaven RP</span>
           <span class="map-platform-tag">💻 حصري PC</span>
@@ -1703,7 +1810,7 @@ footer {
       </div>
       <!-- ماب Respect Arena PvP (الأيقونة الرسمية المعتمدة) -->
       <div class="map-select-card" data-map="respect">
-        <img src="images/respect_arena.png" alt="Respect Arena PvP">
+        <img src="images/respect_arena.jpg" alt="Respect Arena PvP" loading="lazy" decoding="async">
         <div class="map-name-overlay">
           <span class="map-name-title">Respect Arena PvP</span>
           <span class="map-platform-tag">💻 PC & 📱 Mobile</span>
@@ -1743,7 +1850,7 @@ footer {
       
       <!-- الصورة المحددة للماب -->
       <div class="showcase-banner-side">
-        <img id="showcaseImg" class="showcase-banner-img" src="images/pc_7.png" alt="Map Banner">
+        <img id="showcaseImg" class="showcase-banner-img" src="images/pc_7.png" alt="Map Banner" decoding="async">
         <div class="showcase-banner-overlay"></div>
         <span class="showcase-status-badge" id="showcaseStatusBadge">● شغال ومحدث 2026</span>
       </div>
@@ -1814,7 +1921,7 @@ footer {
             
             <div class="owner-hud-avatar-wrap">
               <div class="owner-hud-avatar-ring"></div>
-              <img class="owner-hud-avatar-img" src="images/snow.png" alt="Snow">
+              <img class="owner-hud-avatar-img" src="images/snow.png" alt="Snow" loading="lazy" decoding="async">
               <span class="owner-hud-status-dot" title="Online"></span>
             </div>
             
@@ -1835,7 +1942,7 @@ footer {
             
             <div class="owner-hud-avatar-wrap">
               <div class="owner-hud-avatar-ring"></div>
-              <img class="owner-hud-avatar-img" src="images/youssef.jpg" alt="Youssef">
+              <img class="owner-hud-avatar-img" src="images/youssef.jpg" alt="Youssef" loading="lazy" decoding="async">
               <span class="owner-hud-status-dot" title="Online"></span>
             </div>
             
@@ -1856,7 +1963,7 @@ footer {
             
             <div class="owner-hud-avatar-wrap">
               <div class="owner-hud-avatar-ring"></div>
-              <img class="owner-hud-avatar-img" src="images/tarek.jpg" alt="TAREK TM">
+              <img class="owner-hud-avatar-img" src="images/tarek.jpg" alt="TAREK TM" loading="lazy" decoding="async">
               <span class="owner-hud-status-dot" title="Online"></span>
             </div>
             
@@ -1891,7 +1998,7 @@ footer {
           <!-- OMAR -->
           <div class="tier-member-card" style="--tier-accent: #f59e0b; --tier-glow: rgba(245, 158, 11, 0.4);">
             <div class="tier-avatar-wrap">
-              <img class="tier-avatar-img" src="images/omar.jpg" alt="OMAR">
+              <img class="tier-avatar-img" src="images/omar.jpg" alt="OMAR" loading="lazy" decoding="async">
               <span class="tier-avatar-dot" title="Online"></span>
             </div>
             <div class="tier-info-wrap">
@@ -1907,7 +2014,7 @@ footer {
           <!-- PLAYER ESLAM -->
           <div class="tier-member-card" style="--tier-accent: #f59e0b; --tier-glow: rgba(245, 158, 11, 0.4);">
             <div class="tier-avatar-wrap">
-              <img class="tier-avatar-img" src="images/eslam.jpg" alt="PLAYER ESLAM">
+              <img class="tier-avatar-img" src="images/eslam.jpg" alt="PLAYER ESLAM" loading="lazy" decoding="async">
               <span class="tier-avatar-dot" title="Online"></span>
             </div>
             <div class="tier-info-wrap">
@@ -1923,7 +2030,7 @@ footer {
           <!-- Saikou -->
           <div class="tier-member-card" style="--tier-accent: #f59e0b; --tier-glow: rgba(245, 158, 11, 0.4);">
             <div class="tier-avatar-wrap">
-              <img class="tier-avatar-img" src="images/saikou.jpg" alt="Saikou">
+              <img class="tier-avatar-img" src="images/saikou.jpg" alt="Saikou" loading="lazy" decoding="async">
               <span class="tier-avatar-dot" title="Online"></span>
             </div>
             <div class="tier-info-wrap">
@@ -2146,7 +2253,7 @@ var SCRIPTS_DB = {
   // 4. ماب Blox Strike (صورة السكين Counter-Strike - حصري PC فقط في القنوات)
   bloxstrike: {
     name: "Blox Strike",
-    image: "images/pc_1.png",
+    image: "images/pc_1.jpg",
     mobileImage: null,
     hasRoles: false,
     hasMobile: false,
@@ -2188,7 +2295,7 @@ var SCRIPTS_DB = {
   // 6. ماب البيوت Brookhaven (حصري PC فقط في القنوات)
   brookhaven: {
     name: "Brookhaven RP",
-    image: "images/pc_4.png",
+    image: "images/pc_4.jpg",
     mobileImage: null,
     hasRoles: false,
     hasMobile: false,
@@ -2209,8 +2316,8 @@ var SCRIPTS_DB = {
   // 7. ماب Respect Arena PvP (متوفر للكمبيوتر والموبايل)
   respect: {
     name: "Respect Arena PvP",
-    image: "images/respect_arena.png",
-    mobileImage: "images/respect_arena.png",
+    image: "images/respect_arena.jpg",
+    mobileImage: "images/respect_arena.jpg",
     hasRoles: false,
     hasMobile: true,
     pc: {
@@ -2573,6 +2680,7 @@ document.addEventListener('visibilitychange', function() {
   var mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
   var ringX = mouseX, ringY = mouseY;
   var lastSparkle = 0;
+  var aliveSparkles = 0;
   
   document.addEventListener('mousemove', function(e) {
     mouseX = e.clientX;
@@ -2580,8 +2688,9 @@ document.addEventListener('visibilitychange', function() {
     dot.style.transform = 'translate(' + mouseX + 'px, ' + mouseY + 'px) translate(-50%, -50%)';
     
     var now = Date.now();
-    if (now - lastSparkle > 50) {
+    if (now - lastSparkle > 90 && aliveSparkles < 12 && !document.hidden) {
       lastSparkle = now;
+      aliveSparkles++;
       createSparkle(mouseX, mouseY);
     }
   });
@@ -2595,7 +2704,7 @@ document.addEventListener('visibilitychange', function() {
     p.style.left = x + 'px';
     p.style.top = y + 'px';
     document.body.appendChild(p);
-    setTimeout(function() { if(p.parentNode) p.parentNode.removeChild(p); }, 650);
+    setTimeout(function() { if(p.parentNode) p.parentNode.removeChild(p); aliveSparkles = Math.max(0, aliveSparkles - 1); }, 650);
   }
   
   function animateRing() {
@@ -2616,6 +2725,64 @@ document.addEventListener('visibilitychange', function() {
       ring.classList.remove('hovering');
     }
   });
+})();
+
+// ظهور ناعم عند التمرير (مرة واحدة فقط - خفيف على الأجهزة)
+(function initScrollReveal() {
+  if (!('IntersectionObserver' in window)) return;
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      io.unobserve(el);
+      if (el.getAttribute('data-rv-grid')) {
+        var step = parseInt(el.getAttribute('data-rv-grid'), 10) || 70;
+        var delay = 0;
+        Array.prototype.forEach.call(el.children, function(child) {
+          child.classList.add('rv', 'rv-in');
+          child.style.transitionDelay = delay + 'ms';
+          delay += step;
+          child.addEventListener('transitionend', function() {
+            child.style.transitionDelay = '0ms';
+          }, { once: true });
+        });
+      } else {
+        el.classList.add('rv', 'rv-in');
+      }
+    });
+  }, { rootMargin: '0px 0px -36px 0px', threshold: 0.04 });
+
+  // كتل كاملة
+  ['.nav-steps-container', '.script-showcase-wrapper', '.command-header-tag',
+   '.tier-center-title', '.tier-header-wrap'].forEach(function(sel) {
+    document.querySelectorAll(sel).forEach(function(el) {
+      el.classList.add('rv');
+      io.observe(el);
+    });
+  });
+
+  // شبكات ببطاقات متتالية (تأخير بين كل كرت)
+  [['.owners-hud-grid', 90], ['.tier-cards-grid', 70]].forEach(function(pair) {
+    document.querySelectorAll(pair[0]).forEach(function(grid) {
+      grid.setAttribute('data-rv-grid', pair[1]);
+      Array.prototype.forEach.call(grid.children, function(child) {
+        child.classList.add('rv');
+      });
+      io.observe(grid);
+    });
+  });
+
+  // شبكة أمان خفيفة: لو التعليق لم يشتغل (تبويب معلّق/متصفح قديم) نكشف العناصر الظاهرة والمكتوبة
+  setInterval(function() {
+    if (document.hidden) return;
+    var pending = document.querySelectorAll('.rv:not(.rv-in)');
+    for (var i = 0; i < pending.length; i++) {
+      if (pending[i].getBoundingClientRect().top < innerHeight + 80) {
+        pending[i].classList.add('rv-in');
+      }
+    }
+  }, 2200);
 })();
 
 // أزرار اللغة
