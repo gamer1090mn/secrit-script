@@ -1817,6 +1817,15 @@ footer {
         </div>
         <div class="active-tick">✓</div>
       </div>
+      <!-- ماب Respect PvP النسخة التجريبية BETA -->
+      <div class="map-select-card" data-map="respectpvp">
+        <img src="images/respect_arena.jpg" alt="Respect PvP [BETA]" loading="lazy" decoding="async">
+        <div class="map-name-overlay">
+          <span class="map-name-title">Respect PvP [BETA]</span>
+          <span class="map-platform-tag">💻 PC & 📱 Mobile • BETA</span>
+        </div>
+        <div class="active-tick">✓</div>
+      </div>
     </div>
 
     <!-- الخطوة 2: اختيار المنصة والنوع -->
@@ -2341,6 +2350,37 @@ var SCRIPTS_DB = {
           en: "Mobile version for Delta & Fluxus executors of Respect Arena PvP with stable performance."
         },
         code: 'loadstring(game:HttpGet("https://pastefy.app/H0z4yc3P/raw"))()',
+        channel: "https://discord.com/channels/1511777552614559764/1557856245518565436"
+      }
+    }
+  },
+  respectpvp: {
+    name: "Respect PvP [BETA]",
+    image: "images/respect_arena.jpg",
+    mobileImage: "images/respect_arena.jpg",
+    hasRoles: false,
+    hasMobile: true,
+    pc: {
+      default: {
+        title: "Respect PvP [BETA] (PC)",
+        tag: "Respect PvP • PC",
+        desc: {
+          ar: "النسخة التجريبية (BETA) الجديدة من سكربت Respect PvP للكمبيوتر.",
+          en: "New BETA version of the Respect PvP script for PC."
+        },
+        code: 'loadstring(game:HttpGet("https://pastefy.app/c5Mu3Yu0/raw"))()',
+        channel: "https://discord.com/channels/1511777552614559764/1544726157843497022"
+      }
+    },
+    mobile: {
+      default: {
+        title: "Respect PvP [BETA] (Mobile / Delta)",
+        tag: "Respect PvP • Mobile",
+        desc: {
+          ar: "نسخة الجوال (BETA) من سكربت Respect PvP لمشغلات Delta و Fluxus.",
+          en: "BETA mobile version of Respect PvP for Delta & Fluxus executors."
+        },
+        code: 'loadstring(game:HttpGet("https://pastefy.app/ccsZVBJ4/raw"))()',
         channel: "https://discord.com/channels/1511777552614559764/1557856245518565436"
       }
     }
