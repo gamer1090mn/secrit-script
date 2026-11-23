@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Secrit Script — أفضل سكربتات روبلوكس للجوال والكمبيوتر</title>
 <meta name="description" content="منصة Secrit Script الرسمية — سكربتات روبلوكس المحدثة ومجتمع ديسكورد نشط.">
+<meta name="theme-color" content="#060814">
+<meta property="og:title" content="Secrit Script — Official Script Hub">
+<meta property="og:description" content="أقوى سكربتات روبلوكس الحصرية للكمبيوتر والجوال — لايكات، تعليقات، وعدّاد نسخ حي لكل سكربت.">
+<meta property="og:image" content="https://gamer1090mn.github.io/secrit-script/images/guild_icon.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="images/guild_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -1628,42 +1635,549 @@ footer {
   .discord-join-nav-btn span { font-size: 0.72rem; }
 }
 
+/* ========================================================
+   SECRIT SCRIPT v3.0 — ترقية احترافية: تأثيرات وأداء عالي
+   ======================================================== */
+
+/* محرك التأثيرات (أورورا قطبية + ثلج تفاعلي) */
+#fxCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: -4;
+  pointer-events: none;
+}
+
+/* شريط تقدم التمرير */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 3000;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.04);
+}
+.scroll-progress-bar {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, #0284c7, var(--ice-primary), #7dd3fc, #5865F2);
+  box-shadow: 0 0 12px var(--ice-glow);
+  will-change: transform;
+}
+[dir="rtl"] .scroll-progress-bar { transform-origin: 100% 50%; }
+
+/* ===== شاشة التحميل المحسنة ===== */
+.intro-avatar-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intro-avatar-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--ice-primary);
+  border-right-color: #5865F2;
+  animation: introRingSpin 1.1s linear infinite;
+}
+@keyframes introRingSpin { to { transform: rotate(360deg); } }
+.intro-avatar { width: 72px; height: 72px; position: relative; }
+.intro-percent {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--ice-light);
+}
+
+/* ===== مؤشر الكتابة في الهيرو ===== */
+.type-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-inline-start: 5px;
+  vertical-align: text-bottom;
+  background: var(--ice-primary);
+  box-shadow: 0 0 8px var(--ice-primary);
+  animation: caretBlink 0.9s steps(2, start) infinite;
+}
+@keyframes caretBlink { 50% { opacity: 0; } }
+
+/* ===== إطار الهولو الدوّار الفاخر لكرت السكربت ===== */
+.holo-wrap {
+  position: relative;
+  border-radius: calc(var(--radius-xl) + 2px);
+  padding: 1.5px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.12);
+  transition: box-shadow 0.3s var(--ease);
+}
+.holo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  z-index: -1;
+  background: conic-gradient(from 0deg,
+    rgba(56, 189, 248, 0) 0deg,
+    rgba(56, 189, 248, 0.55) 40deg,
+    rgba(56, 189, 248, 0) 80deg,
+    rgba(56, 189, 248, 0) 170deg,
+    rgba(88, 101, 242, 0.6) 210deg,
+    rgba(88, 101, 242, 0) 260deg,
+    rgba(56, 189, 248, 0) 360deg);
+  animation: holoSpin 5.5s linear infinite;
+}
+@keyframes holoSpin { to { transform: rotate(360deg); } }
+.holo-inner {
+  position: relative;
+  border-radius: calc(var(--radius-xl) - 1px);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+.holo-inner .script-showcase-card {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.holo-inner .script-showcase-card.highlight-pulse { animation: none; }
+.holo-wrap.highlight-pulse { animation: showcaseArrivalPulse 1.35s var(--ease) forwards; }
+.holo-wrap:hover::before { animation-duration: 2.2s; }
+
+/* ===== تأثير الميلان ثلاثي الأبعاد ===== */
+.tilt-zone { perspective: 1100px; }
+@media (pointer: fine) {
+  .tilt-zone .script-showcase-card {
+    will-change: transform;
+    transition: transform 0.16s ease-out;
+  }
+}
+
+/* ========================================================
+   نظام التفاعل — لايكات + تعليقات + عدّاد النسخ
+   ======================================================== */
+.engage-panel {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--frost-border);
+  background: linear-gradient(180deg, rgba(10, 15, 30, 0.65), rgba(4, 6, 15, 0.85));
+  padding: 18px 28px 22px;
+}
+.engage-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.engage-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  transition: transform 0.18s var(--ease), background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.engage-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--ice-primary);
+  color: #fff;
+}
+.engage-btn:active { transform: scale(0.96); }
+.engage-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #fff;
+}
+.like-btn .like-heart {
+  color: #f472b6;
+  transition: transform 0.25s var(--ease);
+  filter: drop-shadow(0 0 6px rgba(244, 114, 182, 0.5));
+}
+.like-btn.liked {
+  background: rgba(244, 114, 182, 0.12);
+  border-color: rgba(244, 114, 182, 0.55);
+  color: #fbcfe8;
+}
+.like-btn.liked .like-heart { transform: scale(1.12); }
+@keyframes heartPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.55) rotate(-8deg); }
+  100% { transform: scale(1.12); }
+}
+.like-btn.heart-pop .like-heart { animation: heartPop 0.45s var(--ease); }
+
+.engage-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 99px;
+  background: rgba(2, 132, 199, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--ice-light);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.engage-chip b {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: #fff;
+}
+.engage-live-tag {
+  margin-inline-start: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: #86efac;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.engage-live-tag::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: blinkDot 2s infinite ease-in-out;
+}
+
+/* التعليقات */
+.comments-panel {
+  margin-top: 16px;
+  border-top: 1px dashed rgba(125, 211, 252, 0.18);
+  padding-top: 16px;
+  max-height: 900px;
+  overflow: hidden;
+  transition: opacity 0.3s var(--ease), max-height 0.4s var(--ease), padding 0.4s var(--ease), margin 0.4s var(--ease);
+}
+.comments-panel.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  margin-top: 0;
+  border-top: none;
+}
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-inline-end: 4px;
+  margin-bottom: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.55) rgba(13, 19, 38, 0.5);
+}
+.comment-list::-webkit-scrollbar { width: 6px; }
+.comment-list::-webkit-scrollbar-track { background: rgba(13, 19, 38, 0.6); border-radius: 99px; }
+.comment-list::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--ice-primary), #5865F2); border-radius: 99px; }
+.comment-item {
+  display: flex;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 12px 14px;
+  animation: commentIn 0.45s var(--ease) backwards;
+}
+@keyframes commentIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+.comment-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--ice-primary), #5865F2);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+.comment-body { flex: 1; min-width: 0; }
+.comment-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.comment-name { font-weight: 800; font-size: 0.88rem; color: #fff; }
+.comment-time { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); }
+.comment-text {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.55;
+}
+.comment-actions { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.comment-like-btn,
+.comment-del-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.comment-like-btn:hover { color: #f472b6; border-color: rgba(244, 114, 182, 0.4); background: rgba(244, 114, 182, 0.08); }
+.comment-like-btn.liked { color: #f472b6; }
+.comment-del-btn:hover { color: #f87171; border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.08); }
+.comment-empty {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  padding: 18px 8px;
+  border: 1px dashed rgba(125, 211, 252, 0.2);
+  border-radius: 12px;
+}
+.comment-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: stretch; }
+.comment-name-input,
+.comment-input {
+  background: rgba(4, 6, 15, 0.75);
+  border: 1px solid var(--frost-border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 0;
+}
+.comment-name-input:focus,
+.comment-input:focus {
+  border-color: var(--ice-primary);
+  box-shadow: 0 0 14px var(--ice-glow);
+}
+.comment-name-input { flex: 0 0 160px; }
+.comment-input { flex: 1 1 240px; resize: none; max-height: 120px; }
+.comment-send-btn {
+  padding: 10px 26px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7, var(--ice-primary));
+  color: #041324;
+  font-weight: 900;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 16px var(--ice-glow);
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.comment-send-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(56, 189, 248, 0.5); }
+.comment-send-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ========================================================
+   قائمة الأكثر نسخاً (Live Leaderboard)
+   ======================================================== */
+.top-scripts-section { margin: 44px 0 0; position: relative; z-index: 10; }
+.top-scripts-list { display: flex; flex-direction: column; gap: 12px; }
+.top-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(12, 18, 35, 0.93);
+  border: 1px solid rgba(125, 211, 252, 0.14);
+  border-radius: 14px;
+  padding: 12px 18px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s var(--ease), border-color 0.22s var(--ease), box-shadow 0.22s var(--ease);
+}
+.top-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 10px 28px -10px rgba(56, 189, 248, 0.25);
+}
+.top-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.08), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.8s var(--ease);
+  pointer-events: none;
+}
+.top-item:hover::after { transform: translateX(100%); }
+.top-rank {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 900;
+  font-size: 1.15rem;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+  color: var(--text-dim);
+}
+.top-rank.r1 { color: #fbbf24; text-shadow: 0 0 14px rgba(251, 191, 36, 0.65); }
+.top-rank.r2 { color: #cbd5e1; text-shadow: 0 0 12px rgba(203, 213, 225, 0.5); }
+.top-rank.r3 { color: #d97706; text-shadow: 0 0 12px rgba(217, 119, 6, 0.55); }
+.top-img {
+  width: 56px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid rgba(125, 211, 252, 0.2);
+}
+.top-info { flex: 1; min-width: 0; }
+.top-title {
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.top-bar-wrap { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.top-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+.top-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #0284c7, var(--ice-primary), #7dd3fc);
+  box-shadow: 0 0 10px var(--ice-glow);
+  transition: width 1.1s var(--ease);
+}
+.top-copies {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ice-light);
+  white-space: nowrap;
+}
+.top-live-hint {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* ===== الكونفيتي والانفجار القلبي ===== */
+.confetti-bit {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999998;
+  border-radius: 2px;
+  animation: confettiFly 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes confettiFly {
+  from { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+  to { transform: translate(var(--cx), var(--cy)) rotate(var(--cr)) scale(0.35); opacity: 0; }
+}
+.heart-bit {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999998;
+  font-size: 0.9rem;
+  animation: heartFly 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes heartFly {
+  from { transform: translate(0, 0) scale(0.6); opacity: 1; }
+  to { transform: translate(var(--cx), var(--cy)) scale(1.25); opacity: 0; }
+}
+
+/* ===== إصدار الفوتر ===== */
+.footer-ver {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ice-primary);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-inline-start: 6px;
+  vertical-align: middle;
+}
+
+/* تركيز لطيف وسهل الوصول */
+:focus-visible { outline: 2px solid var(--ice-primary); outline-offset: 2px; }
+
+/* ===== استجابة الموبايل للعناصر الجديدة ===== */
+@media (max-width: 640px) {
+  .engage-panel { padding: 14px 13px 16px; }
+  .engage-btn { padding: 9px 14px; font-size: 0.8rem; }
+  .engage-chip { padding: 9px 14px; font-size: 0.78rem; }
+  .engage-live-tag { display: none; }
+  .comment-name-input { flex: 1 1 100%; }
+  .comment-send-btn { flex: 1 1 100%; }
+  .top-item { padding: 10px 12px; gap: 10px; }
+  .top-img { width: 46px; height: 38px; }
+  .top-rank { width: 26px; font-size: 1rem; }
+  .lv-hide-sm { display: none; }
+}
+
+/* تقليل الحركة: إيقاف التأثيرات الثقيلة */
+@media (prefers-reduced-motion: reduce) {
+  .holo-wrap::before { animation: none; }
+  .type-caret { animation: none; }
+  .intro-avatar-wrap::before { animation: none; }
+  .top-bar-fill { transition: none; }
+  .confetti-bit, .heart-bit { display: none; }
+  .tilt-zone .script-showcase-card { transform: none !important; }
+}
+
 </style>
 </head>
 <body>
 
-<!-- مؤشر الماوس المخصص الخاص -->
-<div class="custom-cursor-dot" id="cursorDot"></div>
-<div class="custom-cursor-ring" id="cursorRing"></div>
-
-<!-- خلفيات الشتاء المتدرجة -->
+<!-- خلفيات الشتاء المتدرجة + محرك التأثيرات (أورورا قطبية + ثلج تفاعلي) -->
 <div class="bg-deep-space"></div>
 <div class="bg-grid-frost"></div>
+<canvas id="fxCanvas" aria-hidden="true"></canvas>
 
-<!-- تساقط الثلج الهادئ في الخلفية -->
-<div class="snow-layer">
-  <div class="flake">❄</div>
-  <div class="flake">❅</div>
-  <div class="flake">❆</div>
-  <div class="flake">✦</div>
-  <div class="flake">❄</div>
-  <div class="flake">❅</div>
-  <div class="flake">❆</div>
-  <div class="flake">✧</div>
-  <div class="flake">❄</div>
-  <div class="flake">❅</div>
-</div>
+<!-- شريط تقدم التمرير -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"><div class="scroll-progress-bar" id="scrollProgressBar"></div></div>
 
 <!-- شاشة التحميل السريعة والمضمونة -->
 <div id="introScreen" class="intro-screen">
-  <img class="intro-avatar" src="images/guild_icon.png" alt="Secrit Script" width="128" height="128">
+  <div class="intro-avatar-wrap">
+    <img class="intro-avatar" src="images/guild_icon.png" alt="Secrit Script" width="128" height="128">
+  </div>
   <div class="intro-title">Secrit Script</div>
   <div class="intro-line"><div class="intro-line-inner"></div></div>
+  <div class="intro-percent" id="introPercent">0%</div>
 </div>
 
 <script>
 (function(){
   var closed = false;
+  var percentEl = document.getElementById('introPercent');
+  var start = performance.now();
+  var DURATION = 850;
+
+  function tick(now){
+    if(closed) return;
+    var p = Math.min(1, (now - start) / DURATION);
+    var eased = 1 - Math.pow(1 - p, 3);
+    if(percentEl) percentEl.textContent = Math.round(eased * 100) + '%';
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
   function closeIntro(){
     if(closed) return;
     closed = true;
@@ -1677,9 +2191,9 @@ footer {
   }
   var el = document.getElementById('introScreen');
   if(el) el.addEventListener('click', closeIntro);
-  setTimeout(closeIntro, 900);
-  if(document.readyState === 'complete') { setTimeout(closeIntro, 400); }
-  else { window.addEventListener('load', function(){ setTimeout(closeIntro, 350); }); }
+  setTimeout(closeIntro, 1000);
+  if(document.readyState === 'complete') { setTimeout(closeIntro, 500); }
+  else { window.addEventListener('load', function(){ setTimeout(closeIntro, 450); }); }
 })();
 </script>
 
@@ -1720,7 +2234,7 @@ footer {
 <section class="hero-clean">
   <div class="hero-badge">❄️ THE OFFICIAL SCRIPT HUB</div>
   <h1 class="glitch-title" data-text="Secrit Script" data-i18n="heroTitle">Secrit Script</h1>
-  <p class="hero-subtitle-clean">أفضل وأحدث سكربتات روبلوكس الحصرية المعتمدة للكمبيوتر والجوال</p>
+  <p class="hero-subtitle-clean"><span id="heroTyped"></span><span class="type-caret" id="heroCaret" aria-hidden="true"></span></p>
 </section>
 
 <!-- ===== المحتوى الرئيسي ===== -->
@@ -1739,6 +2253,21 @@ footer {
       <div class="lv-item">
         <span class="lv-num" id="liveStripOnline">17</span>
         <span class="lv-lbl" data-i18n="onlineCount">متصل الآن</span>
+      </div>
+      <div class="lv-divider lv-hide-sm"></div>
+      <div class="lv-item lv-hide-sm">
+        <span class="lv-num" id="liveStripVisitors" data-val="0">0</span>
+        <span class="lv-lbl" data-i18n="visitorsNow">زائر الآن</span>
+      </div>
+      <div class="lv-divider"></div>
+      <div class="lv-item">
+        <span class="lv-num" id="liveStripCopies" data-val="0">0</span>
+        <span class="lv-lbl" data-i18n="totalCopies">نسخة إجمالي</span>
+      </div>
+      <div class="lv-divider"></div>
+      <div class="lv-item">
+        <span class="lv-num" id="liveStripLikes" data-val="0">0</span>
+        <span class="lv-lbl" data-i18n="totalLikes">لايك إجمالي</span>
       </div>
     </div>
     <span class="lv-sync" id="liveSyncTime">● SYNC 00:00</span>
@@ -1855,7 +2384,9 @@ footer {
 
   <!-- كرت عرض السكربت المختار بشياكة وفخامة مع زر نسخ بارز -->
   <div class="script-showcase-wrapper">
-    <div class="script-showcase-card">
+    <div class="holo-wrap tilt-zone">
+      <div class="holo-inner">
+        <div class="script-showcase-card">
       
       <!-- الصورة المحددة للماب -->
       <div class="showcase-banner-side">
@@ -1895,8 +2426,61 @@ footer {
         </div>
       </div>
 
+      <!-- ===== v3.0: نظام التفاعل — لايكات + عدّاد النسخ + التعليقات ===== -->
+      <div class="engage-panel">
+        <div class="engage-bar">
+          <button class="engage-btn like-btn" id="likeBtn" aria-label="إعجاب" aria-pressed="false">
+            <svg class="like-heart" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span class="engage-count" id="likeCount" data-val="0">0</span>
+            <span id="likeLabelText" data-i18n="likeLabel">إعجاب</span>
+          </button>
+
+          <div class="engage-chip" title="عدد مرات نسخ هذا السكربت">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span><b id="copyCount">0</b> <span data-i18n="copiesLabel">مرة نسخ</span></span>
+          </div>
+
+          <button class="engage-btn" id="commentsToggle" aria-expanded="true" aria-controls="commentsPanel">
+            <span>💬</span>
+            <span class="engage-count" id="commentCount">0</span>
+            <span data-i18n="commentsLabel">تعليق</span>
+          </button>
+
+          <span class="engage-live-tag">LIVE COUNTER</span>
+        </div>
+
+        <div class="comments-panel" id="commentsPanel">
+          <div class="comment-list" id="commentList"></div>
+          <form class="comment-form" id="commentForm" autocomplete="off">
+            <input class="comment-name-input" id="commentName" maxlength="32" data-i18n-placeholder="commentNamePh" placeholder="اسمك (اختياري)">
+            <textarea class="comment-input" id="commentText" rows="1" maxlength="300" data-i18n-placeholder="commentTextPh" placeholder="اكتب تعليقك هنا..."></textarea>
+            <button class="comment-send-btn" type="submit" data-i18n="commentSend">إرسال</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+      </div>
     </div>
   </div>
+
+  <!-- ===== قائمة الأكثر نسخاً — Live Leaderboard (v3.0) ===== -->
+  <section class="top-scripts-section rv" id="topScriptsSection">
+    <div class="section-title-wrap">
+      <div class="section-main-title">
+        <span>🏆</span>
+        <span data-i18n="leaderboardTitle">الأكثر نسخاً</span>
+      </div>
+      <p class="section-sub-title" data-i18n="leaderboardSub">ترتيب حي لأكثر السكربتات استخداماً — اضغط على أي سكربت للانتقال إليه فوراً</p>
+    </div>
+    <div class="top-scripts-list" id="topScriptsList"></div>
+    <p class="top-live-hint" data-i18n="leaderboardLive">● الأرقام تتحدث مباشرة مع كل عملية نسخ جديدة</p>
+  </section>
 
   <!-- ===== قسم الإدارة ومجتمع السيرفر المطور كلياً ===== -->
   <section class="community-section">
@@ -2058,7 +2642,7 @@ footer {
 
 <!-- الفوتر -->
 <footer>
-  <p>© <span id="yearVal">2026</span> Secrit Script. <span data-i18n="rights">جميع الحقوق محفوظة لمجتمع Secrit Script.</span></p>
+  <p>© <span id="yearVal">2026</span> Secrit Script. <span data-i18n="rights">جميع الحقوق محفوظة لمجتمع Secrit Script.</span> <span class="footer-ver">v3.0</span></p>
 </footer>
 
 <!-- إشعار النسخ -->
@@ -2100,7 +2684,21 @@ var I18N = {
     musicPaused: "الموسيقى: متوقفة",
     pcOnlyNotice: "⚠️ هذا السكربت متوفر حالياً بنسخة الكمبيوتر (PC) فقط داخل قنوات السيرفر الرسمية.",
     membersCount: "أعضاء",
-    onlineCount: "متصل الآن"
+    onlineCount: "متصل الآن",
+    visitorsNow: "زائر الآن",
+    totalCopies: "نسخة إجمالي",
+    totalLikes: "لايك إجمالي",
+    likeLabel: "إعجاب",
+    likedLabel: "معجب",
+    copiesLabel: "مرة نسخ",
+    commentsLabel: "تعليق",
+    commentNamePh: "اسمك (اختياري)",
+    commentTextPh: "اكتب تعليقك هنا...",
+    commentSend: "إرسال",
+    noComments: "💬 كن أول من يعلّق على هذا السكربت!",
+    leaderboardTitle: "الأكثر نسخاً",
+    leaderboardSub: "ترتيب حي لأكثر السكربتات استخداماً — اضغط على أي سكربت للانتقال إليه فوراً",
+    leaderboardLive: "● الأرقام تتحدث مباشرة مع كل عملية نسخ جديدة"
   },
   en: {
     joinBtn: "Join Discord",
@@ -2132,7 +2730,21 @@ var I18N = {
     musicPaused: "Music: Muted",
     pcOnlyNotice: "⚠️ This script is currently available for PC executors only in the official server.",
     membersCount: "members",
-    onlineCount: "online now"
+    onlineCount: "online now",
+    visitorsNow: "visitors",
+    totalCopies: "total copies",
+    totalLikes: "total likes",
+    likeLabel: "Like",
+    likedLabel: "Liked",
+    copiesLabel: "copies",
+    commentsLabel: "Comments",
+    commentNamePh: "Your name (optional)",
+    commentTextPh: "Write your comment...",
+    commentSend: "Send",
+    noComments: "💬 Be the first to comment on this script!",
+    leaderboardTitle: "Most Copied",
+    leaderboardSub: "Live ranking of the most used scripts — click any script to jump to it instantly",
+    leaderboardLive: "● Numbers update live with every new copy"
   }
 };
 
@@ -2529,6 +3141,9 @@ function updateScriptShowcase() {
       copyCodeString(scriptItem.code, copyBtn);
     };
   }
+
+  // إشعار نظام التفاعل (لايكات/تعليقات/نسخ) بأن السكربت الحالي تغيّر
+  if (window.onShowcaseUpdated) window.onShowcaseUpdated();
 }
 
 function copyCodeString(code, btn) {
@@ -2540,6 +3155,8 @@ function copyCodeString(code, btn) {
       textEl.textContent = I18N[lang].copiedBtn;
       setTimeout(function() { textEl.textContent = oldText; }, 1600);
     }
+    // تسجيل عملية النسخ في عدّاد السكربت
+    if (window.onScriptCopied) window.onScriptCopied();
   };
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -2840,6 +3457,1028 @@ setLang('ar');
 updateScriptShowcase();
 fetchDiscordStats();
 setInterval(fetchDiscordStats, 12000);
+</script>
+
+<script>
+/* ========================================================
+   SECRIT SCRIPT v3.0 — محرك التفاعل العالمي + التأثيرات الجديدة
+   - لايكات + تعليقات + عدّاد نسخ لكل سكربت (Firebase / وضع تجريبي محلي)
+   - قائمة الأكثر نسخاً الحية + عدّاد زوار الموقع (Presence)
+   - أورورا قطبية + ثلج تفاعلي + إطار هولو + ميلان ثلاثي الأبعاد
+   - مؤشر كتابة + شريط تقدم + كونفيتي + أرقام متحركة
+   ======================================================== */
+(function () {
+  'use strict';
+
+  /* ---------- أدوات عامة ---------- */
+  function $(id) { return document.getElementById(id); }
+  function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+  function hashString(s) {
+    var h = 5381;
+    for (var i = 0; i < s.length; i++) { h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; }
+    return h;
+  }
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function formatNum(n) { return (Number(n) || 0).toLocaleString('en-US'); }
+  function isReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  function isCoarse() {
+    return window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  }
+  var REDUCED = isReducedMotion();
+  var COARSE = isCoarse();
+
+  /* تخزين محلي آمن (لا يكسر الموقع في وضع التصفح الخاص) */
+  var store = {
+    get: function (k, def) {
+      try { var v = localStorage.getItem(k); return v === null ? def : JSON.parse(v); }
+      catch (e) { return def; }
+    },
+    set: function (k, v) {
+      try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {}
+    }
+  };
+  var myLocalUid = store.get('ss_uid', null);
+  if (!myLocalUid) {
+    myLocalUid = 'local_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+    store.set('ss_uid', myLocalUid);
+  }
+
+  /* ---------- إعداد Firebase (اختياري) ----------
+     ضع بيانات مشروعك هنا لتفعيل اللايكات والتعليقات وعدّاد النسخ
+     بشكل عالمي حقيقي مشترك بين كل الزوار.
+     الدليل الكامل: README-FIREBASE.md */
+  var FIREBASE_CONFIG = {
+    apiKey: "PASTE_YOUR_API_KEY_HERE",
+    authDomain: "PASTE_HERE.firebaseapp.com",
+    databaseURL: "https://PASTE_HERE-default-rtdb.firebaseio.com",
+    projectId: "PASTE_HERE",
+    storageBucket: "PASTE_HERE.appspot.com",
+    messagingSenderId: "000000000000",
+    appId: "1:000000000000:web:0000000000000000000000"
+  };
+  var FB_ENABLED = FIREBASE_CONFIG.apiKey.indexOf('PASTE') === -1;
+  var fbDb = null;
+  var myUid = null;
+  var allEngData = null;
+
+  function firebaseReady(cb) {
+    if (!FB_ENABLED) { cb(false); return; }
+    var urls = [
+      'https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js',
+      'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js',
+      'https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js'
+    ];
+    var done = 0;
+    function step() {
+      done++;
+      if (done < urls.length) return;
+      try {
+        firebase.initializeApp(FIREBASE_CONFIG);
+        firebase.auth().signInAnonymously()
+          .then(function () { myUid = firebase.auth().currentUser.uid; cb(true); })
+          .catch(function () { cb(false); });
+      } catch (e) { cb(false); }
+    }
+    for (var i = 0; i < urls.length; i++) {
+      var s = document.createElement('script');
+      s.src = urls[i];
+      s.async = true;
+      s.onload = step;
+      s.onerror = step;
+      document.head.appendChild(s);
+    }
+  }
+
+  function engagementPath(id) { return 'engagements/scripts/' + id; }
+
+  /* ---------- حالة التفاعل ---------- */
+  var currentEngId = null;
+  var ENG = null;
+  var lastCommentsSig = null;
+  var lastLbSig = null;
+  var commentTimeEls = [];
+
+  function getScriptId() {
+    var mapData = SCRIPTS_DB[selectedMap] || {};
+    var role = mapData.hasRoles ? selectedSubRole : 'default';
+    return selectedMap + ':' + selectedPlatform + ':' + role;
+  }
+
+  /* بيانات تجريبية محلية ثابتة (تظهر فقط بدون Firebase) */
+  function demoBase(id) {
+    var h = hashString(id);
+    return { copies: 40 + (h % 560), likes: 25 + (h % 340) };
+  }
+  var DEMO_COMMENTS = [
+    { name: 'Mahmoud', text: 'أفضل سكربت جربته والله شغال 100% 🔥' },
+    { name: 'Killer_X', text: 'اشتغل معايا على Delta بدون أي مشاكل' },
+    { name: 'Ziad', text: 'الموقع ده كنز ماينفعش يقفل 😂' },
+    { name: 'Ahmed', text: 'حد جرب النسخة دي على الجوال؟' }
+  ];
+  function seededComments(id) {
+    var h = hashString(id);
+    var count = 1 + (h % 3);
+    var now = Date.now();
+    var out = [];
+    for (var i = 0; i < count; i++) {
+      var c = DEMO_COMMENTS[(h + i * 7) % DEMO_COMMENTS.length];
+      out.push({ uid: 'seed_' + id + '_' + i, name: c.name, text: c.text, ts: now - (i + 1) * 3600000 * (1 + (h % 5)), likes: {} });
+    }
+    return out;
+  }
+
+  function computeEng(id) {
+    if (fbDb && allEngData) {
+      var node = allEngData[id] || {};
+      var likesMap = node.likes || {};
+      var comments = [];
+      if (node.comments) {
+        for (var k in node.comments) {
+          if (node.comments.hasOwnProperty(k)) {
+            var c = node.comments[k];
+            c.cid = k;
+            comments.push(c);
+          }
+        }
+      }
+      comments.sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
+      return {
+        likes: Object.keys(likesMap).length,
+        liked: !!(myUid && likesMap[myUid]),
+        copies: node.copies || 0,
+        comments: comments
+      };
+    }
+    var base = demoBase(id);
+    var liked = store.get('ss_liked_' + id, false);
+    var comments = store.get('ss_comments_' + id, seededComments(id));
+    comments.sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
+    return {
+      likes: base.likes + (liked ? 1 : 0),
+      liked: liked,
+      copies: base.copies + store.get('ss_copies_' + id, 0),
+      comments: comments
+    };
+  }
+
+  /* أرقام متحركة */
+  function animateNumber(el, to) {
+    if (!el) return;
+    var cur = parseInt(el.getAttribute('data-val') || '0', 10) || 0;
+    if (cur === to) { el.textContent = formatNum(to); return; }
+    if (REDUCED) { el.textContent = formatNum(to); el.setAttribute('data-val', to); return; }
+    var from = cur;
+    var start = performance.now();
+    var dur = 650;
+    function frame(t) {
+      var p = clamp((t - start) / dur, 0, 1);
+      var v = Math.round(from + (to - from) * easeOutCubic(p));
+      el.textContent = formatNum(v);
+      if (p < 1) requestAnimationFrame(frame);
+      else el.setAttribute('data-val', to);
+    }
+    el.setAttribute('data-val', from);
+    requestAnimationFrame(frame);
+  }
+
+  function timeAgo(ts) {
+    var diff = Math.max(0, Date.now() - (Number(ts) || 0));
+    var m = Math.floor(diff / 60000);
+    var h = Math.floor(diff / 3600000);
+    var d = Math.floor(diff / 86400000);
+    if (diff < 60000) return lang === 'ar' ? 'الآن' : 'now';
+    if (m < 60) return lang === 'ar' ? 'قبل ' + m + ' د' : m + 'm ago';
+    if (h < 24) return lang === 'ar' ? 'قبل ' + h + ' س' : h + 'h ago';
+    if (d < 7) return lang === 'ar' ? 'قبل ' + d + ' يوم' : d + 'd ago';
+    return new Date(ts).toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US');
+  }
+
+  function commentsSig(list) {
+    return list.map(function (c) {
+      return (c.cid || c.uid) + '|' + (c.ts || 0) + '|' + Object.keys(c.likes || {}).length;
+    }).join('~');
+  }
+
+  /* ---------- رسم واجهة التفاعل ---------- */
+  function renderComments(comments) {
+    var list = $('commentList');
+    if (!list) return;
+    list.textContent = '';
+    commentTimeEls = [];
+    if (!comments.length) {
+      var empty = document.createElement('div');
+      empty.className = 'comment-empty';
+      empty.textContent = I18N[lang].noComments || '';
+      list.appendChild(empty);
+      return;
+    }
+    var frag = document.createDocumentFragment();
+    comments.forEach(function (c, i) {
+      var item = document.createElement('div');
+      item.className = 'comment-item';
+      if (i < 6) item.style.animationDelay = (i * 45) + 'ms';
+
+      var av = document.createElement('div');
+      av.className = 'comment-avatar';
+      var initial = ((c.name || '?').trim().charAt(0) || '?').toUpperCase();
+      av.textContent = initial;
+      var hue = hashString(c.uid || c.cid || 'x') % 360;
+      av.style.background = 'linear-gradient(135deg, hsl(' + hue + ',80%,55%), hsl(' + ((hue + 60) % 360) + ',75%,45%))';
+
+      var body = document.createElement('div');
+      body.className = 'comment-body';
+
+      var head = document.createElement('div');
+      head.className = 'comment-head';
+      var nameEl = document.createElement('span');
+      nameEl.className = 'comment-name';
+      nameEl.textContent = c.name || (lang === 'ar' ? 'زائر' : 'Guest');
+      var timeEl = document.createElement('span');
+      timeEl.className = 'comment-time';
+      timeEl.setAttribute('data-ts', c.ts || 0);
+      timeEl.textContent = timeAgo(c.ts);
+      commentTimeEls.push(timeEl);
+      head.appendChild(nameEl);
+      head.appendChild(timeEl);
+
+      var textEl = document.createElement('div');
+      textEl.className = 'comment-text';
+      textEl.textContent = c.text || '';
+
+      var actions = document.createElement('div');
+      actions.className = 'comment-actions';
+
+      var myKey = fbDb ? myUid : myLocalUid;
+      var likeC = Object.keys(c.likes || {}).length;
+      var likedC = !!((c.likes || {})[myKey]);
+      var lkBtn = document.createElement('button');
+      lkBtn.className = 'comment-like-btn' + (likedC ? ' liked' : '');
+      lkBtn.type = 'button';
+      lkBtn.innerHTML = '<span>♥</span><span>' + likeC + '</span>';
+      lkBtn.setAttribute('aria-pressed', String(likedC));
+      (function (cid) {
+        lkBtn.addEventListener('click', function () { toggleCommentLike(cid); });
+      })(c.cid || c.uid);
+      actions.appendChild(lkBtn);
+
+      var own = fbDb ? (c.uid === myUid) : (c.uid === myLocalUid);
+      if (own) {
+        var delBtn = document.createElement('button');
+        delBtn.className = 'comment-del-btn';
+        delBtn.type = 'button';
+        delBtn.textContent = '🗑';
+        delBtn.title = lang === 'ar' ? 'حذف تعليقك' : 'Delete your comment';
+        (function (cid) {
+          delBtn.addEventListener('click', function () { deleteComment(cid); });
+        })(c.cid || c.uid);
+        actions.appendChild(delBtn);
+      }
+
+      body.appendChild(head);
+      body.appendChild(textEl);
+      body.appendChild(actions);
+      item.appendChild(av);
+      item.appendChild(body);
+      frag.appendChild(item);
+    });
+    list.appendChild(frag);
+  }
+
+  function updateCommentTimes() {
+    for (var i = 0; i < commentTimeEls.length; i++) {
+      commentTimeEls[i].textContent = timeAgo(commentTimeEls[i].getAttribute('data-ts'));
+    }
+  }
+
+  function renderEngagement() {
+    var id = currentEngId || getScriptId();
+    currentEngId = id;
+    ENG = computeEng(id);
+
+    var lb = $('likeBtn');
+    if (lb) {
+      lb.classList.toggle('liked', ENG.liked);
+      lb.setAttribute('aria-pressed', String(ENG.liked));
+    }
+    var ll = $('likeLabelText');
+    if (ll) ll.textContent = I18N[lang][ENG.liked ? 'likedLabel' : 'likeLabel'];
+
+    animateNumber($('likeCount'), ENG.likes);
+    animateNumber($('copyCount'), ENG.copies);
+    animateNumber($('commentCount'), ENG.comments.length);
+
+    var sig = commentsSig(ENG.comments);
+    if (sig !== lastCommentsSig) {
+      lastCommentsSig = sig;
+      renderComments(ENG.comments);
+    }
+    updateCommentTimes();
+  }
+
+  /* ---------- إجراءات التفاعل ---------- */
+  function spawnConfetti(origin) {
+    if (!origin || REDUCED) return;
+    var r = origin.getBoundingClientRect();
+    var x = r.left + r.width / 2;
+    var y = r.top + r.height / 2;
+    var colors = ['#38bdf8', '#7dd3fc', '#ffffff', '#818cf8', '#22c55e'];
+    for (var i = 0; i < 16; i++) {
+      var b = document.createElement('span');
+      b.className = 'confetti-bit';
+      var size = 5 + Math.random() * 6;
+      b.style.width = size + 'px';
+      b.style.height = size + 'px';
+      b.style.background = colors[Math.floor(Math.random() * colors.length)];
+      b.style.left = x + 'px';
+      b.style.top = y + 'px';
+      var ang = Math.random() * Math.PI * 2;
+      var dist = 60 + Math.random() * 90;
+      b.style.setProperty('--cx', Math.cos(ang) * dist + 'px');
+      b.style.setProperty('--cy', Math.sin(ang) * dist - 30 + 'px');
+      b.style.setProperty('--cr', (Math.random() * 540 - 270) + 'deg');
+      document.body.appendChild(b);
+      (function (el) {
+        setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 900);
+      })(b);
+    }
+  }
+
+  function spawnHeartBurst(origin) {
+    if (!origin || REDUCED) return;
+    var r = origin.getBoundingClientRect();
+    var x = r.left + r.width / 2;
+    var y = r.top + r.height / 2;
+    for (var i = 0; i < 8; i++) {
+      var h = document.createElement('span');
+      h.className = 'heart-bit';
+      h.textContent = Math.random() < 0.5 ? '♥' : '💙';
+      h.style.left = x + 'px';
+      h.style.top = y + 'px';
+      var ang = -Math.PI / 2 + (Math.random() - 0.5) * 1.6;
+      var dist = 34 + Math.random() * 46;
+      h.style.setProperty('--cx', Math.cos(ang) * dist + 'px');
+      h.style.setProperty('--cy', Math.sin(ang) * dist + 'px');
+      document.body.appendChild(h);
+      (function (el) {
+        setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 950);
+      })(h);
+    }
+  }
+
+  function toggleLike() {
+    var id = currentEngId || getScriptId();
+    var was = ENG ? ENG.liked : false;
+    if (fbDb && myUid) {
+      var ref = fbDb.ref(engagementPath(id) + '/likes/' + myUid);
+      if (was) ref.remove(); else ref.set(true);
+      if (ENG) {
+        ENG.liked = !was;
+        ENG.likes = Math.max(0, ENG.likes + (was ? -1 : 1));
+        renderEngagement();
+      }
+    } else {
+      store.set('ss_liked_' + id, !was);
+      renderEngagement();
+    }
+    var lb = $('likeBtn');
+    if (lb) {
+      lb.classList.remove('heart-pop');
+      void lb.offsetWidth;
+      lb.classList.add('heart-pop');
+    }
+    spawnHeartBurst(lb);
+  }
+
+  function registerCopy() {
+    var id = currentEngId || getScriptId();
+    var newTotal = (ENG ? ENG.copies : 0) + 1;
+    if (fbDb) {
+      fbDb.ref(engagementPath(id) + '/copies').transaction(function (cur) {
+        return (cur || 0) + 1;
+      });
+      if (ENG) { ENG.copies = newTotal; renderEngagement(); }
+    } else {
+      store.set('ss_copies_' + id, store.get('ss_copies_' + id, 0) + 1);
+      renderEngagement();
+      renderLeaderboard();
+      renderTotals();
+    }
+    spawnConfetti($('showcaseCopyBtn'));
+    showToast(I18N[lang].toastCopied + ' — ' + (lang === 'ar' ? 'نسخة رقم ' : 'Copy #') + formatNum(newTotal));
+    animateNumber($('copyCount'), newTotal);
+  }
+
+  function findComment(cid) {
+    if (!ENG) return null;
+    for (var i = 0; i < ENG.comments.length; i++) {
+      if (ENG.comments[i].cid === cid || ENG.comments[i].uid === cid) return ENG.comments[i];
+    }
+    return null;
+  }
+
+  function toggleCommentLike(cid) {
+    var id = currentEngId || getScriptId();
+    if (fbDb && myUid) {
+      var c = findComment(cid);
+      var ref = fbDb.ref(engagementPath(id) + '/comments/' + cid + '/likes/' + myUid);
+      if (c && ((c.likes || {})[myUid])) ref.remove(); else ref.set(true);
+    } else {
+      var list = store.get('ss_comments_' + id, seededComments(id));
+      list = list.map(function (cm) {
+        if (cm.uid === cid) {
+          cm.likes = cm.likes || {};
+          if (cm.likes[myLocalUid]) delete cm.likes[myLocalUid];
+          else cm.likes[myLocalUid] = true;
+        }
+        return cm;
+      });
+      store.set('ss_comments_' + id, list);
+      renderEngagement();
+    }
+  }
+
+  function deleteComment(cid) {
+    var id = currentEngId || getScriptId();
+    if (fbDb) {
+      fbDb.ref(engagementPath(id) + '/comments/' + cid).remove();
+    } else {
+      var list = store.get('ss_comments_' + id, seededComments(id)).filter(function (c) { return c.uid !== cid; });
+      store.set('ss_comments_' + id, list);
+      renderEngagement();
+    }
+  }
+
+  function submitComment(e) {
+    e.preventDefault();
+    var input = $('commentText');
+    if (!input) return;
+    var text = input.value.trim().slice(0, 300);
+    if (!text) return;
+    var nameRaw = ($('commentName') ? $('commentName').value.trim().slice(0, 32) : '');
+    if (nameRaw) store.set('ss_name', nameRaw);
+    var name = nameRaw || store.get('ss_name', '') || (lang === 'ar' ? 'زائر' : 'Guest');
+    var id = currentEngId || getScriptId();
+    var comment = { uid: (fbDb && myUid) ? myUid : myLocalUid, name: name, text: text, ts: Date.now() };
+    if (fbDb) {
+      fbDb.ref(engagementPath(id) + '/comments').push(comment).catch(function () {
+        showToast(lang === 'ar' ? 'تعذر إرسال التعليق — حاول مرة أخرى' : 'Failed to send comment — try again');
+      });
+    } else {
+      var list = store.get('ss_comments_' + id, seededComments(id));
+      list.push(comment);
+      store.set('ss_comments_' + id, list);
+    }
+    input.value = '';
+    autoGrow();
+    updateSendState();
+    renderEngagement();
+  }
+
+  function autoGrow() {
+    var t = $('commentText');
+    if (!t) return;
+    t.style.height = 'auto';
+    t.style.height = Math.min(t.scrollHeight, 120) + 'px';
+  }
+
+  function updateSendState() {
+    var form = $('commentForm');
+    var t = $('commentText');
+    if (!form || !t) return;
+    var b = form.querySelector('button[type="submit"]');
+    if (b) b.disabled = !t.value.trim();
+  }
+
+  /* ---------- قائمة الأكثر نسخاً + الإجماليات ---------- */
+  function getAllScriptEntries() {
+    var entries = [];
+    Object.keys(SCRIPTS_DB).forEach(function (mapKey) {
+      var mapData = SCRIPTS_DB[mapKey];
+      ['pc', 'mobile'].forEach(function (platform) {
+        if (!mapData[platform]) return;
+        var roles = mapData.hasRoles ? ['criminal', 'police'] : ['default'];
+        roles.forEach(function (role) {
+          var item = mapData.hasRoles ? (mapData[platform][role] || mapData[platform].criminal) : mapData[platform].default;
+          if (!item) return;
+          entries.push({
+            id: mapKey + ':' + platform + ':' + role,
+            mapKey: mapKey,
+            platform: platform,
+            role: role,
+            title: item.title,
+            image: (platform === 'mobile' && mapData.mobileImage) ? mapData.mobileImage : mapData.image
+          });
+        });
+      });
+    });
+    return entries;
+  }
+
+  function computeLeaderboard() {
+    var entries = getAllScriptEntries();
+    entries.forEach(function (en) {
+      if (fbDb && allEngData) {
+        var n = allEngData[en.id] || {};
+        en.copies = n.copies || 0;
+      } else {
+        en.copies = demoBase(en.id).copies + store.get('ss_copies_' + en.id, 0);
+      }
+    });
+    entries.sort(function (a, b) { return b.copies - a.copies; });
+    return entries.slice(0, 6);
+  }
+
+  function renderLeaderboard() {
+    var list = $('topScriptsList');
+    if (!list) return;
+    var rows = computeLeaderboard();
+    var sig = rows.map(function (r) { return r.id + ':' + r.copies; }).join('|');
+    if (sig === lastLbSig) return;
+    lastLbSig = sig;
+
+    list.textContent = '';
+    var frag = document.createDocumentFragment();
+    var max = rows.length ? rows[0].copies : 1;
+    rows.forEach(function (r, i) {
+      var item = document.createElement('div');
+      item.className = 'top-item';
+      item.setAttribute('role', 'button');
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('aria-label', r.title);
+
+      var rank = document.createElement('div');
+      rank.className = 'top-rank' + (i === 0 ? ' r1' : (i === 1 ? ' r2' : (i === 2 ? ' r3' : '')));
+      rank.textContent = '#' + (i + 1);
+
+      var img = document.createElement('img');
+      img.className = 'top-img';
+      img.src = r.image;
+      img.alt = r.title;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+
+      var info = document.createElement('div');
+      info.className = 'top-info';
+      var t = document.createElement('div');
+      t.className = 'top-title';
+      t.textContent = r.title;
+      var barWrap = document.createElement('div');
+      barWrap.className = 'top-bar-wrap';
+      var bar = document.createElement('div');
+      bar.className = 'top-bar';
+      var fill = document.createElement('div');
+      fill.className = 'top-bar-fill';
+      bar.appendChild(fill);
+      var copies = document.createElement('span');
+      copies.className = 'top-copies';
+      copies.textContent = formatNum(r.copies) + ' ' + (lang === 'ar' ? 'نسخة' : 'copies');
+      barWrap.appendChild(bar);
+      barWrap.appendChild(copies);
+      info.appendChild(t);
+      info.appendChild(barWrap);
+
+      item.appendChild(rank);
+      item.appendChild(img);
+      item.appendChild(info);
+
+      (function (entry, fillEl) {
+        function jump() { jumpToScript(entry); }
+        item.addEventListener('click', jump);
+        item.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jump(); }
+        });
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            fillEl.style.width = Math.max(3, (entry.copies / max) * 100) + '%';
+          });
+        });
+      })(r, fill);
+
+      frag.appendChild(item);
+    });
+    list.appendChild(frag);
+  }
+
+  function jumpToScript(entry) {
+    selectedMap = entry.mapKey;
+    selectedPlatform = entry.platform;
+    var md = SCRIPTS_DB[entry.mapKey];
+    if (md && md.hasRoles) selectedSubRole = entry.role;
+
+    document.querySelectorAll('.map-select-card').forEach(function (c) {
+      c.classList.toggle('active', c.getAttribute('data-map') === entry.mapKey);
+    });
+    var pc = $('btnChoicePC'), mob = $('btnChoiceMobile');
+    if (pc) pc.classList.toggle('active', entry.platform === 'pc');
+    if (mob) mob.classList.toggle('active', entry.platform === 'mobile');
+    document.querySelectorAll('.sub-role-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-subrole') === entry.role);
+    });
+
+    updateScriptShowcase();
+    scrollToScriptShowcase();
+  }
+
+  function computeTotals() {
+    var copies = 0, likes = 0;
+    if (fbDb && allEngData) {
+      Object.keys(allEngData).forEach(function (id) {
+        var n = allEngData[id] || {};
+        copies += n.copies || 0;
+        likes += Object.keys(n.likes || {}).length;
+      });
+      return { copies: copies, likes: likes };
+    }
+    getAllScriptEntries().forEach(function (en) {
+      var base = demoBase(en.id);
+      copies += base.copies + store.get('ss_copies_' + en.id, 0);
+      likes += base.likes + (store.get('ss_liked_' + en.id, false) ? 1 : 0);
+    });
+    return { copies: copies, likes: likes };
+  }
+
+  function renderTotals() {
+    var tot = computeTotals();
+    animateNumber($('liveStripCopies'), tot.copies);
+    animateNumber($('liveStripLikes'), tot.likes);
+  }
+
+  /* ---------- عدّاد زوار الموقع (Presence) ---------- */
+  function setVisitors(n) { animateNumber($('liveStripVisitors'), n); }
+  function demoVisitors() {
+    return 2 + (hashString(Math.floor(Date.now() / 600000).toString(36)) % 9);
+  }
+  function startPresence() {
+    if (!fbDb) return;
+    try {
+      var myRef = fbDb.ref('presence/' + (myUid || 'anon_' + myLocalUid));
+      myRef.set(true);
+      myRef.onDisconnect().remove();
+      fbDb.ref('presence').on('value', function (snap) {
+        var n = 0;
+        snap.forEach(function () { n++; });
+        setVisitors(n);
+      });
+    } catch (e) {}
+  }
+
+  /* ---------- محرك التأثيرات (أورورا + نجوم + ثلج تفاعلي) ---------- */
+  function initFxEngine() {
+    var canvas = $('fxCanvas');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var W = 0, H = 0, DPR = 1;
+    var stars = [], flakes = [], blobs = [];
+    var mouse = { x: -9999, y: -9999 };
+
+    document.addEventListener('mousemove', function (e) {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    }, { passive: true });
+
+    function buildBlobs() {
+      blobs = [];
+      var defs = [
+        { c: 'rgba(56,189,248,', a: 0.10, r: 0.42 },
+        { c: 'rgba(88,101,242,', a: 0.09, r: 0.38 },
+        { c: 'rgba(14,165,233,', a: 0.08, r: 0.50 },
+        { c: 'rgba(125,211,252,', a: 0.06, r: 0.34 }
+      ];
+      for (var i = 0; i < defs.length; i++) {
+        var d = defs[i];
+        blobs.push({
+          x: Math.random(), y: Math.random(), r: d.r, c: d.c, a: d.a,
+          sx: (Math.random() * 0.00004 + 0.000015) * (Math.random() < 0.5 ? -1 : 1),
+          sy: (Math.random() * 0.00003 + 0.000012) * (Math.random() < 0.5 ? -1 : 1),
+          ph: Math.random() * Math.PI * 2
+        });
+      }
+    }
+    function buildStars() {
+      stars = [];
+      var n = Math.min(130, Math.floor(W * H / 14000));
+      for (var i = 0; i < n; i++) {
+        stars.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.1 + 0.25, ph: Math.random() * Math.PI * 2, sp: Math.random() * 0.0012 + 0.0003 });
+      }
+    }
+    function buildFlakes() {
+      flakes = [];
+      if (REDUCED) return;
+      var n = clamp(Math.floor(W * H / 26000), 22, 80);
+      for (var i = 0; i < n; i++) {
+        flakes.push({
+          x: Math.random() * W, y: Math.random() * H,
+          r: Math.random() * 2.4 + 0.8,
+          vy: Math.random() * 0.5 + 0.25,
+          ph: Math.random() * Math.PI * 2,
+          amp: Math.random() * 0.6 + 0.2,
+          a: Math.random() * 0.3 + 0.15
+        });
+      }
+    }
+    function resize() {
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = Math.floor(W * DPR);
+      canvas.height = Math.floor(H * DPR);
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      buildStars();
+      buildFlakes();
+      buildBlobs();
+    }
+    var rT = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(rT);
+      rT = setTimeout(resize, 160);
+    }, { passive: true });
+
+    function drawBlob(t, b) {
+      var x = (b.x + Math.sin(t * b.sx + b.ph) * 0.16) * W;
+      var y = (b.y + Math.cos(t * b.sy + b.ph) * 0.14) * H;
+      var rad = b.r * Math.max(W, H);
+      var g = ctx.createRadialGradient(x, y, 0, x, y, rad);
+      g.addColorStop(0, b.c + b.a + ')');
+      g.addColorStop(1, b.c + '0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(x - rad, y - rad, rad * 2, rad * 2);
+    }
+
+    var lastT = performance.now();
+    function tick(t) {
+      var dt = Math.min(60, t - lastT);
+      lastT = t;
+      ctx.clearRect(0, 0, W, H);
+
+      for (var i = 0; i < blobs.length; i++) drawBlob(t, blobs[i]);
+
+      for (var s = 0; s < stars.length; s++) {
+        var st = stars[s];
+        var a = 0.35 + 0.55 * Math.abs(Math.sin(t * st.sp + st.ph));
+        ctx.fillStyle = 'rgba(186,230,253,' + (a * 0.5).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(st.x, st.y, st.r, 0, 6.2832);
+        ctx.fill();
+      }
+
+      var step = dt / 16.7;
+      for (var f = 0; f < flakes.length; f++) {
+        var fl = flakes[f];
+        fl.y += fl.vy * step;
+        fl.x += Math.sin(t * 0.0006 + fl.ph) * fl.amp * step * 0.4;
+        var dx = fl.x - mouse.x;
+        var dy = fl.y - mouse.y;
+        var d2 = dx * dx + dy * dy;
+        if (d2 < 8100) {
+          var d = Math.sqrt(d2) || 1;
+          var push = ((90 - d) / 90) * 2.2 * step;
+          fl.x += (dx / d) * push;
+          fl.y += (dy / d) * push;
+        }
+        if (fl.y > H + 12) { fl.y = -10; fl.x = Math.random() * W; }
+        if (fl.x < -12) fl.x = W + 12;
+        if (fl.x > W + 12) fl.x = -12;
+        ctx.fillStyle = 'rgba(186,230,253,' + fl.a.toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(fl.x, fl.y, fl.r, 0, 6.2832);
+        ctx.fill();
+      }
+
+      if (!document.hidden) requestAnimationFrame(tick);
+    }
+
+    resize();
+    if (REDUCED) {
+      // إطار ثابت واحد بدون حركة
+      drawBlob(0, blobs[0] || { x: 0.3, y: 0.3, r: 0.4, c: 'rgba(56,189,248,', a: 0.1 });
+      return;
+    }
+    requestAnimationFrame(tick);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) {
+        lastT = performance.now();
+        requestAnimationFrame(tick);
+      }
+    });
+  }
+
+  /* ---------- مؤشر الكتابة في الهيرو ---------- */
+  var TYPING_PHRASES = {
+    ar: [
+      'أقوى سكربتات روبلوكس الحصرية 🔥',
+      'سكربتات محدثة 2026 بدون كراش ⚡',
+      'يدعم الكمبيوتر والجوال 🎮',
+      'مجتمع ديسكورد نشط 24/7 💎'
+    ],
+    en: [
+      'The most exclusive Roblox scripts 🔥',
+      'Updated 2026 scripts, zero crash ⚡',
+      'Supports PC & Mobile 🎮',
+      'Active Discord community 24/7 💎'
+    ]
+  };
+  function initTyping() {
+    var el = $('heroTyped');
+    if (!el) return;
+    var pi = 0, ci = 0, deleting = false, timer = null;
+    function phrases() { return TYPING_PHRASES[lang] || TYPING_PHRASES.ar; }
+    function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+    function step() {
+      if (REDUCED) { el.textContent = phrases()[0]; return; }
+      var list = phrases();
+      var phrase = list[pi];
+      ci += deleting ? -1 : 1;
+      el.textContent = phrase.slice(0, ci);
+      var delay = deleting ? 42 : 78;
+      if (!deleting && ci >= phrase.length) { deleting = true; delay = 1900; }
+      else if (deleting && ci <= 0) { deleting = false; pi = (pi + 1) % list.length; delay = 420; }
+      timer = setTimeout(step, delay);
+    }
+    window.restartTyping = function () {
+      stop();
+      pi = 0; ci = 0; deleting = false;
+      el.textContent = '';
+      step();
+    };
+    step();
+  }
+
+  /* ---------- ميلان ثلاثي الأبعاد ---------- */
+  function initTilt() {
+    if (REDUCED || COARSE) return;
+    var zone = document.querySelector('.tilt-zone');
+    var card = document.querySelector('.script-showcase-card');
+    if (!zone || !card) return;
+    zone.addEventListener('mousemove', function (e) {
+      var r = zone.getBoundingClientRect();
+      if (r.width < 1 || r.height < 1) return;
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = 'perspective(1100px) rotateX(' + (-py * 4).toFixed(2) + 'deg) rotateY(' + (px * 6).toFixed(2) + 'deg) translateY(' + (-Math.abs(px) * 3).toFixed(2) + 'px)';
+    }, { passive: true });
+    zone.addEventListener('mouseleave', function () { card.style.transform = ''; }, { passive: true });
+  }
+
+  /* ---------- شريط تقدم التمرير ---------- */
+  function initProgress() {
+    var bar = $('scrollProgressBar');
+    if (!bar) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var d = document.documentElement;
+      var max = d.scrollHeight - window.innerHeight;
+      var p = max > 0 ? clamp(d.scrollTop / max, 0, 1) : 0;
+      bar.style.transform = 'scaleX(' + p + ')';
+    }
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+    update();
+  }
+
+  /* ---------- واجهة التفاعل (أزرار + فورم التعليقات) ---------- */
+  function initEngagementUI() {
+    var likeBtn = $('likeBtn');
+    if (likeBtn) likeBtn.addEventListener('click', toggleLike);
+
+    var cToggle = $('commentsToggle');
+    if (cToggle) {
+      cToggle.addEventListener('click', function () {
+        var panel = $('commentsPanel');
+        if (!panel) return;
+        var collapsed = panel.classList.toggle('collapsed');
+        cToggle.setAttribute('aria-expanded', String(!collapsed));
+      });
+    }
+
+    var form = $('commentForm');
+    var txt = $('commentText');
+    if (form && txt) {
+      form.addEventListener('submit', submitComment);
+      txt.addEventListener('input', function () { autoGrow(); updateSendState(); });
+      txt.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          form.dispatchEvent(new Event('submit', { cancelable: true }));
+        }
+      });
+    }
+    var nameInput = $('commentName');
+    if (nameInput) nameInput.value = store.get('ss_name', '');
+    updateSendState();
+
+    // ربط نظام التفاعل باختيار السكربت وزر النسخ
+    window.onShowcaseUpdated = function () {
+      currentEngId = getScriptId();
+      renderEngagement();
+    };
+    window.onScriptCopied = function () {
+      registerCopy();
+    };
+
+    // ترقية التمرير التلقائي لإعادة نبض إطار الهولو
+    var origScroll = window.scrollToScriptShowcase;
+    if (typeof origScroll === 'function') {
+      window.scrollToScriptShowcase = function () {
+        try { origScroll(); } catch (e) {}
+        var w = document.querySelector('.holo-wrap');
+        if (w) {
+          w.classList.remove('highlight-pulse');
+          void w.offsetWidth;
+          w.classList.add('highlight-pulse');
+        }
+      };
+    }
+
+    // ترقية تبديل اللغة لإعادة رسم الواجهة والنصوص الحية
+    var origSetLang = window.setLang;
+    if (typeof origSetLang === 'function') {
+      window.setLang = function (l) {
+        try { origSetLang(l); } catch (e) {}
+        renderEngagement();
+        renderLeaderboard();
+        if (window.restartTyping) window.restartTyping();
+      };
+    }
+
+    // مزامنة بين التبويبات المفتوحة (الوضع التجريبي)
+    window.addEventListener('storage', function (e) {
+      if (!e.key || e.key.indexOf('ss_') !== 0) return;
+      renderEngagement();
+      renderLeaderboard();
+      renderTotals();
+    });
+
+    // تحديث أوقات التعليقات كل 30 ثانية
+    setInterval(function () {
+      if (!document.hidden) updateCommentTimes();
+    }, 30000);
+  }
+
+  /* ---------- ظهور قائمة الأكثر نسخاً ---------- */
+  function initRevealTop() {
+    var sec = $('topScriptsSection');
+    if (!sec) return;
+    sec.classList.add('rv');
+    if ('IntersectionObserver' in window) {
+      var o = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            sec.classList.add('rv-in');
+            o.disconnect();
+          }
+        });
+      }, { threshold: 0.05 });
+      o.observe(sec);
+    } else {
+      sec.classList.add('rv-in');
+    }
+  }
+
+  /* ---------- الإقلاع ---------- */
+  function boot() {
+    firebaseReady(function (ok) {
+      if (ok && window.firebase) {
+        try {
+          fbDb = firebase.database();
+          fbDb.ref('engagements/scripts').on('value', function (snap) {
+            allEngData = snap.val() || {};
+            renderEngagement();
+            renderLeaderboard();
+            renderTotals();
+          });
+          startPresence();
+          renderEngagement();
+          renderLeaderboard();
+          renderTotals();
+          console.info('%c[Secrit Script v3.0] ✅ وضع Firebase الحي مفعّل — اللايكات والتعليقات والنسخ متزامنة عالمياً بين كل الزوار', 'color:#38bdf8;font-weight:bold');
+          return;
+        } catch (e) { fbDb = null; }
+      }
+      console.info('%c[Secrit Script v3.0] ℹ️ وضع تجريبي محلي (بدون Firebase) — اقرأ README-FIREBASE.md لتفعيل اللايكات والتعليقات العالمية', 'color:#f59e0b;font-weight:bold');
+      renderEngagement();
+      renderLeaderboard();
+      renderTotals();
+      setVisitors(demoVisitors());
+      setInterval(function () { setVisitors(demoVisitors()); }, 300000);
+    });
+  }
+
+  /* تشغيل كل وحدة بشكل منفصل ومعزول (خطأ في وحدة لا يوقف الباقي) */
+  [initFxEngine, initTyping, initTilt, initProgress, initEngagementUI, initRevealTop].forEach(function (fn) {
+    try { fn(); } catch (e) {
+      if (window.console) console.warn('[Secrit Script v3.0] module error:', e);
+    }
+  });
+  try { boot(); } catch (e) {}
+})();
 </script>
 </body>
 </html>
