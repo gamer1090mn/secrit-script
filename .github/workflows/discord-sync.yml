@@ -1,0 +1,49 @@
+name: Sync Discord Stats
+
+on:
+  schedule:
+    # كل 5 دقائق — يحدّث أرقام أعضاء الديسكورد على الموقع
+    - cron: '*/5 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch Discord stats
+        run: |
+          mkdir -p data
+          WIDGET=$(curl -s --max-time 20 "https://discord.com/api/guilds/1511777552614559764/widget.json")
+          INVITE=$(curl -s --max-time 20 "https://discord.com/api/v10/invites/jFkxDEfZxC?with_counts=true")
+          ONLINE=$(echo "$WIDGET" | jq -r '.presence_count // 0')
+          TOTAL=$(echo "$INVITE" | jq -r '.approximate_member_count // 0')
+          INVITE_ONLINE=$(echo "$INVITE" | jq -r '.approximate_presence_count // 0')
+          # لو الويدجت رجع صفر (أو اتعطل) نستخدم رقم الدعوة
+          if [ "$ONLINE" = "0" ] || [ -z "$ONLINE" ]; then ONLINE="$INVITE_ONLINE"; fi
+          if [ "$TOTAL" = "0" ] || [ -z "$TOTAL" ]; then
+            echo "No data received — skipping"
+            exit 0
+          fi
+          jq -n \
+            --argjson total "$TOTAL" \
+            --argjson online "$ONLINE" \
+            --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            '{total:$total, online:$online, updatedAt:$ts}' > data/discord.json
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet data/discord.json; then
+            echo "No changes"
+          else
+            git add data/discord.json
+            git commit -m "chore: sync discord stats ($(date -u +%H:%M))"
+            git push
+          fi
