@@ -3291,46 +3291,34 @@ function applyDiscordStats(total, online) {
 }
 
 // ========================================================
-// إحصائيات ديسكورد الحقيقية (v3.1)
-// 1) عدد المتصلين: لحظي من واجهة Widget الرسمية (تسمح بالـ CORS)
-// 2) عدد الأعضاء الكلي: من data/discord.json — يحدّثه GitHub Action كل 5 دقائق
+// إحصائيات ديسكورد الحقيقية (v3.2)
+// المصدر: data/discord.json — يحدّثه GitHub Action كل 5 دقائق
+// (القراءة من raw.githubusercontent مسموحة CORS من المتصفح)
+// الموقع يستطلع الملف كل 12 ثانية فيلتقط التحديث فور نشره
 // ========================================================
 var DISCORD_GUILD_ID = "1511777552614559764";
 var DISCORD_STATS_URL = "https://raw.githubusercontent.com/gamer1090mn/secrit-script/main/data/discord.json";
 
 function fetchDiscordStats() {
-  // أولاً: عدد المتصلين اللحظي من الويدجت
-  fetch("https://discord.com/api/guilds/" + DISCORD_GUILD_ID + "/widget.json?_nocache=" + Date.now())
-    .then(function (res) {
-      if (!res.ok) throw new Error('widget ' + res.status);
-      return res.json();
-    })
+  fetch(DISCORD_STATS_URL + "?_nocache=" + Date.now())
+    .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) {
-      var online = (d && typeof d.presence_count === 'number') ? d.presence_count : lastStats.online;
-      // ثانياً: عدد الأعضاء الكلي من ملف المزامنة الدوري
-      return fetch(DISCORD_STATS_URL + "?_nocache=" + Date.now())
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (dd) {
-          var total = (dd && dd.total) ? dd.total : lastStats.total;
-          lastStats = { total: total, online: online };
-          applyDiscordStats(total, online);
-        })
-        .catch(function () {
-          lastStats.online = online;
-          applyDiscordStats(lastStats.total, online);
-        });
+      if (!d || !d.total) return; // نحافظ على آخر قيمة معروفة
+      var total = d.total;
+      var online = (typeof d.online === 'number') ? d.online : lastStats.online;
+      if (lastStats.total === total && lastStats.online === online) {
+        // لا تغيير — حدّث وقت المزامنة فقط
+        var timeEl = document.getElementById('liveSyncTime');
+        if (timeEl) {
+          var dd = new Date();
+          timeEl.textContent = '● SYNC ' + String(dd.getHours()).padStart(2, '0') + ':' + String(dd.getMinutes()).padStart(2, '0') + ':' + String(dd.getSeconds()).padStart(2, '0');
+        }
+        return;
+      }
+      lastStats = { total: total, online: online };
+      applyDiscordStats(total, online);
     })
-    .catch(function () {
-      // لو الويدجت مش شغال مؤقتاً — نعتمد على آخر ملف مزامنة بالكامل
-      fetch(DISCORD_STATS_URL + "?_nocache=" + Date.now())
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (dd) {
-          if (!dd || !dd.total) return;
-          lastStats = { total: dd.total, online: (dd.online || lastStats.online) };
-          applyDiscordStats(lastStats.total, lastStats.online);
-        })
-        .catch(function () {});
-    });
+    .catch(function () {});
 }
 
 // إعادة المزامنة فوراً عند الرجوع لتبويب الموقع (يعطي إحساس الاتصال الدائم 24/7)
